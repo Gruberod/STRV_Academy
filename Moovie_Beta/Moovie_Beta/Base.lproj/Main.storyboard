@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cIp-9N-3ci">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Calibre-Medium.otf">
+            <string>Calibre-Medium</string>
+        </array>
+        <array key="Calibre-Regular.otf">
+            <string>Calibre-Regular</string>
+        </array>
+        <array key="Calibre-Semibold.otf">
+            <string>Calibre-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU8-pj-dwK" customClass="MyButton2" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="522" width="294" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="3di-0n-VJC"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="LOG IN">
+                                    <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="TzF-1u-Hqx" kind="show" id="rht-2S-0xa"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="qJ3-KM-D5p">
+                                <rect key="frame" x="79.5" y="205" width="215" height="35"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soa-0B-B4R">
+                                <rect key="frame" x="41" y="450" width="294" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="7az-is-tff"/>
+                                    <constraint firstAttribute="height" constant="56" id="8M7-Fn-adu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="SIGN UP">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="j8n-cn-wpm" kind="show" id="8jx-y6-jZr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Soa-0B-B4R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5KQ-GC-Muq"/>
+                            <constraint firstItem="iU8-pj-dwK" firstAttribute="trailing" secondItem="Soa-0B-B4R" secondAttribute="trailing" id="DhU-7d-TSo"/>
+                            <constraint firstItem="iU8-pj-dwK" firstAttribute="top" secondItem="Soa-0B-B4R" secondAttribute="bottom" constant="16" id="F9l-gb-e2n"/>
+                            <constraint firstItem="Soa-0B-B4R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="450" id="K2n-Hu-9bi"/>
+                            <constraint firstItem="Soa-0B-B4R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="41" id="L1M-VX-QSW"/>
+                            <constraint firstItem="iU8-pj-dwK" firstAttribute="leading" secondItem="Soa-0B-B4R" secondAttribute="leading" id="NpQ-MB-4nY"/>
+                            <constraint firstAttribute="trailing" secondItem="Soa-0B-B4R" secondAttribute="trailing" constant="40" id="RZt-gH-CE9"/>
+                            <constraint firstItem="qJ3-KM-D5p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bIt-p4-noC"/>
+                            <constraint firstItem="qJ3-KM-D5p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="205" id="dg1-Tv-pMD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7Xk-G3-4Jr"/>
+                    <connections>
+                        <outlet property="MyButton" destination="Soa-0B-B4R" id="obG-Y9-6lj"/>
+                        <outlet property="MyButton2" destination="iU8-pj-dwK" id="igC-Tk-D2r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="37.331334332833585"/>
+        </scene>
+        <!--LOG IN-->
+        <scene sceneID="UFY-ZB-uUT">
+            <objects>
+                <viewController id="TzF-1u-Hqx" customClass="LoginViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V17-BS-Ocj"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Ew-Nb-UJr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IgQ-8g-PRS">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-v0-CHH" customClass="MyTextFieldLogin" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="40" y="60" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="CxA-WY-L5d"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDf-wN-bov" customClass="MyTextFieldLogin" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="40" y="156" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="n6u-Cl-6By"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-ZD-ckA">
+                                <rect key="frame" x="40" y="272" width="294" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="OEJ-f8-Smg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="LOG IN">
+                                    <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginBtn:" destination="TzF-1u-Hqx" eventType="touchUpInside" id="VhD-ud-9pH"/>
+                                    <segue destination="Bf3-Ss-gM2" kind="show" id="o7x-CN-jDq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTd-7B-a3r">
+                                <rect key="frame" x="40" y="358" width="294" height="28"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
+                                <state key="normal" title="Forgot your password?">
+                                    <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bzD-Fg-aWi" kind="show" id="Vfv-ai-9LX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cTd-7B-a3r" firstAttribute="leading" secondItem="YHX-ZD-ckA" secondAttribute="leading" id="40w-iJ-fCI"/>
+                            <constraint firstItem="YHX-ZD-ckA" firstAttribute="top" secondItem="bDf-wN-bov" secondAttribute="bottom" constant="60" id="BUo-Ng-hTC"/>
+                            <constraint firstItem="gGm-v0-CHH" firstAttribute="top" secondItem="V17-BS-Ocj" secondAttribute="bottom" constant="60" id="J1m-tg-ZGc"/>
+                            <constraint firstItem="cTd-7B-a3r" firstAttribute="trailing" secondItem="YHX-ZD-ckA" secondAttribute="trailing" id="M8g-Oc-fl1"/>
+                            <constraint firstItem="bDf-wN-bov" firstAttribute="trailing" secondItem="gGm-v0-CHH" secondAttribute="trailing" id="Nvl-q8-vKs"/>
+                            <constraint firstItem="cTd-7B-a3r" firstAttribute="top" secondItem="YHX-ZD-ckA" secondAttribute="bottom" constant="30" id="Y3S-T7-vkB"/>
+                            <constraint firstItem="bDf-wN-bov" firstAttribute="top" secondItem="gGm-v0-CHH" secondAttribute="bottom" constant="40" id="nHv-Ui-wby"/>
+                            <constraint firstItem="gGm-v0-CHH" firstAttribute="leading" secondItem="IgQ-8g-PRS" secondAttribute="leading" constant="40" id="oDZ-cj-wmE"/>
+                            <constraint firstItem="bDf-wN-bov" firstAttribute="leading" secondItem="gGm-v0-CHH" secondAttribute="leading" id="p2y-dj-6bp"/>
+                            <constraint firstAttribute="trailing" secondItem="gGm-v0-CHH" secondAttribute="trailing" constant="41" id="vV9-dI-iAB"/>
+                            <constraint firstItem="YHX-ZD-ckA" firstAttribute="leading" secondItem="bDf-wN-bov" secondAttribute="leading" id="yuT-Rf-pxQ"/>
+                            <constraint firstItem="YHX-ZD-ckA" firstAttribute="trailing" secondItem="bDf-wN-bov" secondAttribute="trailing" id="zJM-fE-UmX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="LOG IN" id="1im-ft-axq"/>
+                    <connections>
+                        <outlet property="password" destination="bDf-wN-bov" id="R83-qY-LdT"/>
+                        <outlet property="username" destination="gGm-v0-CHH" id="iGl-Bn-gZ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R78-Fp-opE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="482"/>
+        </scene>
+        <!--MovieFlow-->
+        <scene sceneID="RfA-O1-ju5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieFlow" id="Bf3-Ss-gM2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F63-UW-tXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902" y="11"/>
+        </scene>
+        <!--SIGN UP-->
+        <scene sceneID="2Hq-et-gDy">
+            <objects>
+                <viewController id="j8n-cn-wpm" customClass="SignUpViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x5Q-gU-yKI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Blt-dt-Ksv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wn2-Dd-fTX">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymz-ER-Rm7" customClass="MyTextField" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="60" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="W0x-uK-4mB"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AI4-EQ-SdK" customClass="MyTextField" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="156" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="d8i-1Y-Stf"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdM-MT-WqD" customClass="MyTextField" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="252" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ZYs-tV-Baf"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzB-8e-Hfa">
+                                <rect key="frame" x="41" y="358" width="294" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="Lnr-zI-9cq"/>
+                                    <constraint firstAttribute="height" constant="56" id="baG-JE-jRo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="SIGN UP">
+                                    <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Bf3-Ss-gM2" kind="show" id="l3y-9S-I9g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H16-2H-Q7H">
+                                <rect key="frame" x="281" y="265" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
+                                <state key="normal" title="SHOW">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H16-2H-Q7H" firstAttribute="top" secondItem="AI4-EQ-SdK" secondAttribute="bottom" constant="53" id="1HS-oj-uv1"/>
+                            <constraint firstItem="ymz-ER-Rm7" firstAttribute="centerX" secondItem="wn2-Dd-fTX" secondAttribute="centerX" id="60f-bp-PIr"/>
+                            <constraint firstItem="JdM-MT-WqD" firstAttribute="leading" secondItem="AI4-EQ-SdK" secondAttribute="leading" id="6Vh-rd-9V7"/>
+                            <constraint firstItem="JdM-MT-WqD" firstAttribute="top" secondItem="AI4-EQ-SdK" secondAttribute="bottom" constant="40" id="UhG-7Q-kxv"/>
+                            <constraint firstItem="ymz-ER-Rm7" firstAttribute="top" secondItem="x5Q-gU-yKI" secondAttribute="bottom" constant="60" id="ZGa-nH-NBV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H16-2H-Q7H" secondAttribute="trailing" constant="32" id="a62-xb-bmo"/>
+                            <constraint firstItem="AI4-EQ-SdK" firstAttribute="leading" secondItem="ymz-ER-Rm7" secondAttribute="leading" id="dUp-XS-lA9"/>
+                            <constraint firstItem="H16-2H-Q7H" firstAttribute="centerY" secondItem="JdM-MT-WqD" secondAttribute="centerY" id="lMt-ji-e5b"/>
+                            <constraint firstItem="AI4-EQ-SdK" firstAttribute="top" secondItem="ymz-ER-Rm7" secondAttribute="bottom" constant="40" id="mEe-lf-XyW"/>
+                            <constraint firstItem="wzB-8e-Hfa" firstAttribute="top" secondItem="JdM-MT-WqD" secondAttribute="bottom" constant="50" id="mlK-Hh-scY"/>
+                            <constraint firstItem="wzB-8e-Hfa" firstAttribute="leading" secondItem="JdM-MT-WqD" secondAttribute="leading" id="n4j-7s-g6J"/>
+                            <constraint firstItem="AI4-EQ-SdK" firstAttribute="trailing" secondItem="ymz-ER-Rm7" secondAttribute="trailing" id="ptk-SV-z0j"/>
+                            <constraint firstItem="H16-2H-Q7H" firstAttribute="centerX" secondItem="JdM-MT-WqD" secondAttribute="centerX" constant="116" id="q6l-J2-5QB"/>
+                            <constraint firstItem="wzB-8e-Hfa" firstAttribute="trailing" secondItem="JdM-MT-WqD" secondAttribute="trailing" id="v1x-Gx-MgS"/>
+                            <constraint firstItem="JdM-MT-WqD" firstAttribute="trailing" secondItem="AI4-EQ-SdK" secondAttribute="trailing" id="wEF-eQ-oY9"/>
+                            <constraint firstItem="ymz-ER-Rm7" firstAttribute="leading" secondItem="wn2-Dd-fTX" secondAttribute="leading" constant="41" id="wS1-Ff-xzh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="SIGN UP" id="VhC-Ef-N30"/>
+                    <connections>
+                        <outlet property="email" destination="AI4-EQ-SdK" id="eYj-ZO-QH9"/>
+                        <outlet property="password" destination="JdM-MT-WqD" id="aBK-4W-dPd"/>
+                        <outlet property="username" destination="ymz-ER-Rm7" id="Jd3-xS-p7G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJC-pj-7la" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="-463"/>
+        </scene>
+        <!--FORGOT PASSWORD-->
+        <scene sceneID="xc9-Su-LPX">
+            <objects>
+                <viewController title="FORGOT PASSWORD" id="bzD-Fg-aWi" customClass="ForgotPasswordViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ocZ-ZY-lHo"/>
+                        <viewControllerLayoutGuide type="bottom" id="3W9-x4-qlr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tSC-f5-GVc">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2o-2a-q1t">
+                                <rect key="frame" x="41" y="40" width="294" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="cGi-iW-PuR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
+                                <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your email address and we’ll send you an email with a link to reset your password." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lha-PE-a0K">
+                                <rect key="frame" x="41" y="110" width="294" height="32"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
+                                <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCD-pW-AXf" customClass="MyTextFieldPassword" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="202" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Jw0-Wn-LTn"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrM-XN-cUs">
+                                <rect key="frame" x="41" y="298" width="294" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="rz1-hb-AgY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="RESET PASSWORD">
+                                    <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="A2o-2a-q1t" secondAttribute="trailing" constant="40" id="BHc-Dy-AjB"/>
+                            <constraint firstItem="Lha-PE-a0K" firstAttribute="trailing" secondItem="A2o-2a-q1t" secondAttribute="trailing" id="Bj2-y6-EVM"/>
+                            <constraint firstItem="QCD-pW-AXf" firstAttribute="leading" secondItem="Lha-PE-a0K" secondAttribute="leading" id="DkA-q2-anz"/>
+                            <constraint firstItem="A2o-2a-q1t" firstAttribute="leading" secondItem="tSC-f5-GVc" secondAttribute="leading" constant="41" id="F85-hQ-iXX"/>
+                            <constraint firstItem="QCD-pW-AXf" firstAttribute="trailing" secondItem="Lha-PE-a0K" secondAttribute="trailing" id="Icn-g6-MXe"/>
+                            <constraint firstItem="A2o-2a-q1t" firstAttribute="top" secondItem="ocZ-ZY-lHo" secondAttribute="bottom" constant="40" id="NkE-mI-exa"/>
+                            <constraint firstItem="Lha-PE-a0K" firstAttribute="leading" secondItem="A2o-2a-q1t" secondAttribute="leading" id="R4S-XK-QUY"/>
+                            <constraint firstItem="Lha-PE-a0K" firstAttribute="top" secondItem="A2o-2a-q1t" secondAttribute="bottom" constant="14" id="UvY-V9-dKC"/>
+                            <constraint firstItem="QCD-pW-AXf" firstAttribute="top" secondItem="Lha-PE-a0K" secondAttribute="bottom" constant="60" id="du6-cK-cNo"/>
+                            <constraint firstItem="OrM-XN-cUs" firstAttribute="leading" secondItem="QCD-pW-AXf" secondAttribute="leading" id="ebg-Ol-tuM"/>
+                            <constraint firstItem="OrM-XN-cUs" firstAttribute="trailing" secondItem="QCD-pW-AXf" secondAttribute="trailing" id="kFw-GT-A22"/>
+                            <constraint firstItem="OrM-XN-cUs" firstAttribute="top" secondItem="QCD-pW-AXf" secondAttribute="bottom" constant="40" id="w96-Ti-KjS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="password" destination="QCD-pW-AXf" id="v7R-Zc-biN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AJG-ec-jRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2849" y="482"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="27I-4m-TYd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cIp-9N-3ci" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="06t-5t-294">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lcA-PO-aoN">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yYh-Oq-I7E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IqM-dq-aiy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="79" y="37"/>
+        </scene>
+        <!--SIGN UP-->
+        <scene sceneID="ZJv-50-ZfC">
+            <objects>
+                <viewController id="VCF-N7-S9y" customClass="SignUpViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yaw-pZ-yYt"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bfp-fI-8Py"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BPv-WM-ekX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qpw-Ii-TYS" customClass="myTextField" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="80" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="CGz-ss-tgZ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-M3-VwQ" customClass="myTextField" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="176" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="2S9-JG-FjJ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="si0-TZ-ala" customClass="myTextField" customModule="Moovie_Beta" customModuleProvider="target">
+                                <rect key="frame" x="41" y="272" width="294" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Nbc-zv-gQg"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6c-WC-uMD">
+                                <rect key="frame" x="41" y="378" width="294" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="Hz1-g6-b2z"/>
+                                    <constraint firstAttribute="height" constant="56" id="eKu-XR-uFN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="SIGN UP">
+                                    <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k6c-WC-uMD" firstAttribute="leading" secondItem="si0-TZ-ala" secondAttribute="leading" id="6ec-6Z-54f"/>
+                            <constraint firstItem="si0-TZ-ala" firstAttribute="leading" secondItem="fVB-M3-VwQ" secondAttribute="leading" id="KSp-ro-mwy"/>
+                            <constraint firstItem="si0-TZ-ala" firstAttribute="trailing" secondItem="fVB-M3-VwQ" secondAttribute="trailing" id="YCJ-s5-2Dj"/>
+                            <constraint firstItem="qpw-Ii-TYS" firstAttribute="centerX" secondItem="BPv-WM-ekX" secondAttribute="centerX" id="YXe-pf-QSy"/>
+                            <constraint firstItem="fVB-M3-VwQ" firstAttribute="leading" secondItem="qpw-Ii-TYS" secondAttribute="leading" id="dyf-c2-QEe"/>
+                            <constraint firstItem="k6c-WC-uMD" firstAttribute="top" secondItem="si0-TZ-ala" secondAttribute="bottom" constant="50" id="f3y-HM-Kbs"/>
+                            <constraint firstItem="fVB-M3-VwQ" firstAttribute="trailing" secondItem="qpw-Ii-TYS" secondAttribute="trailing" id="fQc-QK-Wfx"/>
+                            <constraint firstItem="k6c-WC-uMD" firstAttribute="trailing" secondItem="si0-TZ-ala" secondAttribute="trailing" id="fgV-Zr-Ifp"/>
+                            <constraint firstItem="qpw-Ii-TYS" firstAttribute="top" secondItem="yaw-pZ-yYt" secondAttribute="bottom" constant="60" id="jVy-eu-LLc"/>
+                            <constraint firstAttribute="trailing" secondItem="qpw-Ii-TYS" secondAttribute="trailing" constant="40" id="m5v-ul-OF8"/>
+                            <constraint firstItem="qpw-Ii-TYS" firstAttribute="leading" secondItem="BPv-WM-ekX" secondAttribute="leading" constant="41" id="qJw-00-NcX"/>
+                            <constraint firstItem="fVB-M3-VwQ" firstAttribute="top" secondItem="qpw-Ii-TYS" secondAttribute="bottom" constant="40" id="rl3-0G-c0m"/>
+                            <constraint firstItem="si0-TZ-ala" firstAttribute="top" secondItem="fVB-M3-VwQ" secondAttribute="bottom" constant="40" id="uTG-7p-N13"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="SIGN UP" id="t6h-yr-cS2"/>
+                    <connections>
+                        <outlet property="email" destination="fVB-M3-VwQ" id="8r0-rg-muG"/>
+                        <outlet property="password" destination="si0-TZ-ala" id="L4j-7M-R1O"/>
+                        <outlet property="username" destination="qpw-Ii-TYS" id="OuW-Gn-JWS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJi-g2-6IM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2746" y="-464"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="215" height="35"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="l3y-9S-I9g"/>
+    </inferredMetricsTieBreakers>
+</document>
