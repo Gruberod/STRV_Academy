@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ActorsOverview: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+class ActorsOverview: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var actorCOllectionView: UICollectionView!
-    var images = ["actor1", "actor2", "actor3", "actor4" ]
+//    @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var moviesLabel: UILabel!
+   
+    var images = ["actor1", "actor2", "actor3", "actor4", "actor1", "actor2", "actor3", "actor4"]
     
-    func viewDidLoad() {
-//        super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.actorCOllectionView.delegate = self
         self.actorCOllectionView.dataSource = self
@@ -30,11 +33,26 @@ class ActorsOverview: UIView, UICollectionViewDataSource, UICollectionViewDelega
         return images.count
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "actor_cell", for: indexPath) as! MyViewCellCollectionViewCell
         cell.actorCOllectionPicture.image = UIImage(named: images[indexPath.row])
+//        cell.nameLabel.text = "actor_cell"
+//        cell.moviesLabel.text = "actor_cell"
         return cell
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
 }

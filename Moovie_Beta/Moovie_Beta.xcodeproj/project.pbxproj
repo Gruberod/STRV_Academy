@@ -32,6 +32,7 @@
 		0D8BD85D1F39F98C00161494 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85C1F39F98C00161494 /* Filter.swift */; };
 		0D8BD85F1F39FE3E00161494 /* ActorsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85E1F39FE3E00161494 /* ActorsOverview.swift */; };
 		0D8BD8611F3A06E600161494 /* MyViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD8601F3A06E600161494 /* MyViewCellCollectionViewCell.swift */; };
+		0D8BD8631F3A155F00161494 /* SearchToggleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD8621F3A155F00161494 /* SearchToggleViewController.swift */; };
 		0DA93E191F384FD9006BE8D5 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA93E181F384FD9006BE8D5 /* MovieCollectionViewCell.swift */; };
 		0DA93E1B1F384FE8006BE8D5 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA93E1A1F384FE8006BE8D5 /* MovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		0D8BD85C1F39F98C00161494 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0D8BD85E1F39FE3E00161494 /* ActorsOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsOverview.swift; sourceTree = "<group>"; };
 		0D8BD8601F3A06E600161494 /* MyViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		0D8BD8621F3A155F00161494 /* SearchToggleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchToggleViewController.swift; sourceTree = "<group>"; };
 		0DA93E181F384FD9006BE8D5 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		0DA93E1A1F384FE8006BE8D5 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,10 +147,6 @@
 				0D80F0791F3471A0001070C6 /* AppDelegate.swift */,
 				0D80F07B1F3471A0001070C6 /* ViewController.swift */,
 				0D80F0851F3471A0001070C6 /* Info.plist */,
-				0DA93E181F384FD9006BE8D5 /* MovieCollectionViewCell.swift */,
-				0D80F0AC1F34C670001070C6 /* MovieCarouselTableViewCell.swift */,
-				0D1C82291F3744B600449F93 /* searchItemCellTableViewCell.swift */,
-				0D1C822D1F37472F00449F93 /* actorItemCell.swift */,
 			);
 			path = Moovie_Beta;
 			sourceTree = "<group>";
@@ -184,6 +182,7 @@
 				0D8BD85A1F39F6E900161494 /* ActorDetail.swift */,
 				0D8BD85C1F39F98C00161494 /* Filter.swift */,
 				0D8BD85E1F39FE3E00161494 /* ActorsOverview.swift */,
+				0D8BD8621F3A155F00161494 /* SearchToggleViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -201,12 +200,24 @@
 		0D8BD8591F39D13200161494 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				0D8BD8641F3A41C000161494 /* VC */,
 				0D1C822E1F37472F00449F93 /* actorItemCell.xib */,
 				0D1C822A1F3744B600449F93 /* searchItemCellTableViewCell.xib */,
 				0D80F0AD1F34C670001070C6 /* MovieCarouselTableViewCell.xib */,
 				0DA93E1A1F384FE8006BE8D5 /* MovieCollectionViewCell.xib */,
 			);
 			name = Xibs;
+			sourceTree = "<group>";
+		};
+		0D8BD8641F3A41C000161494 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				0DA93E181F384FD9006BE8D5 /* MovieCollectionViewCell.swift */,
+				0D80F0AC1F34C670001070C6 /* MovieCarouselTableViewCell.swift */,
+				0D1C82291F3744B600449F93 /* searchItemCellTableViewCell.swift */,
+				0D1C822D1F37472F00449F93 /* actorItemCell.swift */,
+			);
+			name = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8BD8631F3A155F00161494 /* SearchToggleViewController.swift in Sources */,
 				0D1C82201F362AE400449F93 /* ForgotPasswordViewController.swift in Sources */,
 				0D8BD85F1F39FE3E00161494 /* ActorsOverview.swift in Sources */,
 				0D1C822F1F37472F00449F93 /* actorItemCell.swift in Sources */,
