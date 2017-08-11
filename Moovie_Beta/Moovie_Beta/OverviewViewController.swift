@@ -28,10 +28,10 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +49,8 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     }
     */
     
+    let sections: [String] = ["Section 1", "Section 2"]
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -56,6 +58,14 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return sections[section]
+//    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row

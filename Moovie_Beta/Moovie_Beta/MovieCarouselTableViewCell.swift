@@ -46,6 +46,6 @@ class MovieCarouselTableViewCell: UITableViewCell, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 155, height: 198)
+        return CGSize(width: 155, height: 180)
     }
 }

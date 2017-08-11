@@ -22,6 +22,12 @@ class ActorsOverview: UIViewController, UICollectionViewDataSource, UICollection
         self.actorCOllectionView.delegate = self
         self.actorCOllectionView.dataSource = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -45,14 +51,6 @@ class ActorsOverview: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+
     
 }

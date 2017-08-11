@@ -32,6 +32,11 @@ class ForgotPasswordViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     @IBOutlet weak var password: MyTextFieldPassword!
     

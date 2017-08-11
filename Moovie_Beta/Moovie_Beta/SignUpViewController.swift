@@ -43,6 +43,11 @@ class SignUpViewController: UIViewController {
 //        myTextField.layer.addSublayer(bottomLine)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     @IBOutlet weak var username: MyTextField!
     @IBOutlet weak var email: MyTextField!
     @IBOutlet weak var password: MyTextField!

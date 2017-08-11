@@ -1,41 +1,32 @@
 //
-//  HomeViewController.swift
+//  CustomNavBarViewController.swift
 //  Moovie_Beta
 //
-//  Created by Gruberova, Daniela on 04/08/2017.
+//  Created by Gruberova, Daniela on 11/08/2017.
 //  Copyright © 2017 Gruberova, Daniela. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class CustomNavBarViewController: UINavigationController {
 
-    @IBOutlet weak var MyButton: UIButton!
-    
-    @IBOutlet weak var MyButton2: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        MyButton2.layer.borderWidth = 3
-        MyButton2.layer.borderColor = UIColor.darkGray.cgColor
 
         // Do any additional setup after loading the view.
     }
     
-    
-//    // Will hide navbar everywhere
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        self.navigationController?.isNavigationBarHidden = true
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
-
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let backItem = UIBarButtonItem()
+//        backItem.title = nil
+//        navigationItem.backBarButtonItem = backItem
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

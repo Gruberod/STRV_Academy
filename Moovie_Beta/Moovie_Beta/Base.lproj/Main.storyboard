@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cIp-9N-3ci">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,11 +29,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU8-pj-dwK" customClass="MyButton2" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="522" width="294" height="56"/>
+                                <rect key="frame" x="41" y="436" width="239" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="3di-0n-VJC"/>
                                 </constraints>
@@ -47,10 +46,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="qJ3-KM-D5p">
-                                <rect key="frame" x="79.5" y="205" width="215" height="35"/>
+                                <rect key="frame" x="52.5" y="205" width="215" height="35"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soa-0B-B4R">
-                                <rect key="frame" x="41" y="450" width="294" height="56"/>
+                                <rect key="frame" x="41" y="364" width="239" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="7az-is-tff"/>
@@ -69,9 +68,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Soa-0B-B4R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5KQ-GC-Muq"/>
+                            <constraint firstItem="Soa-0B-B4R" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="140" id="8Ev-oE-zxG"/>
                             <constraint firstItem="iU8-pj-dwK" firstAttribute="trailing" secondItem="Soa-0B-B4R" secondAttribute="trailing" id="DhU-7d-TSo"/>
                             <constraint firstItem="iU8-pj-dwK" firstAttribute="top" secondItem="Soa-0B-B4R" secondAttribute="bottom" constant="16" id="F9l-gb-e2n"/>
-                            <constraint firstItem="Soa-0B-B4R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="450" id="K2n-Hu-9bi"/>
                             <constraint firstItem="Soa-0B-B4R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="41" id="L1M-VX-QSW"/>
                             <constraint firstItem="iU8-pj-dwK" firstAttribute="leading" secondItem="Soa-0B-B4R" secondAttribute="leading" id="NpQ-MB-4nY"/>
                             <constraint firstAttribute="trailing" secondItem="Soa-0B-B4R" secondAttribute="trailing" constant="40" id="RZt-gH-CE9"/>
@@ -79,7 +78,9 @@
                             <constraint firstItem="qJ3-KM-D5p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="205" id="dg1-Tv-pMD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7Xk-G3-4Jr"/>
+                    <navigationItem key="navigationItem" id="7Xk-G3-4Jr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="aBC-cM-lOr"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="MyButton" destination="Soa-0B-B4R" id="obG-Y9-6lj"/>
                         <outlet property="MyButton2" destination="iU8-pj-dwK" id="igC-Tk-D2r"/>
@@ -98,11 +99,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7Ew-Nb-UJr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IgQ-8g-PRS">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gGm-v0-CHH" customClass="MyTextFieldLogin" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="40" y="60" width="294" height="56"/>
+                                <rect key="frame" x="40" y="60" width="239" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="CxA-WY-L5d"/>
@@ -112,7 +113,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDf-wN-bov" customClass="MyTextFieldLogin" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="40" y="156" width="294" height="56"/>
+                                <rect key="frame" x="40" y="156" width="239" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="n6u-Cl-6By"/>
@@ -122,7 +123,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-ZD-ckA">
-                                <rect key="frame" x="40" y="272" width="294" height="56"/>
+                                <rect key="frame" x="40" y="272" width="239" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="OEJ-f8-Smg"/>
@@ -138,7 +139,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTd-7B-a3r">
-                                <rect key="frame" x="40" y="358" width="294" height="28"/>
+                                <rect key="frame" x="40" y="358" width="239" height="28"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +165,9 @@
                             <constraint firstItem="YHX-ZD-ckA" firstAttribute="trailing" secondItem="bDf-wN-bov" secondAttribute="trailing" id="zJM-fE-UmX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="LOG IN" id="1im-ft-axq"/>
+                    <navigationItem key="navigationItem" title="LOG IN" id="1im-ft-axq">
+                        <barButtonItem key="backBarButtonItem" title=" " id="BRY-Qh-09e"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="password" destination="bDf-wN-bov" id="R83-qY-LdT"/>
                         <outlet property="username" destination="gGm-v0-CHH" id="iGl-Bn-gZ7"/>
@@ -191,11 +194,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Blt-dt-Ksv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wn2-Dd-fTX">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymz-ER-Rm7" customClass="MyTextField" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="60" width="294" height="56"/>
+                                <rect key="frame" x="41" y="60" width="238" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="W0x-uK-4mB"/>
@@ -205,7 +208,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AI4-EQ-SdK" customClass="MyTextField" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="156" width="294" height="56"/>
+                                <rect key="frame" x="41" y="156" width="238" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="d8i-1Y-Stf"/>
@@ -215,7 +218,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdM-MT-WqD" customClass="MyTextField" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="252" width="294" height="56"/>
+                                <rect key="frame" x="41" y="252" width="238" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="ZYs-tV-Baf"/>
@@ -225,7 +228,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzB-8e-Hfa">
-                                <rect key="frame" x="41" y="358" width="294" height="56"/>
+                                <rect key="frame" x="41" y="358" width="238" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="Lnr-zI-9cq"/>
@@ -241,7 +244,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H16-2H-Q7H">
-                                <rect key="frame" x="281" y="265" width="46" height="30"/>
+                                <rect key="frame" x="233" y="254" width="34" height="52"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <state key="normal" title="SHOW">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -250,25 +254,26 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="H16-2H-Q7H" firstAttribute="top" secondItem="AI4-EQ-SdK" secondAttribute="bottom" constant="53" id="1HS-oj-uv1"/>
                             <constraint firstItem="ymz-ER-Rm7" firstAttribute="centerX" secondItem="wn2-Dd-fTX" secondAttribute="centerX" id="60f-bp-PIr"/>
                             <constraint firstItem="JdM-MT-WqD" firstAttribute="leading" secondItem="AI4-EQ-SdK" secondAttribute="leading" id="6Vh-rd-9V7"/>
+                            <constraint firstItem="H16-2H-Q7H" firstAttribute="trailing" secondItem="JdM-MT-WqD" secondAttribute="trailing" constant="-12" id="L3w-XP-YDv"/>
                             <constraint firstItem="JdM-MT-WqD" firstAttribute="top" secondItem="AI4-EQ-SdK" secondAttribute="bottom" constant="40" id="UhG-7Q-kxv"/>
+                            <constraint firstItem="H16-2H-Q7H" firstAttribute="top" secondItem="JdM-MT-WqD" secondAttribute="top" constant="2" id="Wya-3F-DOV"/>
                             <constraint firstItem="ymz-ER-Rm7" firstAttribute="top" secondItem="x5Q-gU-yKI" secondAttribute="bottom" constant="60" id="ZGa-nH-NBV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="H16-2H-Q7H" secondAttribute="trailing" constant="32" id="a62-xb-bmo"/>
                             <constraint firstItem="AI4-EQ-SdK" firstAttribute="leading" secondItem="ymz-ER-Rm7" secondAttribute="leading" id="dUp-XS-lA9"/>
                             <constraint firstItem="H16-2H-Q7H" firstAttribute="centerY" secondItem="JdM-MT-WqD" secondAttribute="centerY" id="lMt-ji-e5b"/>
                             <constraint firstItem="AI4-EQ-SdK" firstAttribute="top" secondItem="ymz-ER-Rm7" secondAttribute="bottom" constant="40" id="mEe-lf-XyW"/>
                             <constraint firstItem="wzB-8e-Hfa" firstAttribute="top" secondItem="JdM-MT-WqD" secondAttribute="bottom" constant="50" id="mlK-Hh-scY"/>
                             <constraint firstItem="wzB-8e-Hfa" firstAttribute="leading" secondItem="JdM-MT-WqD" secondAttribute="leading" id="n4j-7s-g6J"/>
                             <constraint firstItem="AI4-EQ-SdK" firstAttribute="trailing" secondItem="ymz-ER-Rm7" secondAttribute="trailing" id="ptk-SV-z0j"/>
-                            <constraint firstItem="H16-2H-Q7H" firstAttribute="centerX" secondItem="JdM-MT-WqD" secondAttribute="centerX" constant="116" id="q6l-J2-5QB"/>
                             <constraint firstItem="wzB-8e-Hfa" firstAttribute="trailing" secondItem="JdM-MT-WqD" secondAttribute="trailing" id="v1x-Gx-MgS"/>
                             <constraint firstItem="JdM-MT-WqD" firstAttribute="trailing" secondItem="AI4-EQ-SdK" secondAttribute="trailing" id="wEF-eQ-oY9"/>
                             <constraint firstItem="ymz-ER-Rm7" firstAttribute="leading" secondItem="wn2-Dd-fTX" secondAttribute="leading" constant="41" id="wS1-Ff-xzh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SIGN UP" id="VhC-Ef-N30"/>
+                    <navigationItem key="navigationItem" title="SIGN UP" id="VhC-Ef-N30">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gsx-pF-zmO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="email" destination="AI4-EQ-SdK" id="eYj-ZO-QH9"/>
                         <outlet property="password" destination="JdM-MT-WqD" id="aBK-4W-dPd"/>
@@ -288,11 +293,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3W9-x4-qlr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tSC-f5-GVc">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2o-2a-q1t">
-                                <rect key="frame" x="41" y="40" width="294" height="56"/>
+                                <rect key="frame" x="41" y="40" width="239" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="cGi-iW-PuR"/>
                                 </constraints>
@@ -301,13 +306,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your email address and we’ll send you an email with a link to reset your password." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lha-PE-a0K">
-                                <rect key="frame" x="41" y="110" width="294" height="32"/>
+                                <rect key="frame" x="41" y="110" width="239" height="48"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
                                 <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCD-pW-AXf" customClass="MyTextFieldPassword" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="202" width="294" height="56"/>
+                                <rect key="frame" x="41" y="218" width="239" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Jw0-Wn-LTn"/>
@@ -317,7 +322,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrM-XN-cUs">
-                                <rect key="frame" x="41" y="298" width="294" height="56"/>
+                                <rect key="frame" x="41" y="314" width="239" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="rz1-hb-AgY"/>
@@ -353,18 +358,19 @@
             </objects>
             <point key="canvasLocation" x="2849" y="482"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Nav Bar View Controller-->
         <scene sceneID="27I-4m-TYd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cIp-9N-3ci" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cIp-9N-3ci" customClass="CustomNavBarViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="06t-5t-294">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="icBack" backIndicatorTransitionMaskImage="icBack" id="06t-5t-294">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -389,11 +395,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Bfp-fI-8Py"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BPv-WM-ekX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qpw-Ii-TYS" customClass="myTextField" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="80" width="294" height="56"/>
+                                <rect key="frame" x="41" y="80" width="239" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="CGz-ss-tgZ"/>
@@ -403,7 +409,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-M3-VwQ" customClass="myTextField" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="176" width="294" height="56"/>
+                                <rect key="frame" x="41" y="176" width="239" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="2S9-JG-FjJ"/>
@@ -413,7 +419,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="si0-TZ-ala" customClass="myTextField" customModule="Moovie_Beta" customModuleProvider="target">
-                                <rect key="frame" x="41" y="272" width="294" height="56"/>
+                                <rect key="frame" x="41" y="272" width="239" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Nbc-zv-gQg"/>
@@ -423,7 +429,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6c-WC-uMD">
-                                <rect key="frame" x="41" y="378" width="294" height="56"/>
+                                <rect key="frame" x="41" y="378" width="239" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="Hz1-g6-b2z"/>
@@ -466,9 +472,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icBack" width="24" height="24"/>
         <image name="logo" width="215" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="l3y-9S-I9g"/>
+        <segue reference="o7x-CN-jDq"/>
     </inferredMetricsTieBreakers>
 </document>

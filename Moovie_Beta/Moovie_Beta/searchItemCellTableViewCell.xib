@@ -35,7 +35,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4o-5z-Y1K">
-                        <rect key="frame" x="93" y="33" width="86" height="24"/>
+                        <rect key="frame" x="93" y="33" width="85.5" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="uNK-ya-jIz"/>
                         </constraints>
@@ -51,7 +51,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMg-Oo-YVN">
-                        <rect key="frame" x="93" y="58" width="86" height="15"/>
+                        <rect key="frame" x="93" y="58" width="85.5" height="15"/>
                         <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
