@@ -29,9 +29,9 @@
 		0D80F0B11F34C7B4001070C6 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80F0B01F34C7B4001070C6 /* OverviewViewController.swift */; };
 		0D80F0B51F3615A2001070C6 /* Calibre in Resources */ = {isa = PBXBuildFile; fileRef = 0D80F0B41F3615A2001070C6 /* Calibre */; };
 		0D80F0B71F361AC0001070C6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80F0B61F361AC0001070C6 /* SignUpViewController.swift */; };
-		0D8BD85B1F39F6E900161494 /* ActorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85A1F39F6E900161494 /* ActorDetail.swift */; };
-		0D8BD85D1F39F98C00161494 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85C1F39F98C00161494 /* Filter.swift */; };
-		0D8BD85F1F39FE3E00161494 /* ActorsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85E1F39FE3E00161494 /* ActorsOverview.swift */; };
+		0D8BD85B1F39F6E900161494 /* ActorDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85A1F39F6E900161494 /* ActorDetailVC.swift */; };
+		0D8BD85D1F39F98C00161494 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85C1F39F98C00161494 /* FilterVC.swift */; };
+		0D8BD85F1F39FE3E00161494 /* ActorsOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD85E1F39FE3E00161494 /* ActorsOverviewVC.swift */; };
 		0D8BD8611F3A06E600161494 /* MyViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD8601F3A06E600161494 /* MyViewCellCollectionViewCell.swift */; };
 		0D8BD8631F3A155F00161494 /* SearchToggleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD8621F3A155F00161494 /* SearchToggleViewController.swift */; };
 		0D8BD8661F3A569600161494 /* filterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD8651F3A569600161494 /* filterCellTableViewCell.swift */; };
@@ -88,9 +88,9 @@
 		0D80F0B01F34C7B4001070C6 /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		0D80F0B41F3615A2001070C6 /* Calibre */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Calibre; sourceTree = "<group>"; };
 		0D80F0B61F361AC0001070C6 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		0D8BD85A1F39F6E900161494 /* ActorDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetail.swift; sourceTree = "<group>"; };
-		0D8BD85C1F39F98C00161494 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		0D8BD85E1F39FE3E00161494 /* ActorsOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsOverview.swift; sourceTree = "<group>"; };
+		0D8BD85A1F39F6E900161494 /* ActorDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetailVC.swift; sourceTree = "<group>"; };
+		0D8BD85C1F39F98C00161494 /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		0D8BD85E1F39FE3E00161494 /* ActorsOverviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsOverviewVC.swift; sourceTree = "<group>"; };
 		0D8BD8601F3A06E600161494 /* MyViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		0D8BD8621F3A155F00161494 /* SearchToggleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchToggleViewController.swift; sourceTree = "<group>"; };
 		0D8BD8651F3A569600161494 /* filterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -149,10 +149,10 @@
 		0D80F0781F3471A0001070C6 /* Moovie_Beta */ = {
 			isa = PBXGroup;
 			children = (
-				0D8BD8591F39D13200161494 /* Xibs */,
-				0D8BD8581F39D0FF00161494 /* Storyboards */,
 				0D80F0B41F3615A2001070C6 /* Calibre */,
 				0D80F0801F3471A0001070C6 /* Assets.xcassets */,
+				0D8BD8591F39D13200161494 /* Xibs */,
+				0D8BD8581F39D0FF00161494 /* Storyboards */,
 				0D80F0A71F34C220001070C6 /* ViewControllers */,
 				0D80F0791F3471A0001070C6 /* AppDelegate.swift */,
 				0D80F07B1F3471A0001070C6 /* ViewController.swift */,
@@ -182,11 +182,11 @@
 		0D80F0A71F34C220001070C6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0D8BD85A1F39F6E900161494 /* ActorDetail.swift */,
-				0D8BD85E1F39FE3E00161494 /* ActorsOverview.swift */,
+				0D8BD85A1F39F6E900161494 /* ActorDetailVC.swift */,
+				0D8BD85E1F39FE3E00161494 /* ActorsOverviewVC.swift */,
 				0D8BD86B1F3D96A300161494 /* CustomNavBarViewController.swift */,
 				0D8BD8691F3B1BBC00161494 /* CustomTapBarViewController.swift */,
-				0D8BD85C1F39F98C00161494 /* Filter.swift */,
+				0D8BD85C1F39F98C00161494 /* FilterVC.swift */,
 				0D8BD8651F3A569600161494 /* filterCellTableViewCell.swift */,
 				0D1C821F1F362AE400449F93 /* ForgotPasswordViewController.swift */,
 				0D80F0AA1F34C2BC001070C6 /* HomeViewController.swift */,
@@ -377,7 +377,7 @@
 			files = (
 				0D8BD8631F3A155F00161494 /* SearchToggleViewController.swift in Sources */,
 				0D1C82201F362AE400449F93 /* ForgotPasswordViewController.swift in Sources */,
-				0D8BD85F1F39FE3E00161494 /* ActorsOverview.swift in Sources */,
+				0D8BD85F1F39FE3E00161494 /* ActorsOverviewVC.swift in Sources */,
 				0D8BD8661F3A569600161494 /* filterCellTableViewCell.swift in Sources */,
 				0D1C822F1F37472F00449F93 /* actorItemCell.swift in Sources */,
 				0D8BD86A1F3B1BBC00161494 /* CustomTapBarViewController.swift in Sources */,
@@ -387,12 +387,12 @@
 				0D80F0B71F361AC0001070C6 /* SignUpViewController.swift in Sources */,
 				0D1C82241F371E8600449F93 /* SearchViewController.swift in Sources */,
 				0D80F0AE1F34C670001070C6 /* MovieCarouselTableViewCell.swift in Sources */,
-				0D8BD85D1F39F98C00161494 /* Filter.swift in Sources */,
+				0D8BD85D1F39F98C00161494 /* FilterVC.swift in Sources */,
 				0D8BD8611F3A06E600161494 /* MyViewCellCollectionViewCell.swift in Sources */,
 				0D0E83591F3E07BA00409A3B /* SearchToggleActorsViewController.swift in Sources */,
 				0D80F07C1F3471A0001070C6 /* ViewController.swift in Sources */,
 				0D8BD86C1F3D96A300161494 /* CustomNavBarViewController.swift in Sources */,
-				0D8BD85B1F39F6E900161494 /* ActorDetail.swift in Sources */,
+				0D8BD85B1F39F6E900161494 /* ActorDetailVC.swift in Sources */,
 				0D1C822B1F3744B600449F93 /* searchItemCellTableViewCell.swift in Sources */,
 				0D80F0B11F34C7B4001070C6 /* OverviewViewController.swift in Sources */,
 				0D80F07A1F3471A0001070C6 /* AppDelegate.swift in Sources */,

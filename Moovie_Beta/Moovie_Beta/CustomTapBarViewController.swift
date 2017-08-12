@@ -13,11 +13,9 @@ class CustomTapBarViewController: UITabBarController {
     // you can adjust settings of this view controller via this property
     var blockSelection = true
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // manually set the delegate to self
+
         self.delegate = self
     }
     
@@ -32,18 +30,7 @@ class CustomTapBarViewController: UITabBarController {
 extension CustomTapBarViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        // this method is called when one of the tabs is selected
-        print("UITabBarController: Selection changed - \(viewController.title ?? "")")
-        
         // also clear badge number when selected
         viewController.tabBarItem?.badgeValue = nil
-    }
-    
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        // in this method you can decide if the tab user clicked on should be selected
-        
-        // here we simply forbid selection of viewcontroller with specific title if enabled
-        return !blockSelection || viewController.title != "Unselectable"
-
     }
 }

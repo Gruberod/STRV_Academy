@@ -8,11 +8,9 @@
 
 import UIKit
 
-class ActorsOverview: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ActorsOverviewVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var actorCOllectionView: UICollectionView!
-//    @IBOutlet weak var nameLabel: UILabel!
-//    @IBOutlet weak var moviesLabel: UILabel!
    
     var images = ["actor1", "actor2", "actor3", "actor4", "actor1", "actor2", "actor3", "actor4"]
     
@@ -28,13 +26,7 @@ class ActorsOverview: UIViewController, UICollectionViewDataSource, UICollection
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -46,11 +38,8 @@ class ActorsOverview: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "actor_cell", for: indexPath) as! MyViewCellCollectionViewCell
         cell.actorCOllectionPicture.image = UIImage(named: images[indexPath.row])
-//        cell.nameLabel.text = "actor_cell"
-//        cell.moviesLabel.text = "actor_cell"
+
         return cell
     }
-    
-
     
 }

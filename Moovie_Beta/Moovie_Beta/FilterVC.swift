@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Filter: UIViewController, UITableViewDataSource {
+class FilterVC: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var filterOptions: UITableView!
     
@@ -18,7 +18,6 @@ class Filter: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        filterOptions.delegate = self
         filterOptions.dataSource = self
         filterOptions.allowsSelection = true
      
@@ -39,6 +38,8 @@ class Filter: UIViewController, UITableViewDataSource {
         
         return cell
     }
+    
+    // adding a tick to selected row - doesnt work
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none
@@ -61,13 +62,4 @@ class Filter: UIViewController, UITableViewDataSource {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             ac.dismiss(animated: true, completion: nil)
         }))
         
-        
+        ac.view.tintColor = UIColor.black
         
         present(ac, animated: true, completion: nil)
     }
@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         profileTable.delegate = self
         profileTable.dataSource = self
+        profileTable.rowHeight = 180
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         profileTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
@@ -56,26 +57,5 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return cell
     }
-    
-//    func createAllert (option1: String, option2:String)
-//    {
-//        let alert = UIAlertController(title: option1, message: option2, preferredStyle: UIAlertControllerStyle.actionSheet)
-//        
-//        alert.addAction(UIAlertAction(title:"Logout", style: UIAlertActionStyle.default, handler: { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//        }))
-//        
-//        self.present(alert, animated: true, completion: nil)
-//    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -42,7 +42,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-Na-81q">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="johnyDepp" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-Na-81q">
                         <rect key="frame" x="8" y="8" width="77" height="90"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="90" id="1XI-qf-5m4"/>
@@ -65,6 +65,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="01" width="155" height="198"/>
+        <image name="johnyDepp" width="88" height="112"/>
     </resources>
 </document>

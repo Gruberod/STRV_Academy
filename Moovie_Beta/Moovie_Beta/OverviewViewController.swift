@@ -16,8 +16,6 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         overviewTable.delegate = self
         overviewTable.dataSource = self
         
-//        overviewTable.rowHeight = 20
-        
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
         // Do any additional setup after loading the view.
@@ -28,26 +26,11 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     let sections: [String] = ["Section 1", "Section 2"]
     
@@ -79,6 +62,6 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
         
-        fatalError("Noy expected row")
+        fatalError("Not expected row")
     }
 }

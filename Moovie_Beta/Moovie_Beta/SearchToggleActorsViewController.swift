@@ -10,6 +10,9 @@ import UIKit
 
 class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     @IBOutlet weak var searchActors: UITableView!
     
@@ -27,17 +30,6 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,11 +52,6 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
 }
