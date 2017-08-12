@@ -20,6 +20,7 @@ class Filter: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 //        filterOptions.delegate = self
         filterOptions.dataSource = self
+        filterOptions.allowsSelection = true
      
     }
     
@@ -37,6 +38,23 @@ class Filter: UIViewController, UITableViewDataSource {
         cell.filterLabel.text = text
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none
+        {
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+        }
+        else
+        {
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+        }
+//       guard let selectedCell = tableView.cellForRow(at: indexPath) as? filterCellTableViewCell,
+//        indexPath.row < options.count else {
+//            return
+//        }
+//            
+//        selectedCell.accessoryType = selectedCell.accessoryType == .none ? .checkmark : .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
