@@ -40,6 +40,7 @@
 		0D8BD8701F3DD08E00161494 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BD86F1F3DD08E00161494 /* ProfileViewController.swift */; };
 		0DA93E191F384FD9006BE8D5 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA93E181F384FD9006BE8D5 /* MovieCollectionViewCell.swift */; };
 		0DA93E1B1F384FE8006BE8D5 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA93E1A1F384FE8006BE8D5 /* MovieCollectionViewCell.xib */; };
+		C7970078BA6ACD7847EC21B7 /* Pods_Moovie_Beta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E4E14C5B231F5C8047D668 /* Pods_Moovie_Beta.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,9 @@
 		0D8BD86F1F3DD08E00161494 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0DA93E181F384FD9006BE8D5 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		0DA93E1A1F384FE8006BE8D5 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		2097077F9C12423409740918 /* Pods-Moovie_Beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moovie_Beta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moovie_Beta/Pods-Moovie_Beta.release.xcconfig"; sourceTree = "<group>"; };
+		A5A39984C4004947B692A039 /* Pods-Moovie_Beta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moovie_Beta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moovie_Beta/Pods-Moovie_Beta.debug.xcconfig"; sourceTree = "<group>"; };
+		B9E4E14C5B231F5C8047D668 /* Pods_Moovie_Beta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moovie_Beta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7970078BA6ACD7847EC21B7 /* Pods_Moovie_Beta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +138,8 @@
 				0D80F08D1F3471A0001070C6 /* Moovie_BetaTests */,
 				0D80F0981F3471A0001070C6 /* Moovie_BetaUITests */,
 				0D80F0771F3471A0001070C6 /* Products */,
+				B764ED28BACDE7C0FCA8E730 /* Pods */,
+				7BC2B72E76EFA118BE2D8EA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,6 +242,23 @@
 			name = VC;
 			sourceTree = "<group>";
 		};
+		7BC2B72E76EFA118BE2D8EA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9E4E14C5B231F5C8047D668 /* Pods_Moovie_Beta.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B764ED28BACDE7C0FCA8E730 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5A39984C4004947B692A039 /* Pods-Moovie_Beta.debug.xcconfig */,
+				2097077F9C12423409740918 /* Pods-Moovie_Beta.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,9 +266,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D80F09E1F3471A0001070C6 /* Build configuration list for PBXNativeTarget "Moovie_Beta" */;
 			buildPhases = (
+				2131AB173785AA181A7FED1B /* [CP] Check Pods Manifest.lock */,
 				0D80F0721F3471A0001070C6 /* Sources */,
 				0D80F0731F3471A0001070C6 /* Frameworks */,
 				0D80F0741F3471A0001070C6 /* Resources */,
+				E45EC1D1A11B1CE1DCF352CF /* [CP] Embed Pods Frameworks */,
+				5C2081D9A078C5A1011AAC65 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,6 +396,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2131AB173785AA181A7FED1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moovie_Beta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C2081D9A078C5A1011AAC65 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moovie_Beta/Pods-Moovie_Beta-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45EC1D1A11B1CE1DCF352CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Moovie_Beta/Pods-Moovie_Beta-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moovie_Beta/Pods-Moovie_Beta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0D80F0721F3471A0001070C6 /* Sources */ = {
@@ -548,6 +631,7 @@
 		};
 		0D80F09F1F3471A0001070C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5A39984C4004947B692A039 /* Pods-Moovie_Beta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Moovie_Beta/Info.plist;
@@ -560,6 +644,7 @@
 		};
 		0D80F0A01F3471A0001070C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2097077F9C12423409740918 /* Pods-Moovie_Beta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Moovie_Beta/Info.plist;

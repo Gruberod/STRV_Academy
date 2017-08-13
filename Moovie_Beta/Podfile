@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
+
+inhibit_all_warnings!
+use_frameworks!
+
+target 'Moovie_Beta' do
+  pod 'Alamofire', '~> 4.5'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
+end

@@ -12,6 +12,9 @@ class FilterVC: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var filterOptions: UITableView!
     
+    @IBAction func close(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var filterLabel: UILabel!
     
     let options = ["All Generes", "Drama", "Fantasy", "Documentary", "Sci-Fi", "Action", "Horror", "Adventure"]
