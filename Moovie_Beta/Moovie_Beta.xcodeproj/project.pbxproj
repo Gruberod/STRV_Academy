@@ -16,6 +16,7 @@
 		0D1C822C1F3744B600449F93 /* searchItemCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1C822A1F3744B600449F93 /* searchItemCellTableViewCell.xib */; };
 		0D1C822F1F37472F00449F93 /* actorItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1C822D1F37472F00449F93 /* actorItemCell.swift */; };
 		0D1C82301F37472F00449F93 /* actorItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1C822E1F37472F00449F93 /* actorItemCell.xib */; };
+		0D6347261F40A8A70032B7A0 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6347251F40A8A70032B7A0 /* Routers.swift */; };
 		0D80F07A1F3471A0001070C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80F0791F3471A0001070C6 /* AppDelegate.swift */; };
 		0D80F07C1F3471A0001070C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80F07B1F3471A0001070C6 /* ViewController.swift */; };
 		0D80F07F1F3471A0001070C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D80F07D1F3471A0001070C6 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		0D1C822A1F3744B600449F93 /* searchItemCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchItemCellTableViewCell.xib; sourceTree = "<group>"; };
 		0D1C822D1F37472F00449F93 /* actorItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = actorItemCell.swift; sourceTree = "<group>"; };
 		0D1C822E1F37472F00449F93 /* actorItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = actorItemCell.xib; sourceTree = "<group>"; };
+		0D6347251F40A8A70032B7A0 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		0D80F0761F3471A0001070C6 /* Moovie_Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovie_Beta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D80F0791F3471A0001070C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D80F07B1F3471A0001070C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0D80F0791F3471A0001070C6 /* AppDelegate.swift */,
 				0D80F07B1F3471A0001070C6 /* ViewController.swift */,
 				0D80F0851F3471A0001070C6 /* Info.plist */,
+				0D6347251F40A8A70032B7A0 /* Routers.swift */,
 			);
 			path = Moovie_Beta;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				0D8BD8631F3A155F00161494 /* SearchToggleViewController.swift in Sources */,
 				0D1C82201F362AE400449F93 /* ForgotPasswordViewController.swift in Sources */,
 				0D8BD85F1F39FE3E00161494 /* ActorsOverviewVC.swift in Sources */,
+				0D6347261F40A8A70032B7A0 /* Routers.swift in Sources */,
 				0D8BD8661F3A569600161494 /* filterCellTableViewCell.swift in Sources */,
 				0D1C822F1F37472F00449F93 /* actorItemCell.swift in Sources */,
 				0D8BD86A1F3B1BBC00161494 /* CustomTapBarViewController.swift in Sources */,
