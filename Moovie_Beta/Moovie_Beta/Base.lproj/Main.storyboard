@@ -37,6 +37,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="3di-0n-VJC"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="16"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="LOG IN">
                                     <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -476,6 +477,6 @@
         <image name="logo" width="215" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o7x-CN-jDq"/>
+        <segue reference="l3y-9S-I9g"/>
     </inferredMetricsTieBreakers>
 </document>

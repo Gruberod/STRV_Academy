@@ -47,7 +47,6 @@ struct Genre: Unboxable {
     
 }
 
-
 struct MovieActor: Unboxable {
     let character: String
     let name: String
@@ -64,7 +63,6 @@ struct MovieActor: Unboxable {
     }
 }
 
-
 struct Video: Unboxable {
     let key: String
     let name: String
@@ -79,7 +77,6 @@ struct Video: Unboxable {
     }
 }
 
-
 struct Reviews: Unboxable {
     let id: String
     let author: String
@@ -89,28 +86,5 @@ struct Reviews: Unboxable {
         id = try unboxer.unbox(key: "id")
         author = try unboxer.unbox(key: "author")
         content = try unboxer.unbox(key: "content")
-    }
-}
-    
-
-// UnboxableByTransform allows you to specify certain type, that is unboxable without explicitly providing
-// formatter. URLs are good example of this
-struct ImageReference: UnboxableByTransform {
-    // you just need to specify the type from which the transform takes place
-    typealias UnboxRawValue = String
-    
-    let imagePath: String
-    
-    // implement this function to perform transformation. Here we are simply wrapping the string into ImageReference
-    static func transform(unboxedValue: String) -> ImageReference? {
-        return ImageReference(imagePath: unboxedValue)
-    }
-    
-    static var baseImageURL: URL {
-        return URL(string:"https://images.com")!
-    }
-    
-    var fullURL: URL {
-        return ImageReference.baseImageURL.appendingPathComponent("original").appendingPathComponent(imagePath)
     }
 }

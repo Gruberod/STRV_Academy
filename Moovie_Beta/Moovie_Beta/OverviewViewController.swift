@@ -7,6 +7,7 @@
 //////
 
 import UIKit
+import SwiftCarousel
 
 class OverviewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -65,3 +66,27 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         fatalError("Not expected row")
     }
 }
+
+//class SwiftCarousel: UITableViewCell {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        // Do any additional setup after loading the view, typically from a nib.
+//        items = ["Elephants", "Tigers", "Chickens", "Owls", "Rats", "Parrots", "Snakes"]
+//        itemsViews = items!.map { labelForString($0) }
+//        carousel.items = itemsViews!
+//        carousel.resizeType = .VisibleItemsPerPage(3)
+//        carousel.defaultSelectedIndex = 3 // Select default item at start
+//        carousel.delegate = self
+//    }
+//    
+//    func labelForString(string: String) -> UILabel {
+//        let text = UILabel()
+//        text.text = string
+//        text.textColor = .black
+//        text.textAlignment = .center
+//        text.font = .systemFont(ofSize: 24.0)
+//        text.numberOfLines = 0
+//        
+//        return text
+//    }
+//}

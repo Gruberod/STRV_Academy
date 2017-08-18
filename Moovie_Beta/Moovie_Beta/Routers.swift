@@ -40,7 +40,7 @@ extension RouterRequest {
 }
 
 
-let apiKey = "<<c361d02c5dfff7d63adfafbb344088f9>>"
+let apiKey = "c361d02c5dfff7d63adfafbb344088f9"
 
 struct MovieRouter {
     
@@ -50,41 +50,12 @@ struct MovieRouter {
     }
     
     struct GetMovieBasicInfo: RouterRequest {
-    // Use for genre, picture, plot
+    // Use for genre, picture, plot, creators and actors, trailers, image gallery and reviews
         let movieId: String
         
-        var path: String { return "/movie/\(movieId)?api_key=\(apiKey)&language=en-US" }
-    }
-    
-    struct GetMovieCrew: RouterRequest {
-        // Use for creators and actors
-        let movieId: String
+        var path: String { return "/movie/\(movieId)?api_key=\(apiKey)&append_to_response=credits,images,videos,reviews&language=en-US&include_image_language=en,null" }
         
-        var path: String { return "/movie/\(movieId)/credits?api_key=\(apiKey)" }
     }
-
-    
-    struct GetMovieVideos: RouterRequest {
-        // Use for trilers
-        let movieId: String
-        
-        var path: String { return "/movie/\(movieId)/videos?api_key=\(apiKey)&language=en-US" }
-    }
-    
-    struct GetMovieGallery: RouterRequest {
-        // Use for image gallery
-        let movieId: String
-        
-        var path: String { return "/movie/\(movieId)/images?api_key=\(apiKey)&language=en-US" }
-    }
-    
-    struct GetMovieReviews: RouterRequest {
-        // Use for image gallery
-        let movieId: String
-        
-        var path: String { return "/movie/\(movieId)/reviews?api_key=\(apiKey)&language=en-US" }
-    }
-    
 }
 
 struct ActorRouter {
@@ -95,25 +66,9 @@ struct ActorRouter {
     }
     
     struct GetActorBasicInfo: RouterRequest {
-        // Use for name, bio, birthday, place of birth
+        // Use for name, bio, birthday, place of birth, profile picture or gallery, movies apereance and roles
         let actorId: String
         
-        var path: String { return "/person/\(actorId)?api_key=\(apiKey)&language=en-US" }
-    }
-    
-    struct GetActorPicture: RouterRequest {
-        // Use for profile picture or gallery
-        let actorId: String
-        
-        var path: String { return "/person/\(actorId)/images?api_key=\(apiKey)" }
-    }
-    
-    
-    struct GetActorCreditsInfo: RouterRequest {
-        // Use for movies apereance and roles
-        let actorId: String
-        
-        var path: String { return "/person/\(actorId)/movie_credits?api_key=\(apiKey)&language=en-US" }
-    }
-    
+        var path: String { return "/person/\(actorId)?api_key=\(apiKey)&append_to_response=combined_credits&language=en-US&include_image_language=en,null" }
+    }   
 }

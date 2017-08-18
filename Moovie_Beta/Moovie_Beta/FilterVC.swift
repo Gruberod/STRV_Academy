@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterVC: UIViewController, UITableViewDataSource {
+class FilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var filterOptions: UITableView!
     
@@ -22,6 +22,7 @@ class FilterVC: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         filterOptions.dataSource = self
+        filterOptions.delegate = self
         filterOptions.allowsSelection = true
      
     }
@@ -42,18 +43,26 @@ class FilterVC: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    
     // adding a tick to selected row - doesnt work
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none
         {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+            
         }
         else
         {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+            
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-//       guard let selectedCell = tableView.cellForRow(at: indexPath) as? filterCellTableViewCell,
+        
+
+        // deselectRow
+        
+        //       guard let selectedCell = tableView.cellForRow(at: indexPath) as? filterCellTableViewCell,
 //        indexPath.row < options.count else {
 //            return
 //        }
