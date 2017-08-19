@@ -20,7 +20,17 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
         // Do any additional setup after loading the view.
+        
+        let carouselTitleNib = UINib(nibName: "CarouselLabelTableViewCell", bundle: nil)
+        overviewTable.register(carouselTitleNib, forCellReuseIdentifier: "carouselTitle")
+        // Do any additional setup after loading the view.
+        
+        
+        overviewTable.rowHeight = UITableViewAutomaticDimension
+        overviewTable.estimatedRowHeight = 155
     }
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,25 +42,16 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    let sections: [String] = ["Section 1", "Section 2"]
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return sections[section]
-//    }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return
-//    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         
@@ -58,8 +59,18 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
             // daredevil
             let cell = tableView.dequeueReusableCell(withIdentifier: "daredevil")!
             return cell
-        } else if row == 1 || row == 2 {
+        } else if row == 2 || row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            return cell
+        } else if row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
+            cell.label.text = "Most popular"
+            cell.button.setTitle("SHOW ALL", for: .normal)
+            return cell
+        } else if row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
+            cell.label.text = "Now playing"
+            cell.button.setTitle("SHOW ALL", for: .normal)
             return cell
         }
         

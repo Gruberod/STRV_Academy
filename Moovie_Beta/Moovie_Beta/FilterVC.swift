@@ -15,7 +15,10 @@ class FilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBOutlet weak var filterLabel: UILabel!
+    
+    @IBAction func clear(_ sender: UIButton) {
+        
+    }
     
     let options = ["All Generes", "Drama", "Fantasy", "Documentary", "Sci-Fi", "Action", "Horror", "Adventure"]
     
@@ -44,30 +47,17 @@ class FilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    // adding a tick to selected row - doesnt work
+    // adding a tick to selected row
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none
-        {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-            
+        guard let selectedCell = tableView.cellForRow(at: indexPath) as? filterCellTableViewCell,
+              indexPath.row < options.count else {
+            return
         }
-        else
-        {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
-            
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        
 
-        // deselectRow
+        selectedCell.accessoryType = selectedCell.accessoryType == .none ? .checkmark : .none
         
-        //       guard let selectedCell = tableView.cellForRow(at: indexPath) as? filterCellTableViewCell,
-//        indexPath.row < options.count else {
-//            return
-//        }
-//            
-//        selectedCell.accessoryType = selectedCell.accessoryType == .none ? .checkmark : .none
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

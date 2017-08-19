@@ -11,13 +11,19 @@ import UIKit
 class MovieCarouselTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var showWithLabel = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let movieNib = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         collectionView.register(movieNib, forCellWithReuseIdentifier: "movieCell")
-
+        
+        let pictureWithTitle = UINib(nibName: "PictureWithTitleCollectionViewCell", bundle: nil)
+        collectionView.register(pictureWithTitle, forCellWithReuseIdentifier: "pictureWithTitle")
+        
+        
     }
     
     override func prepareForReuse() {
@@ -35,16 +41,20 @@ class MovieCarouselTableViewCell: UITableViewCell, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-        return cell
+        if showWithLabel {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as! PictureWithTitleCollectionViewCell
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 155, height: 180)
+        return CGSize(width: 155, height: showWithLabel ? 250 : 180)
     }
 }

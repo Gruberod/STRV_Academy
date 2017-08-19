@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Calibre-Medium.otf">
+            <string>Calibre-Medium</string>
+        </array>
+        <array key="Calibre-Regular.otf">
+            <string>Calibre-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="carouselHeaderOneliner" id="KGk-i7-Jjw" customClass="carouselHeaderOnelinerTableViewCell" customModule="Moovie_Beta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aah-Wj-9Yu">
+                        <rect key="frame" x="8" y="8" width="51" height="27.5"/>
+                        <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
+                        <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRZ-f5-aUI">
+                        <rect key="frame" x="277" y="8" width="35" height="27.5"/>
+                        <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
+                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="showAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5yi-My-Vbw"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aah-Wj-9Yu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LPr-35-ytJ"/>
+                    <constraint firstItem="PRZ-f5-aUI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZbF-Ro-mb9"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="aah-Wj-9Yu" secondAttribute="bottom" id="amy-R6-9aS"/>
+                    <constraint firstItem="PRZ-f5-aUI" firstAttribute="baseline" secondItem="aah-Wj-9Yu" secondAttribute="baseline" id="c5V-OR-VkU"/>
+                    <constraint firstItem="aah-Wj-9Yu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ilV-yA-FeI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PRZ-f5-aUI" secondAttribute="trailing" id="mgC-cF-Efd"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="PRZ-f5-aUI" secondAttribute="bottom" id="wZ4-9i-pE6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="showAll" destination="PRZ-f5-aUI" id="xP4-ce-bDC"/>
+                <outlet property="title" destination="aah-Wj-9Yu" id="0b3-Rp-B1G"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

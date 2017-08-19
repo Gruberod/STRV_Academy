@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Calibre-Medium.otf">
+            <string>Calibre-Medium</string>
+        </array>
+        <array key="Calibre-Regular.otf">
+            <string>Calibre-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="review" rowHeight="214" id="KGk-i7-Jjw" customClass="ReviewTableViewCell" customModule="Moovie_Beta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="214"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="408" height="213.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJV-qu-Bhb">
+                        <rect key="frame" x="8" y="8" width="392" height="18"/>
+                        <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osy-Ye-Oxx">
+                        <rect key="frame" x="8" y="189.5" width="392" height="16"/>
+                        <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
+                        <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-Tn-Dzp">
+                        <rect key="frame" x="8" y="28" width="392" height="139.5"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uJV-qu-Bhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9YX-Iy-xLo"/>
+                    <constraint firstItem="Osy-Ye-Oxx" firstAttribute="top" secondItem="6Ec-Tn-Dzp" secondAttribute="bottom" constant="22" id="CIU-FQ-v3e"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="uJV-qu-Bhb" secondAttribute="trailing" id="CdA-re-8Aa"/>
+                    <constraint firstItem="6Ec-Tn-Dzp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ImD-Cd-gDG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Osy-Ye-Oxx" secondAttribute="trailing" id="OAi-Uh-vvi"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="6Ec-Tn-Dzp" secondAttribute="trailing" id="jhj-tj-6SU"/>
+                    <constraint firstItem="uJV-qu-Bhb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="qsb-2y-baT"/>
+                    <constraint firstItem="6Ec-Tn-Dzp" firstAttribute="top" secondItem="uJV-qu-Bhb" secondAttribute="bottom" constant="2" id="sVz-Bf-lTn"/>
+                    <constraint firstItem="Osy-Ye-Oxx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="uTc-gc-QnG"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Osy-Ye-Oxx" secondAttribute="bottom" id="y3n-Oi-rsk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="reviewRating" destination="6Ec-Tn-Dzp" id="j5Z-fp-lwZ"/>
+                <outlet property="reviewText" destination="Osy-Ye-Oxx" id="hjO-oh-ye3"/>
+                <outlet property="reviewTitle" destination="uJV-qu-Bhb" id="9ho-p5-5EP"/>
+            </connections>
+            <point key="canvasLocation" x="78" y="139"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Calibre-Medium.otf">
+            <string>Calibre-Medium</string>
+        </array>
+        <array key="Calibre-Regular.otf">
+            <string>Calibre-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pictureWithTitle" id="gTV-IL-0wX" customClass="PictureWithTitleCollectionViewCell" customModule="Moovie_Beta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="177" height="321"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="177" height="321"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="johnyDepp" translatesAutoresizingMaskIntoConstraints="NO" id="NP3-YE-JFH">
+                        <rect key="frame" x="8" y="8" width="161" height="196"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="196" id="LU8-Wv-feT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhE-Qs-YSZ">
+                        <rect key="frame" x="8" y="237" width="161" height="76"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbo-Cq-7Hj">
+                        <rect key="frame" x="8" y="218" width="161" height="18"/>
+                        <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="NP3-YE-JFH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="1wL-Me-eUv"/>
+                <constraint firstItem="dbo-Cq-7Hj" firstAttribute="top" secondItem="NP3-YE-JFH" secondAttribute="bottom" constant="14" id="BLJ-f2-uW5"/>
+                <constraint firstItem="dbo-Cq-7Hj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="GQi-56-gmv"/>
+                <constraint firstItem="NP3-YE-JFH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="N1e-rd-QBC"/>
+                <constraint firstAttribute="trailingMargin" secondItem="dbo-Cq-7Hj" secondAttribute="trailing" id="b9S-Lm-Cav"/>
+                <constraint firstItem="OhE-Qs-YSZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="dpu-Xp-SfD"/>
+                <constraint firstAttribute="trailingMargin" secondItem="OhE-Qs-YSZ" secondAttribute="trailing" id="fuH-oM-IS4"/>
+                <constraint firstItem="OhE-Qs-YSZ" firstAttribute="top" secondItem="dbo-Cq-7Hj" secondAttribute="bottom" constant="1" id="nzh-nM-CS5"/>
+                <constraint firstAttribute="trailingMargin" secondItem="NP3-YE-JFH" secondAttribute="trailing" id="pXz-2h-mcR"/>
+                <constraint firstAttribute="bottomMargin" secondItem="OhE-Qs-YSZ" secondAttribute="bottom" id="xys-ta-Jex"/>
+            </constraints>
+            <size key="customSize" width="177" height="321"/>
+            <connections>
+                <outlet property="image" destination="NP3-YE-JFH" id="yk7-Rp-he4"/>
+                <outlet property="imageSubtitle" destination="OhE-Qs-YSZ" id="aHV-OU-dbh"/>
+                <outlet property="imageTitle" destination="dbo-Cq-7Hj" id="Bds-kR-C8i"/>
+            </connections>
+            <point key="canvasLocation" x="-29.5" y="189.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="johnyDepp" width="88" height="112"/>
+    </resources>
+</document>

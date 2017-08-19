@@ -19,7 +19,7 @@ class CustomNavBarViewController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = UIColor.white
-    }
+   }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let backItem = UIBarButtonItem()
