@@ -19,6 +19,10 @@ class ActorsOverviewVC: UIViewController, UICollectionViewDataSource, UICollecti
         
         self.actorCOllectionView.delegate = self
         self.actorCOllectionView.dataSource = self
+        
+        let itemWithTitle = UINib(nibName: "PictureWithTitleCollectionViewCell", bundle: nil)
+        actorCOllectionView.register(itemWithTitle, forCellWithReuseIdentifier: "pictureWithTitle")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,8 +40,9 @@ class ActorsOverviewVC: UIViewController, UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "actor_cell", for: indexPath) as! MyViewCellCollectionViewCell
-        cell.actorCOllectionPicture.image = UIImage(named: images[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as! PictureWithTitleCollectionViewCell
+        cell.imageTitle.text = "Actor name"
+        cell.imageSubtitle.text = "movies featured..."
 
         return cell
     }

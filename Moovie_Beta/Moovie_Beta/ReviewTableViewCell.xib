@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJV-qu-Bhb">
-                        <rect key="frame" x="8" y="8" width="392" height="18"/>
+                        <rect key="frame" x="8" y="8" width="39" height="18"/>
                         <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -42,11 +42,18 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-Tn-Dzp">
                         <rect key="frame" x="8" y="28" width="392" height="139.5"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiW-ts-Or3" userLabel="Review Author">
+                        <rect key="frame" x="368" y="8" width="32" height="15"/>
+                        <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="iiW-ts-Or3" secondAttribute="trailing" constant="8" id="7Ub-QI-RaF"/>
                     <constraint firstItem="uJV-qu-Bhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9YX-Iy-xLo"/>
+                    <constraint firstItem="iiW-ts-Or3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="AuD-3v-hGp"/>
                     <constraint firstItem="Osy-Ye-Oxx" firstAttribute="top" secondItem="6Ec-Tn-Dzp" secondAttribute="bottom" constant="22" id="CIU-FQ-v3e"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="uJV-qu-Bhb" secondAttribute="trailing" id="CdA-re-8Aa"/>
                     <constraint firstItem="6Ec-Tn-Dzp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ImD-Cd-gDG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Osy-Ye-Oxx" secondAttribute="trailing" id="OAi-Uh-vvi"/>
                     <constraint firstAttribute="trailingMargin" secondItem="6Ec-Tn-Dzp" secondAttribute="trailing" id="jhj-tj-6SU"/>
@@ -58,6 +65,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="reviewAuthor" destination="iiW-ts-Or3" id="SA4-e0-duh"/>
                 <outlet property="reviewRating" destination="6Ec-Tn-Dzp" id="j5Z-fp-lwZ"/>
                 <outlet property="reviewText" destination="Osy-Ye-Oxx" id="hjO-oh-ye3"/>
                 <outlet property="reviewTitle" destination="uJV-qu-Bhb" id="9ho-p5-5EP"/>

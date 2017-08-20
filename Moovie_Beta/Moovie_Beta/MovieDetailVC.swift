@@ -102,6 +102,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case (1,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell
             cell.reviewTitle.text = "Great show!"
+            cell.reviewAuthor.text = "pusinka"
             cell.reviewText.text = "Didn't really have any expectations for Daredevil. After watching the movie as a kid and not overly enjoying it, I think Marvel has done an amazing job now that they have Daredevil back in their control."
             return cell
         default:

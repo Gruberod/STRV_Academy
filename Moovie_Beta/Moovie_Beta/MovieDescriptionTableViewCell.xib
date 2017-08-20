@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l54-YV-S1H">
-                        <rect key="frame" x="8" y="8" width="433" height="27.5"/>
+                        <rect key="frame" x="8" y="8" width="383" height="27.5"/>
                         <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                     <constraint firstItem="l54-YV-S1H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3kK-t9-Olo"/>
                     <constraint firstItem="l54-YV-S1H" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="UOh-DM-Vvi"/>
                     <constraint firstAttribute="bottomMargin" secondItem="l54-YV-S1H" secondAttribute="bottom" id="eNV-r8-ThC"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="l54-YV-S1H" secondAttribute="trailing" id="w0e-8n-npk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="l54-YV-S1H" secondAttribute="trailing" constant="50" id="w0e-8n-npk"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
