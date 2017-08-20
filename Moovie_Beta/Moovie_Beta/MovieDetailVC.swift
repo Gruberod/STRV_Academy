@@ -62,7 +62,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
-            cell.movieDescription.text = "Svornosti 40/2, Smíchov, 150 00 Praha 5 - informace o poště a PSČ, údaje z katastru nemovitostí a katastrální mapa, informace o firmách, osobách a živnostech"
+            cell.movieDescription.text = "Etsy cupidatat iceland humblebrag in craft beer. Cupidatat ut quis pop-up, vegan flannel occupy chillwave excepteur +1 gentrify lomo bespoke. Bespoke magna eu vape ut waistcoat asymmetrical in iPhone intelligentsia narwhal austin flexitarian polaroid ethical."
             return cell
         case (0,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
@@ -72,6 +72,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case (0,2):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Stars"
+            cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (0,3):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
@@ -80,6 +81,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case (0,4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Trailers"
+            cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (0,5):
             let cell = tableView.dequeueReusableCell(withIdentifier: "video") as! VideoTableViewCell
@@ -87,6 +89,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case (0,6):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Gallery"
+            cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (0,7):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
@@ -94,6 +97,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case (1,0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Reviews"
+            cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (1,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell

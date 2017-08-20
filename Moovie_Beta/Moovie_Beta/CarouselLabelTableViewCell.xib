@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5J-Ee-euZ">
-                        <rect key="frame" x="221" y="48" width="58" height="33.5"/>
+                        <rect key="frame" x="221" y="42" width="58" height="39.5"/>
                         <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="SHOW ALL">
@@ -48,7 +48,7 @@
                 <constraints>
                     <constraint firstItem="8AG-JW-tiV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="2TF-Y5-SLS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="p5J-Ee-euZ" secondAttribute="bottom" id="D8c-AN-ztT"/>
-                    <constraint firstItem="p5J-Ee-euZ" firstAttribute="top" secondItem="8AG-JW-tiV" secondAttribute="bottom" constant="16" id="Fsm-bA-8Ug"/>
+                    <constraint firstItem="p5J-Ee-euZ" firstAttribute="top" secondItem="8AG-JW-tiV" secondAttribute="bottom" constant="10" id="Fsm-bA-8Ug"/>
                     <constraint firstItem="p5J-Ee-euZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aPi-5G-foh"/>
                     <constraint firstItem="8AG-JW-tiV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ho2-tJ-roR"/>
                 </constraints>

@@ -35,7 +35,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         profileTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
+        
+        let carouselHeaderOneliner = UINib(nibName: "carouselHeaderOnelinerTableViewCell", bundle: nil)
+        profileTable.register(carouselHeaderOneliner, forCellReuseIdentifier: "carouselHeaderOneliner")
 
+        profileTable.rowHeight = UITableViewAutomaticDimension
+        profileTable.estimatedRowHeight = 45
         // Do any additional setup after loading the view.
     }
     
@@ -51,17 +56,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell", for: indexPath ) as? MovieCarouselTableViewCell else {
-            
+        switch (indexPath.row) {
+        case (0):
+        let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
+            cell.title.text = "Favourite movies"
+            cell.showAll.setTitle("SHOW ALL", for: .normal)
+            return cell
+        case (1):
+        let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            return cell
+        default:
             return UITableViewCell()
-            
         }
-        return cell
     }
-
 }
