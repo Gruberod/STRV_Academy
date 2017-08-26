@@ -17,19 +17,18 @@ protocol RouterRequest: URLRequestConvertible {
 }
 
 extension RouterRequest {
-    // it would be better to move this to some kind of Constants struct/enum
-    var baseURLString: String { return "https://api.themoviedb.org/3" }
-    
     
     func asURLRequest() throws -> URLRequest {
-        let url = try baseURLString.asURL()
+        let url = try Constants.baseUrl.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
         
-        if let parameters = params {
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        var finalParams = defaultParams
+        if let params = params {
+            params.forEach { finalParams[$0] = $1 }
         }
+        urlRequest = try URLEncoding.default.encode(urlRequest, with: finalParams)
         return urlRequest
     }
     
@@ -37,38 +36,87 @@ extension RouterRequest {
     var params: [String: String]? { return nil }
     var method: HTTPMethod { return .get }
     
+    var defaultParams: [String: String] {
+        return [
+            "api_key": Constants.apiKey,
+            "language": Constants.apiLanguage
+        ]
+    }
+    
 }
-
-
-let apiKey = "c361d02c5dfff7d63adfafbb344088f9"
 
 struct MovieRouter {
     
-    // items below are actual routes. Please note, that you always need to create new struct for each request, but since structs are very light-weight it shouldn't be a problem
-    struct SearchAll: RouterRequest {
-        var path: String { return "/search/movie?api_key=\(apiKey)&language=en-US&page=1&include_adult=false" }
+    struct Detail: RouterRequest {
+        let movieId: Int
+        
+        var path: String { return "movie/\(movieId)" }
+        var params: [String : String]? {
+            return [
+                "include_image_language": Constants.apiImageLanguage,
+                "append_to_response": "credits,images,videos,reviews"
+            ]
+        }
     }
     
-    struct GetMovieBasicInfo: RouterRequest {
-    // Use for genre, picture, plot, creators and actors, trailers, image gallery and reviews
-        let movieId: String
+    struct Search: RouterRequest {
+        let query: String
         
-        var path: String { return "/movie/\(movieId)?api_key=\(apiKey)&append_to_response=credits,images,videos,reviews&language=en-US&include_image_language=en,null" }
-        
+        var path: String { return "search/movie" }
+        var params: [String: String]? {
+            return ["query":query]
+        }
     }
+    
+    struct NowPlaying: RouterRequest {
+        var path: String { return "movie/now_playing" }
+        var params: [String : String]? {
+            return ["region":Constants.apiRegion]
+        }
+    }
+    
+    struct Popular: RouterRequest {
+        var path: String { return "movie/popular" }
+        var params: [String : String]? {
+            return ["region":Constants.apiRegion]
+        }
+    }
+    
+    struct TopRated: RouterRequest {
+        var path: String { return "movie/top_rated" }
+        var params: [String : String]? {
+            return ["region":Constants.apiRegion]
+        }
+    }
+    
+    struct Genres: RouterRequest {
+        var path: String { return "genre/movie/list" }
+    }
+    
+    
 }
 
 struct ActorRouter {
     
-    // items below are actual routes. Please note, that you always need to create new struct for each request, but since structs are very light-weight it shouldn't be a problem
-    struct SearchAll: RouterRequest {
-        var path: String { return "/search/person?api_key=\(apiKey)&language=en-US&page=1&include_adult=false" }
-    }
+    struct Detail: RouterRequest {
+        let actorId: Int
     
-    struct GetActorBasicInfo: RouterRequest {
-        // Use for name, bio, birthday, place of birth, profile picture or gallery, movies apereance and roles
-        let actorId: String
-        
-        var path: String { return "/person/\(actorId)?api_key=\(apiKey)&append_to_response=combined_credits&language=en-US&include_image_language=en,null" }
-    }   
+        var path: String { return "person/\(actorId)" }
+        var params: [String : String]? {
+            return [
+                "include_image_language": Constants.apiImageLanguage,
+                "append_to_response": "credits"
+            ]
+        }
+    }
+
+
+    struct Search: RouterRequest {
+        let query: String
+    
+        var path: String { return "search/person" }
+        var params: [String: String]? {
+            return ["query":query]
+        }
+    }
 }

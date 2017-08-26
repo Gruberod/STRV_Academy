@@ -8,13 +8,15 @@
 
 import UIKit
 
-class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class MovieDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var overviewTable: UITableView!
     
+    var viewModel: MovieDetailViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         overviewTable.delegate = self
         overviewTable.dataSource = self
         
@@ -39,12 +41,18 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         overviewTable.rowHeight = UITableViewAutomaticDimension
         overviewTable.estimatedRowHeight = 45
+        
+        viewModel = MovieDetailViewModel()
+        viewModel.getMovieDetail(id: 98)
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+extension MovieDetailVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -62,7 +70,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
-            cell.movieDescription.text = "Etsy cupidatat iceland humblebrag in craft beer. Cupidatat ut quis pop-up, vegan flannel occupy chillwave excepteur +1 gentrify lomo bespoke. Bespoke magna eu vape ut waistcoat asymmetrical in iPhone intelligentsia narwhal austin flexitarian polaroid ethical."
+            cell.movieDescription.text = viewModel.movie?.description
             return cell
         case (0,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo

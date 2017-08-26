@@ -47,4 +47,7 @@ class ActorsOverviewVC: UIViewController, UICollectionViewDataSource, UICollecti
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetail", sender: nil)
+    }
 }

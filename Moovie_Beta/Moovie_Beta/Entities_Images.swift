@@ -24,10 +24,10 @@ struct ImageReference: UnboxableByTransform {
     }
     
     static var baseImageURL: URL {
-        return URL(string:"https://images.com")!
+        return URL(string:"https://image.tmdb.org/t/p/")!
     }
     
     var fullURL: URL {
-        return ImageReference.baseImageURL.appendingPathComponent("original").appendingPathComponent(imagePath)
+        return ImageReference.baseImageURL.appendingPathComponent("w342").appendingPathComponent(imagePath)
     }
 }
