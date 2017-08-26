@@ -15,6 +15,7 @@ import Unbox
 protocol ActorSource {
     
     func fetchActorDetail(id: Int, completion: @escaping (APIResult<APIActorFull>) -> Void)
+    func fetchPopular(completion: @escaping (APIResult<[APIActorPopular]>) -> Void)
 }
 
 class AlamofireActorSource: ActorSource {
@@ -22,6 +23,12 @@ class AlamofireActorSource: ActorSource {
     func fetchActorDetail(id: Int, completion: @escaping (APIResult<APIActorFull>) -> Void) {
         Alamofire.request(ActorRouter.Detail(actorId: id)).validate().responseObject() { (result:DataResponse<APIActorFull>) in
             completion(result.asAPIResult())
+        }
+    }
+    
+    func fetchPopular(completion: @escaping (APIResult<[APIActorPopular]>) -> Void) {
+        Alamofire.request(ActorRouter.Popular()).validate().responseObject() { (result:DataResponse<APIPopular>) in
+            completion(result.asAPIResult() { $0.results} )
         }
     }
 }

@@ -8,40 +8,54 @@
 
 import UIKit
 
-class ActorsOverviewVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ActorsOverviewVC: UIViewController {
 
     @IBOutlet weak var actorCOllectionView: UICollectionView!
-   
-    var images = ["actor1", "actor2", "actor3", "actor4", "actor1", "actor2", "actor3", "actor4"]
     
+    var viewModel: ActorPopularViewModel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.actorCOllectionView.delegate = self
-        self.actorCOllectionView.dataSource = self
+        viewModel = ActorPopularViewModel()
+        viewModel.delegate = self
+        viewModelChangedState(state: viewModel.state)
+        
+        viewModel.reloadActors()
         
         let itemWithTitle = UINib(nibName: "PictureWithTitleCollectionViewCell", bundle: nil)
         actorCOllectionView.register(itemWithTitle, forCellWithReuseIdentifier: "pictureWithTitle")
+        
+        
+        //    let refreshControl = UIRefreshControl()
+        //    refreshControl.addTarget(self, action: #selector(ActorsOverview.reloadAction), for: .valueChanged)
+        //
+        //    tableView.refreshControl = refreshControl
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
     }
+}
 
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
-    }
-    
+extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.items.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as! PictureWithTitleCollectionViewCell
-        cell.imageTitle.text = "Actor name"
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as? PictureWithTitleCollectionViewCell else {
+            fatalError("Invalid cell class")
+        }
+        cell.imageTitle.text = viewModel.items[indexPath.row].name
         cell.imageSubtitle.text = "movies featured..."
 
         return cell
@@ -49,5 +63,15 @@ class ActorsOverviewVC: UIViewController, UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)
+    }
+}
+
+extension ActorsOverviewVC: ActorPopularViewModelDelegate {
+    func viewModelItemsUpdated(items: [ActorListItem]) {
+        actorCOllectionView.reloadData()
+    }
+    
+    func viewModelChangedState(state: ActorPopularViewModel.State) {
+        print(state)
     }
 }

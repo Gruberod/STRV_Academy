@@ -110,13 +110,19 @@ struct ActorRouter {
         }
     }
 
-
     struct Search: RouterRequest {
         let query: String
     
         var path: String { return "search/person" }
         var params: [String: String]? {
             return ["query":query]
+        }
+    }
+    
+    struct Popular: RouterRequest {
+        var path: String { return "person/popular"}
+        var params: [String: String]? {
+            return ["region":Constants.apiRegion]
         }
     }
 }

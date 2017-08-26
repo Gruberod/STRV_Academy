@@ -16,19 +16,19 @@ struct APIActorFull: Unboxable {
     let birthday: Date
     let placeOfBirth: String
     
-    let knownFor: [APIActorKnownFor]
-    let acting: [APIActorActing]
+    let knownFor: [APIActorKnownFor]?
+    let acting: [APIActorActing]?
 
 
     init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "name")
-        bio = try unboxer.unbox(key: "bio")
+        bio = try unboxer.unbox(key: "biography")
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd"
         birthday = try unboxer.unbox(key: "birthday", formatter: df)
-        placeOfBirth = try unboxer.unbox(key: "placeOfBirth")
-        knownFor = try unboxer.unbox(keyPath: "combined_credits.cast")
-        acting = try unboxer.unbox(keyPath: "combined_credits.cast")
+        placeOfBirth = try unboxer.unbox(key: "place_of_birth")
+        knownFor = unboxer.unbox(keyPath: "combined_credits.cast")
+        acting = unboxer.unbox(keyPath: "combined_credits.cast")
     }
 }
 
@@ -53,5 +53,21 @@ struct APIActorActing: Unboxable {
         let df = DateFormatter()
         df.dateFormat = "YYYY"
         airYear = try unboxer.unbox(key: "first_air_date", formatter: df)
+    }
+}
+
+struct APIPopular: Unboxable {
+    let results: [APIActorPopular]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
+
+struct APIActorPopular: Unboxable {
+    let name: String
+    
+    init(unboxer: Unboxer) throws {
+        name = try unboxer.unbox(key: "name")
     }
 }

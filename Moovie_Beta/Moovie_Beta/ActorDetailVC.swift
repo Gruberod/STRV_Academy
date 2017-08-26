@@ -8,38 +8,50 @@
 
 import UIKit
 
-class ActorDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ActorDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var actorTable: UITableView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    var viewModel: ActorDetailViewModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         actorTable.delegate = self
         actorTable.dataSource = self
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        
+        viewModel = ActorDetailViewModel()
+        viewModel.getActorDetail(id: 4495)
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         actorTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
         
         let movieDescription = UINib(nibName: "MovieDescriptionTableViewCell", bundle: nil)
         actorTable.register(movieDescription, forCellReuseIdentifier: "movieDescription")
-       
+        
         let additionalDetail = UINib(nibName: "AdditionalDetailInfo", bundle: nil)
         actorTable.register(additionalDetail, forCellReuseIdentifier: "additionalDetail")
-      
-        let carouselHeaderOneliner = UINib(nibName: "carouselHeaderOnelinerTableViewCell", bundle: nil)
-       actorTable.register(carouselHeaderOneliner, forCellReuseIdentifier: "carouselHeaderOneliner")
         
+        let carouselHeaderOneliner = UINib(nibName: "carouselHeaderOnelinerTableViewCell", bundle: nil)
+        actorTable.register(carouselHeaderOneliner, forCellReuseIdentifier: "carouselHeaderOneliner")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+       
         actorTable.rowHeight = UITableViewAutomaticDimension
         actorTable.estimatedRowHeight = 45
         
     }
-    
+}
+
+extension ActorDetailVC: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
@@ -48,17 +60,17 @@ class ActorDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         switch (indexPath.row) {
         case (0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
-            cell.movieDescription.text = "​Laura Jeanne Reese Witherspoon (born March 22, 1976), better known as Reese Witherspoon, is an American actress and film producer. Witherspoon landed her first feature role as the female lead in the movie The Man in the Moon in 1991."
+            cell.movieDescription.text = viewModel.actor?.bio
             return cell
         case (1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "BIRTHDAY"
-            cell.additionalInfoText.text = "1976-03-22"
+            cell.additionalInfoText.text = viewModel.actor?.birthday
             return cell
         case (2):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "PLACE OF BIRTH"
-            cell.additionalInfoText.text = "New Orleans, Louisiana, USA"
+            cell.additionalInfoText.text = viewModel.actor?.placeOfBirth
             return cell
         case (3):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
@@ -80,7 +92,14 @@ class ActorDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return UITableViewCell()
         }
     }
-    
 }
-
-
+//
+//extension ActorDetailVC: ActorDetailViewModelDelegate {
+//    func viewModelItemsUpdated(items: [ActorListItem]) {
+//        actorCOllectionView.reloadData()
+//    }
+//    
+//    func viewModelChangedState(state: ActorPopularViewModel.State) {
+//        print(state)
+//    }
+//}

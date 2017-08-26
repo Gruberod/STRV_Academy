@@ -24,7 +24,6 @@ class AlamofireMovieSource: MovieSource {
     
     func fetchMovieDetail(id: Int, completion: @escaping (APIResult<APIMovieFull>) -> Void) {
         Alamofire.request(MovieRouter.Detail(movieId: id)).validate().responseObject() { (result:DataResponse<APIMovieFull>) in
-            print(MovieRouter.Detail(movieId: 98).urlRequest)
             completion(result.asAPIResult())
         }
     }

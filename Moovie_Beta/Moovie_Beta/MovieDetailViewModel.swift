@@ -56,7 +56,6 @@ class MovieDetailViewModel {
     }
     
 
-    
     func getMovieDetail(id: Int) {
         if state == .loading {
             return
@@ -64,8 +63,13 @@ class MovieDetailViewModel {
         state = .loading
         
         self.movieSource.fetchMovieDetail(id: id) { [weak self] result in
+            
+            guard let `self` = self else {
+                return
+            }
+            
             if let value = result.value {
-                self?.movie = MovieFull(
+                self.movie = MovieFull(
                         title: value.title,
                         description: value.overview,
                         stars: value.actors.map { $0.name },
@@ -73,11 +77,11 @@ class MovieDetailViewModel {
                         reviews: [""])
 //                      trailers: value.videos.map { $0.site },
 //                      reviews: value.reviews.map { $0.content }
-                self?.state = .ready
+                self.state = .ready
                 
                 } else {
-                    self?.error = result.error
-                    self?.state = .error
+                    self.error = result.error
+                    self.state = .error
                 }
             
             }
