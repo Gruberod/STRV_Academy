@@ -93,13 +93,13 @@ extension ActorDetailVC: UITableViewDataSource {
         }
     }
 }
-//
-//extension ActorDetailVC: ActorDetailViewModelDelegate {
-//    func viewModelItemsUpdated(items: [ActorListItem]) {
-//        actorCOllectionView.reloadData()
-//    }
-//    
-//    func viewModelChangedState(state: ActorPopularViewModel.State) {
-//        print(state)
-//    }
-//}
+
+extension ActorDetailVC: ActorDetailViewModelDelegate {
+    func viewModelItemsUpdated() {
+        actorTable.reloadData()
+    }
+    
+    func viewModelChangedState(state: ActorDetailViewModel.State) {
+        print(state)
+    }
+}

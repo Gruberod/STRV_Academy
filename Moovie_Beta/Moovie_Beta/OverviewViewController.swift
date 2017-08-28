@@ -58,7 +58,8 @@ extension OverviewViewController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-
+    //TODO: Check if I can fill the collection view in table cell like this
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         
@@ -71,9 +72,19 @@ extension OverviewViewController:  UITableViewDataSource {
 
             // with this I can set the content of collection view here
             cell.collectionView.delegate = self
-//            cell.collectionView.data = self
             
-            // How to reach single item in collection view?
+            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+                return viewModel.items.count
+            }
+            
+            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as? MovieCollectionViewCell else {
+                    fatalError("Invalid cell class")
+                }
+//                cell.movieCellPicture.image = viewModel.items[IndexPath].picture
+                
+                return cell
+            }
 
             return cell
         } else if row == 1 {

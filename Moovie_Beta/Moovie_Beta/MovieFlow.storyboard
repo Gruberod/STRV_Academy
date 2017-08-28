@@ -107,7 +107,7 @@
                                 <rect key="frame" x="335" y="20" width="24" height="24"/>
                                 <state key="normal" image="icSearch"/>
                                 <connections>
-                                    <segue destination="6uk-bA-5Wy" kind="show" id="qQs-h6-5hk"/>
+                                    <segue destination="dKh-0U-4nR" kind="presentation" id="OkR-WM-BTP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03h-FY-Ukd">
@@ -365,7 +365,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-1J-Usp">
-                                <rect key="frame" x="322" y="20" width="37" height="25"/>
+                                <rect key="frame" x="322" y="20.5" width="37" height="25"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <state key="normal" title="CLEAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -840,7 +840,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vQu-CA-cYY" customClass="CustomNavBarViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Actors" image="icnActorsTapbar" id="dF2-rK-9Qd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="icBack" backIndicatorTransitionMaskImage="icBack" id="6H4-3Y-rNp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="icBack" backIndicatorTransitionMaskImage="icBack" id="6H4-3Y-rNp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

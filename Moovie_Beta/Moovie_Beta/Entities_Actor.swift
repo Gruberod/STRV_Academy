@@ -71,3 +71,19 @@ struct APIActorPopular: Unboxable {
         name = try unboxer.unbox(key: "name")
     }
 }
+
+struct APISearch: Unboxable {
+    let results: [APIActorSearch]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
+
+struct APIActorSearch: Unboxable {
+    let name: String
+    
+    init(unboxer: Unboxer) throws {
+        name = try unboxer.unbox(key: "name")
+    }
+}

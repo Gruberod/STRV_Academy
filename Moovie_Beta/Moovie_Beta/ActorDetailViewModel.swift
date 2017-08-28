@@ -25,6 +25,7 @@ struct ActorFull {
 }
 
 protocol ActorDetailViewModelDelegate: class {
+    func viewModelItemsUpdated()
     func viewModelChangedState(state: ActorDetailViewModel.State)
 }
 
@@ -72,6 +73,8 @@ class ActorDetailViewModel {
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
                 
+                print(value)
+                
                 self.actor = ActorFull(
                     name: value.name,
                     bio: value.bio,
@@ -80,6 +83,8 @@ class ActorDetailViewModel {
                     acting: [""])
                 
                 self.state = .ready
+                self.delegate?.viewModelChangedState(state: .ready)
+                self.delegate?.viewModelItemsUpdated()
                 
             } else {
                 self.error = result.error

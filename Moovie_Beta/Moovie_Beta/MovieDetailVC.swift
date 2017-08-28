@@ -118,3 +118,14 @@ extension MovieDetailVC: UITableViewDataSource {
         }
     }
 }
+
+
+extension MovieDetailVC: MovieDetailViewModelDelegate {
+    func viewModelItemsUpdated() {
+        overviewTable.reloadData()
+    }
+    
+    func viewModelChangedState(state: MovieDetailViewModel.State) {
+        print(state)
+    }
+}

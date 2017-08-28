@@ -44,12 +44,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
                 if row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell") as? searchItemCellTableViewCell
+                    cell?.nameMovieCell.text = "Mars"
+                    cell?.yearMovieCell.text = "2016"
+                    cell?.imageMovieCell.image = nil
+                    cell?.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
                     return cell!
                 } else if row == 1 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell") as! searchItemCellTableViewCell
+                    cell.nameMovieCell.text = "Deadpool"
+                    cell.yearMovieCell.text = "2016"
+                    cell.imageMovieCell.image = nil
+                    cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
                     return cell
                 } else if row == 2 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell") as! searchItemCellTableViewCell
+                    cell.nameMovieCell.text = "Batman"
+                    cell.yearMovieCell.text = "2014"
+                    cell.imageMovieCell.image = nil
+                    cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
                     return cell
                 }
                 fatalError("Noy expected row")

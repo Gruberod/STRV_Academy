@@ -10,7 +10,14 @@ import UIKit
 
 class actorItemCell: UITableViewCell {
 
+    @IBOutlet weak var actorPicture: UIImageView!
+    @IBOutlet weak var actorName: UILabel!
+    
+
+    @IBOutlet weak var actorprofession: UILabel!
+    
     override func awakeFromNib() {
+
         super.awakeFromNib()
         // Initialization code
     }

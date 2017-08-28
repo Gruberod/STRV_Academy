@@ -25,7 +25,8 @@ struct MovieFull: MovieFullItem {
 }
 
 protocol MovieDetailViewModelDelegate: class {
-        func viewModelChangedState(state: MovieDetailViewModel.State)
+    func viewModelItemsUpdated()
+    func viewModelChangedState(state: MovieDetailViewModel.State)
 }
 
 class MovieDetailViewModel {
@@ -77,7 +78,10 @@ class MovieDetailViewModel {
                         reviews: [""])
 //                      trailers: value.videos.map { $0.site },
 //                      reviews: value.reviews.map { $0.content }
+                
                 self.state = .ready
+                self.delegate?.viewModelChangedState(state: .ready)
+                self.delegate?.viewModelItemsUpdated()
                 
                 } else {
                     self.error = result.error

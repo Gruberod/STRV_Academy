@@ -17,6 +17,7 @@ protocol MovieSource {
     func fetchMovieDetail(id: Int, completion: @escaping (APIResult<APIMovieFull>) -> Void)
     func fetchNowPlaying(completion: @escaping (APIResult<[APIMovieStub]>) -> Void)
     func fetchMostPopular(completion: @escaping (APIResult<[APIMovieStub]>) -> Void)
+    func searchActor(completion: @escaping (APIResult<[APIActorSearch]>) -> Void)
     
 }
 
@@ -37,6 +38,13 @@ class AlamofireMovieSource: MovieSource {
     func fetchMostPopular(completion: @escaping (APIResult<[APIMovieStub]>) -> Void) {
         Alamofire.request(MovieRouter.Popular()).validate().responseObject() { (result:DataResponse<APIMovieResults>) in
             completion(result.asAPIResult() { $0.results } )
+        }
+    }
+    
+    //TODO:
+    func searchActor(completion: @escaping (APIResult<[APIMovieSearch]>) -> Void) {
+        Alamofire.request(MovieRouter.Search()).validate().responseObject() { (result:DataResponse<APISearch>) in
+            completion(result.asAPIResult() { $0.results} )
         }
     }
     

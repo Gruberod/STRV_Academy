@@ -46,6 +46,10 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
             return UITableViewCell()
         
         }
+        cell.imageMovieCell.image = #imageLiteral(resourceName: "johnyDepp")
+        cell.nameMovieCell.text = "Some movie"
+        cell.yearMovieCell.text = "1987"
+        cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
         return cell
     }
     

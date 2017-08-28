@@ -46,6 +46,9 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
             return UITableViewCell()
         
         }
+        cell.actorPicture.image = #imageLiteral(resourceName: "actor3")
+        cell.actorName.text = "Johny Depp"
+        cell.actorprofession.text = "actor"
         return cell
     }
     

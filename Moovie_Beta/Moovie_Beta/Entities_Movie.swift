@@ -138,6 +138,22 @@ struct APIMovieFull: Unboxable {
     }
 }
 
+struct APIMSearch: Unboxable {
+    let results: [APIMovieSearch]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
+
+struct APIMovieSearch: Unboxable {
+    let name: String
+    
+    init(unboxer: Unboxer) throws {
+        name = try unboxer.unbox(key: "name")
+    }
+}
+
 //struct Movie: Unboxable {
 //    let title: String
 //    let releaseDate: Date
