@@ -83,7 +83,6 @@ class ActorDetailViewModel {
                     acting: [""])
                 
                 self.state = .ready
-                self.delegate?.viewModelChangedState(state: .ready)
                 self.delegate?.viewModelItemsUpdated()
                 
             } else {

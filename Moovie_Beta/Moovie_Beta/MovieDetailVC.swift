@@ -11,6 +11,7 @@ import UIKit
 class MovieDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var overviewTable: UITableView!
+    @IBOutlet weak var movieName: UILabel!
     
     var viewModel: MovieDetailViewModel!
     
@@ -19,6 +20,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         
         overviewTable.delegate = self
         overviewTable.dataSource = self
+        
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
@@ -43,12 +45,15 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         overviewTable.estimatedRowHeight = 45
         
         viewModel = MovieDetailViewModel()
+        viewModel.delegate = self
         viewModel.getMovieDetail(id: 98)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        movieName.text = viewModel.movie?.title
     }
 }
 
@@ -123,6 +128,7 @@ extension MovieDetailVC: UITableViewDataSource {
 extension MovieDetailVC: MovieDetailViewModelDelegate {
     func viewModelItemsUpdated() {
         overviewTable.reloadData()
+        movieName.text = viewModel.movie?.title
     }
     
     func viewModelChangedState(state: MovieDetailViewModel.State) {

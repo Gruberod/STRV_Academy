@@ -12,6 +12,8 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var actorTable: UITableView!
     
+    @IBOutlet weak var actorName: UILabel!
+    
     var viewModel: ActorDetailViewModel!
     
     override func viewDidLoad() {
@@ -20,7 +22,10 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         actorTable.delegate = self
         actorTable.dataSource = self
         
+        
+
         viewModel = ActorDetailViewModel()
+        viewModel.delegate = self
         viewModel.getActorDetail(id: 4495)
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
@@ -43,11 +48,17 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        actorName.text = viewModel.actor?.name
        
         actorTable.rowHeight = UITableViewAutomaticDimension
         actorTable.estimatedRowHeight = 45
         
     }
+    
+//TODO: kam s nim???
+//        actorName.text = viewModel.actor?.name
+    
 }
 
 extension ActorDetailVC: UITableViewDataSource {
@@ -97,6 +108,9 @@ extension ActorDetailVC: UITableViewDataSource {
 extension ActorDetailVC: ActorDetailViewModelDelegate {
     func viewModelItemsUpdated() {
         actorTable.reloadData()
+        print(viewModel.actor?.name)
+        actorName.text = viewModel.actor?.name
+        
     }
     
     func viewModelChangedState(state: ActorDetailViewModel.State) {

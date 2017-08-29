@@ -38,7 +38,7 @@ class OverviewViewController: UIViewController {
 //        viewModelChangedState(state: viewModel.state)
         
 //         uncomment following line to load movies immediately
-//        viewModel.reloadMovies()
+        viewModel.reloadMovies()
     }
 
     
@@ -104,7 +104,7 @@ extension OverviewViewController:  UITableViewDataSource {
     
     // tap to Movie detail - doesnt work
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "daredevil", sender: nil)
+        performSegue(withIdentifier: "showDetail", sender: nil)
     }
 }
 

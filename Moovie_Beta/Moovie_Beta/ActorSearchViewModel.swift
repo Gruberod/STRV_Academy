@@ -54,19 +54,19 @@ class ActorSearchViewModel {
         }
         state = .loading
         
-        self.actorSource.searchActor() { result in
-            if let value = result.value {
-                self.items = value.map {
-                    ActorSearchStub(
-                        name: $0.name)
-                }
-                self.state = self.items.isEmpty ? .empty : .ready
-                self.delegate?.viewModelItemsUpdated(items: self.items)
-                
-            } else {
-                self.error = result.error
-                self.state = .error
-            }
-        }
+//        self.actorSource.searchActor("jon Doe") { result in
+//            if let value = result.value {
+//                self.items = value.map {
+//                    ActorSearchStub(
+//                        name: $0.name)
+//                }
+//                self.state = self.items.isEmpty ? .empty : .ready
+//                self.delegate?.viewModelItemsUpdated(items: self.items)
+//                
+//            } else {
+//                self.error = result.error
+//                self.state = .error
+//            }
+//        }
     }
 }

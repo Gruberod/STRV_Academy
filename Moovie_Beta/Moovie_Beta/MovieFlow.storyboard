@@ -100,6 +100,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="wJ8-an-Pvv" secondAttribute="bottom" constant="-8.5" id="yr9-uL-ckK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6uk-bA-5Wy" kind="show" identifier="showDetail" id="pdZ-hH-L5W"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -365,7 +368,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-1J-Usp">
-                                <rect key="frame" x="322" y="20.5" width="37" height="25"/>
+                                <rect key="frame" x="322" y="20" width="37" height="25"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <state key="normal" title="CLEAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -477,6 +480,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="movieName" destination="HRr-Ek-yHK" id="BLu-ns-XVH"/>
                         <outlet property="overviewTable" destination="2tU-kh-B48" id="ga6-lu-Yej"/>
                     </connections>
                 </viewController>
@@ -661,6 +665,7 @@
                         <barButtonItem key="backBarButtonItem" title="  " id="GHb-Ax-S3U"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="actorName" destination="4RK-I6-Ydi" id="ybl-v7-RpK"/>
                         <outlet property="actorTable" destination="AVy-N4-K6h" id="1Mv-YQ-spP"/>
                     </connections>
                 </viewController>
@@ -840,7 +845,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vQu-CA-cYY" customClass="CustomNavBarViewController" customModule="Moovie_Beta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Actors" image="icnActorsTapbar" id="dF2-rK-9Qd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="icBack" backIndicatorTransitionMaskImage="icBack" id="6H4-3Y-rNp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="icBack" backIndicatorTransitionMaskImage="icBack" id="6H4-3Y-rNp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
