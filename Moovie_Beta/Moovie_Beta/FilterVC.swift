@@ -15,7 +15,6 @@ class FilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     @IBAction func clear(_ sender: UIButton) {
         
     }
@@ -35,10 +34,8 @@ class FilterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    // prepsat na guard let
         
         let row = indexPath.row
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "filter_cell", for: indexPath) as! filterCellTableViewCell
         let text = options[row]
         cell.filterLabel.text = text

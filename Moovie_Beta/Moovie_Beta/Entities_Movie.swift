@@ -26,7 +26,7 @@ struct APIMovieStub: Unboxable {
     let genreIds: [Int]
     let overview: String
     let releaseDate: Date
-//    let poster: ImageReference?
+    let poster: String
     
     init(unboxer: Unboxer) throws {
         id = try unboxer.unbox(key: "id")
@@ -34,12 +34,15 @@ struct APIMovieStub: Unboxable {
         title = try unboxer.unbox(key: "title")
         genreIds = try unboxer.unbox(key: "genre_ids")
         overview = try unboxer.unbox(key: "overview")
-//        poster = unboxer.unbox(key: "poster_path")
+        poster = try unboxer.unbox(key: "poster_path")
         
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd"
         releaseDate = try unboxer.unbox(key: "release_date", formatter: df)
     }
+    
+    func url(size: Sizes = .original) -> URL {
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)}
 }
 
 struct APIMovieResults: Unboxable {
@@ -106,7 +109,6 @@ struct APIMovieReviews: Unboxable {
     }
 }
 
-
 struct APIMovieFull: Unboxable {
     let id: Int
     let score: Float?
@@ -116,6 +118,7 @@ struct APIMovieFull: Unboxable {
     
     let budget: Int?
     let homepage: URL?
+    let poster: String?
     let genres: [APIMovieGenre]
     let actors: [APIMovieActor]
     let videos: [APIMovieVideo]?
@@ -126,6 +129,7 @@ struct APIMovieFull: Unboxable {
         score = unboxer.unbox(key: "vote_average")
         title = try unboxer.unbox(key: "title")
         overview = try unboxer.unbox(key: "overview")
+        poster = unboxer.unbox(key: "poster_path")
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd"
         releaseDate = unboxer.unbox(key: "release_date", formatter: df)
@@ -136,6 +140,9 @@ struct APIMovieFull: Unboxable {
         videos = unboxer.unbox(keyPath: "videos.results")
         reviews = unboxer.unbox(keyPath: "reviews.results")
     }
+    
+    func url(size: Sizes = .original) -> URL {
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster!)}
 }
 
 struct APIMSearch: Unboxable {
@@ -148,10 +155,15 @@ struct APIMSearch: Unboxable {
 
 struct APIMovieSearch: Unboxable {
     let name: String
+    let poster: String
     
     init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "name")
+        poster = try unboxer.unbox(key: "poster_path")
     }
+    
+    func url(size: Sizes = .original) -> URL {
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)}
 }
 
 //struct Movie: Unboxable {

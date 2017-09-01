@@ -8,8 +8,7 @@ use_frameworks!
 target 'Moovie_Beta' do
   pod 'Alamofire', '~> 4.5'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
-  pod 'SwiftCarousel'
-  pod 'Material'
   pod 'Unbox'
   pod 'UnboxedAlamofire'
+  pod 'AlamofireImage'
 end

@@ -10,10 +10,12 @@ import Foundation
 
 protocol ActorListItem {
     var name: String { get }
+    var picture: URL { get }
 }
 
 struct ActorPopularStub: ActorListItem {
     var name: String
+    var picture: URL
 }
 
 protocol ActorPopularViewModelDelegate: class {
@@ -58,8 +60,10 @@ class ActorPopularViewModel {
             if let value = result.value {
                 self.items = value.map {
                     ActorPopularStub(
-                        name: $0.name)
+                        name: $0.name,
+                        picture: $0.url(size: .w185))
                 }
+                print(value)
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)
                 

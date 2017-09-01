@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AlamofireImage
 
 
 // how to get full movie detail?
@@ -17,7 +18,7 @@ protocol MovieListItem {
     var description: String { get }
     var releaseDate: String { get }
     var score: String { get }
-//    var poster: String { get }
+    var poster: URL { get }
 }
 
 struct MovieStub: MovieListItem {
@@ -26,7 +27,7 @@ struct MovieStub: MovieListItem {
     var description: String
     var releaseDate: String
     var score: String
-//    var poster: String
+    var poster: URL
 }
 
 protocol MovieListViewModelDelegate: class {
@@ -79,8 +80,8 @@ class MovieListViewModel {
                         genres: GenreManager.shared.map(ids: $0.genreIds).map { $0.name },
                         description: $0.overview,
                         releaseDate: "Release date: \(dateFormatter.string(from: $0.releaseDate))",
-                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %")
-//                        poster: ImageReference.poster })
+                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %",
+                        poster: $0.url(size: .w185))
                 }
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)
@@ -103,8 +104,10 @@ class MovieListViewModel {
                         genres: GenreManager.shared.map(ids: $0.genreIds).map { $0.name },
                         description: $0.overview,
                         releaseDate: "Release date: \(dateFormatter.string(from: $0.releaseDate))",
-                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %")
+                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %",
+                        poster: $0.url(size: .w185))
                 }
+                print(value)
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)
                 

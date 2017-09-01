@@ -11,7 +11,6 @@ import UIKit
 class ActorDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var actorTable: UITableView!
-    
     @IBOutlet weak var actorName: UILabel!
     
     var viewModel: ActorDetailViewModel!
@@ -21,8 +20,6 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         
         actorTable.delegate = self
         actorTable.dataSource = self
-        
-        
 
         viewModel = ActorDetailViewModel()
         viewModel.delegate = self
@@ -50,15 +47,12 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
         
         actorName.text = viewModel.actor?.name
-       
+    
         actorTable.rowHeight = UITableViewAutomaticDimension
         actorTable.estimatedRowHeight = 45
         
     }
-    
-//TODO: kam s nim???
-//        actorName.text = viewModel.actor?.name
-    
+
 }
 
 extension ActorDetailVC: UITableViewDataSource {
@@ -91,6 +85,8 @@ extension ActorDetailVC: UITableViewDataSource {
         case (4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             cell.showWithLabel = false
+// add collection view of movie posters - how to pass collection view information?
+
             return cell
         case (5):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
@@ -108,9 +104,7 @@ extension ActorDetailVC: UITableViewDataSource {
 extension ActorDetailVC: ActorDetailViewModelDelegate {
     func viewModelItemsUpdated() {
         actorTable.reloadData()
-        print(viewModel.actor?.name)
         actorName.text = viewModel.actor?.name
-        
     }
     
     func viewModelChangedState(state: ActorDetailViewModel.State) {

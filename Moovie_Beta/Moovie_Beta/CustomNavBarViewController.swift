@@ -21,12 +21,6 @@ class CustomNavBarViewController: UINavigationController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
    }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let backItem = UIBarButtonItem()
-//        backItem.title = nil
-//        navigationItem.backBarButtonItem = backItem
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

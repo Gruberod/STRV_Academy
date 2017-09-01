@@ -11,7 +11,6 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var MyButton: UIButton!
-    
     @IBOutlet weak var MyButton2: UIButton!
     
     override func viewDidLoad() {

@@ -25,6 +25,9 @@ class OverviewViewController: UIViewController {
         let carouselTitleNib = UINib(nibName: "CarouselLabelTableViewCell", bundle: nil)
         overviewTable.register(carouselTitleNib, forCellReuseIdentifier: "carouselTitle")
         
+        let mainMovieNib = UINib(nibName: "OverviewMainPictureTableViewCell", bundle: nil)
+        overviewTable.register(mainMovieNib, forCellReuseIdentifier: "mainPicture")
+        
         overviewTable.rowHeight = UITableViewAutomaticDimension
         overviewTable.estimatedRowHeight = 155
         
@@ -36,8 +39,7 @@ class OverviewViewController: UIViewController {
         viewModel = MovieListViewModel()
 //        viewModel.delegate = self
 //        viewModelChangedState(state: viewModel.state)
-        
-//         uncomment following line to load movies immediately
+
         viewModel.reloadMovies()
     }
 
@@ -49,7 +51,7 @@ class OverviewViewController: UIViewController {
     
 }
 
-extension OverviewViewController:  UITableViewDataSource {
+extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -64,24 +66,34 @@ extension OverviewViewController:  UITableViewDataSource {
         let row = indexPath.row
         
         if row == 0 {
-            // daredevil
-            let cell = tableView.dequeueReusableCell(withIdentifier: "daredevil")!
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
+            
+            cell.mainPicture.image = #imageLiteral(resourceName: "image")
+            cell.mainMovieLabel.text = "Placeholder"
+            
             return cell
         } else if row == 2 || row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
 
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            
+            // cell.movies = actor.movies
+            
             // with this I can set the content of collection view here
-            cell.collectionView.delegate = self
+
             
             func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+                
+            cell.collectionView.delegate = self as? UICollectionViewDelegate
+                
                 return viewModel.items.count
             }
             
             func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as? MovieCollectionViewCell else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
                     fatalError("Invalid cell class")
                 }
-//                cell.movieCellPicture.image = viewModel.items[IndexPath].picture
+                cell.movieCellPicture.af_setImage(withURL: viewModel.items[indexPath.row].poster)
                 
                 return cell
             }
@@ -108,22 +120,6 @@ extension OverviewViewController:  UITableViewDataSource {
     }
 }
 
-// Now the same is here and in xib - should not stay like this probably
-extension OverviewViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-//        cell.movieCellPicture = viewModel.obrazekVole!
-            return cell
-    }
-}
 
 
 //extension OverviewViewController: MovieListViewModelDelegate {

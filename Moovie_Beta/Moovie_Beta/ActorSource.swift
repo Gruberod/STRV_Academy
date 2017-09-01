@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import UnboxedAlamofire
 import Unbox
 
@@ -16,7 +17,7 @@ protocol ActorSource {
     
     func fetchActorDetail(id: Int, completion: @escaping (APIResult<APIActorFull>) -> Void)
     func fetchPopular(completion: @escaping (APIResult<[APIActorPopular]>) -> Void)
-//    func searchActor(string: String, completion: @escaping (APIResult<[APIActorSearch]>) -> Void)
+    func searchActor(string: String, completion: @escaping (APIResult<[APIActorSearch]>) -> Void)
 }
 
 class AlamofireActorSource: ActorSource {
@@ -32,11 +33,10 @@ class AlamofireActorSource: ActorSource {
             completion(result.asAPIResult() { $0.results} )
         }
     }
-    
-    //TODO:
-//    func searchActor(string: String, completion: @escaping (APIResult<[APIActorSearch]>) -> Void) {
-//        Alamofire.request(ActorRouter.Search(string)).validate().responseObject() { (result:DataResponse<APISearch>) in
-//            completion(result.asAPIResult() { $0.results} )
-//        }
-//    }
+
+    func searchActor(string: String, completion: @escaping (APIResult<[APIActorSearch]>) -> Void) {
+        Alamofire.request(ActorRouter.Search(query: "")).validate().responseObject() { (result:DataResponse<APISearch>) in
+            completion(result.asAPIResult() { $0.results} )
+        }
+    }
 }

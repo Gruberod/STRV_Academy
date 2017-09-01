@@ -12,7 +12,7 @@ protocol MovieSearchListItem {
     var name: String { get }
 }
 
-struct MovieSearchStub: ActorSearchListItem {
+struct MovieSearchStub: MovieSearchListItem {
     var name: String
 }
 
@@ -54,19 +54,22 @@ class MovieSearchViewModel {
         }
         state = .loading
         
-//        self.movieSource.searchMovie() { result in
-//            if let value = result.value {
-//                self.items = value.map {
-//                    MovieSearchStub(
-//                        name: $0.name)
-//                }
-//                self.state = self.items.isEmpty ? .empty : .ready
-//                self.delegate?.viewModelItemsUpdated(items: self.items)
-//                
-//            } else {
-//                self.error = result.error
-//                self.state = .error
-//            }
-//        }
+        // call is invalid failure(Alamofire.AFError.responseValidationFailed(Alamofire.AFError.ResponseValidationFailureReason.unacceptableStatusCode(422) (Unproccessable entity))
+        
+        self.movieSource.searchMovie(string: "American Beauty") { result in
+            print(result)
+            if let value = result.value {
+                self.items = value.map {
+                    MovieSearchStub(
+                        name: $0.name)
+                }
+                self.state = self.items.isEmpty ? .empty : .ready
+                self.delegate?.viewModelItemsUpdated(items: self.items)
+                
+            } else {
+                self.error = result.error
+                self.state = .error
+            }
+        }
     }
 }

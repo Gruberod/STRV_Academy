@@ -1,24 +1,17 @@
 //
-//  actorItemCell.swift
+//  OverviewMainPictureTableViewCell.swift
 //  Moovie_Beta
 //
-//  Created by Gruberova, Daniela on 06/08/2017.
+//  Created by Gruberova, Daniela on 01/09/2017.
 //  Copyright © 2017 Gruberova, Daniela. All rights reserved.
 //
 
 import UIKit
 
-class actorItemCell: UITableViewCell {
-
-    @IBOutlet weak var actorPicture: UIImageView!
-    @IBOutlet weak var actorName: UILabel!
+class OverviewMainPictureTableViewCell: UITableViewCell {
     
-    var actor: APIActorSearch? {
-        didSet {
-//            actorPicture.image = actor?.picture
-            actorName.text = actor?.name
-        }
-    }
+    @IBOutlet weak var mainPicture: UIImageView!
+    @IBOutlet weak var mainMovieLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +20,7 @@ class actorItemCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
     

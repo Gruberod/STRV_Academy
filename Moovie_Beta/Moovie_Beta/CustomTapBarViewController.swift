@@ -10,7 +10,6 @@ import UIKit
 
 class CustomTapBarViewController: UITabBarController {
 
-    // you can adjust settings of this view controller via this property
     var blockSelection = true
     
     override func viewDidLoad() {
@@ -26,11 +25,9 @@ class CustomTapBarViewController: UITabBarController {
     
 }
 
-// implementation of the tab bar controller delegate
 extension CustomTapBarViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        // also clear badge number when selected
         viewController.tabBarItem?.badgeValue = nil
     }
 }

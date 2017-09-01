@@ -55,6 +55,7 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as? PictureWithTitleCollectionViewCell else {
             fatalError("Invalid cell class")
         }
+        cell.image.af_setImage(withURL: viewModel.items[indexPath.row].picture)
         cell.imageTitle.text = viewModel.items[indexPath.row].name
         cell.imageSubtitle.text = "movies featured..."
 

@@ -15,6 +15,7 @@ struct APIActorFull: Unboxable {
     let bio: String
     let birthday: Date
     let placeOfBirth: String
+    let picture: String
     
     let knownFor: [APIActorKnownFor]?
     let acting: [APIActorActing]?
@@ -27,9 +28,14 @@ struct APIActorFull: Unboxable {
         df.dateFormat = "YYYY-MM-dd"
         birthday = try unboxer.unbox(key: "birthday", formatter: df)
         placeOfBirth = try unboxer.unbox(key: "place_of_birth")
+        picture = try unboxer.unbox(key: "profile_path")
         knownFor = unboxer.unbox(keyPath: "combined_credits.cast")
         acting = unboxer.unbox(keyPath: "combined_credits.cast")
     }
+    
+    func url(size: Sizes = .original) -> URL {
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
+    
 }
 
 struct APIActorKnownFor: Unboxable {
@@ -66,10 +72,16 @@ struct APIPopular: Unboxable {
 
 struct APIActorPopular: Unboxable {
     let name: String
+    let picture: String
     
     init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "name")
+        picture = try unboxer.unbox(key: "profile_path")
+
     }
+    
+    func url(size: Sizes = .original) -> URL {
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
 }
 
 struct APISearch: Unboxable {
@@ -82,8 +94,13 @@ struct APISearch: Unboxable {
 
 struct APIActorSearch: Unboxable {
     let name: String
+    let picture: String
     
     init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "name")
+        picture = try unboxer.unbox(key: "profile_path")
     }
+    
+    func url(size: Sizes = .original) -> URL {
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
 }

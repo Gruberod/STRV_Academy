@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var movieCellPicture: UIImageView!
+    
+    var movie: MovieStub? {
+        didSet {
+            movieCellPicture.af_setImage(withURL: (movie?.poster)!)
+        }
+    }
 }

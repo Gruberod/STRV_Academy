@@ -1,11 +1,9 @@
 PODS:
   - Alamofire (4.5.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - AlamofireNetworkActivityIndicator (2.2.0):
     - Alamofire (~> 4.5)
-  - Material (2.6.3):
-    - Material/Core (= 2.6.3)
-  - Material/Core (2.6.3)
-  - SwiftCarousel (0.8.0)
   - Unbox (2.5.0)
   - UnboxedAlamofire (2.0.3):
     - Alamofire (~> 4.1)
@@ -13,20 +11,18 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - AlamofireImage
   - AlamofireNetworkActivityIndicator (~> 2.2)
-  - Material
-  - SwiftCarousel
   - Unbox
   - UnboxedAlamofire
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
-  Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
-  SwiftCarousel: a62f4e9b944d1bca4ccfe3f28abb6119e3e36b12
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
   UnboxedAlamofire: 3ecaf2a745aa018ba3497c0d61487b7338190ac6
 
-PODFILE CHECKSUM: 081abb9481ba36c30993f6fffab8fc2868baa64f
+PODFILE CHECKSUM: b48aed7c3fa74aea013a9333604e08b4fcf0f997
 
 COCOAPODS: 1.3.1

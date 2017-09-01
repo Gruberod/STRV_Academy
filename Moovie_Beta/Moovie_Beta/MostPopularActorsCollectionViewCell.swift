@@ -6,9 +6,12 @@
 //  Copyright © 2017 Gruberova, Daniela. All rights reserved.
 //
 
+
+// Most popular actors collection view
+
 import UIKit
 
-class MyViewCellCollectionViewCell: UICollectionViewCell {
+class MostPopularActorsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var actorCOllectionPicture: UIImageView!
 }

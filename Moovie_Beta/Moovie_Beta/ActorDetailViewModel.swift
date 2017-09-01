@@ -73,7 +73,9 @@ class ActorDetailViewModel {
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
                 
-                print(value)
+
+                
+                
                 
                 self.actor = ActorFull(
                     name: value.name,
