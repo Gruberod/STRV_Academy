@@ -16,12 +16,18 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
 
     @IBOutlet weak var searchActors: UITableView!
     
+    var viewModel: ActorSearchViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             searchActors.delegate = self
             searchActors.dataSource = self
         
         searchActors.register(UINib(nibName: "actorItemCell", bundle: nil), forCellReuseIdentifier: "actorResultCell")
+        
+        viewModel = ActorSearchViewModel()
+        viewModel.delegate = self as? ActorSearchViewModelDelegate
+        viewModel.reloadActors()
 
         // Do any additional setup after loading the view.
     }
@@ -36,7 +42,7 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,15 +52,28 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
             return UITableViewCell()
         
         }
-        cell.actorPicture.image = #imageLiteral(resourceName: "actor3")
-        cell.actorName.text = "Johny Depp"
+        
+        cell.actorPicture.af_setImage(withURL: viewModel.items[indexPath.row].picture)
+        cell.actorName.text = viewModel.items[indexPath.row].name
         
         return cell
     }
+    
+    // here goes performe segue if clisked with item[indexPatr.row] parametre
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
+}
+
+extension SearchToggleActorsViewController: ActorSearchViewModelDelegate {
+    func viewModelItemsUpdated(items: [ActorSearchListItem]) {
+        searchActors.reloadData()
+    }
+    
+    func viewModelChangedState(state: ActorSearchViewModel.State) {
+        print(state)
+    }
 }

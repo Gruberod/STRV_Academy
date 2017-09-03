@@ -10,10 +10,12 @@ import Foundation
 
 protocol ActorSearchListItem {
     var name: String { get }
+    var picture: URL { get }
 }
 
 struct ActorSearchStub: ActorSearchListItem {
     var name: String
+    var picture: URL
 }
 
 protocol ActorSearchViewModelDelegate: class {
@@ -58,7 +60,9 @@ class ActorSearchViewModel {
             if let value = result.value {
                 self.items = value.map {
                     ActorSearchStub(
-                        name: $0.name)
+                        name: $0.name,
+                        picture: $0.url(size: .w185)
+                    )
                 }
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)

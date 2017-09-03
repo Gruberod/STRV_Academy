@@ -16,7 +16,7 @@ class OverviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        overviewTable.delegate = self
+        overviewTable.delegate = self
         overviewTable.dataSource = self
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
@@ -27,9 +27,7 @@ class OverviewViewController: UIViewController {
         
         let mainMovieNib = UINib(nibName: "OverviewMainPictureTableViewCell", bundle: nil)
         overviewTable.register(mainMovieNib, forCellReuseIdentifier: "mainPicture")
-        
-        overviewTable.rowHeight = UITableViewAutomaticDimension
-        overviewTable.estimatedRowHeight = 155
+
         
 //        let refreshControl = UIRefreshControl()
 //        refreshControl.addTarget(self, action: #selector(OverviewViewController.reloadAction), for: .valueChanged)
@@ -37,16 +35,17 @@ class OverviewViewController: UIViewController {
 //        tableView.refreshControl = refreshControl
 //        
         viewModel = MovieListViewModel()
-//        viewModel.delegate = self
+        viewModel.delegate = self as? MovieListViewModelDelegate
 //        viewModelChangedState(state: viewModel.state)
-
         viewModel.reloadMovies()
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        overviewTable.rowHeight = UITableViewAutomaticDimension
+        overviewTable.estimatedRowHeight = 155
     }
     
 }
@@ -63,56 +62,76 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
     //TODO: Check if I can fill the collection view in table cell like this
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        
-        if row == 0 {
-
+        switch(indexPath.row) {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
-            
             cell.mainPicture.image = #imageLiteral(resourceName: "image")
             cell.mainMovieLabel.text = "Placeholder"
-            
             return cell
-        } else if row == 2 || row == 4 {
-
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
+            cell.label.text = "Most popular"
+            cell.button.setTitle("SHOW ALL", for: .normal)
+            return cell
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             
             // cell.movies = actor.movies
             
             // with this I can set the content of collection view here
-
             
-            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-                
-            cell.collectionView.delegate = self as? UICollectionViewDelegate
-                
-                return viewModel.items.count
-            }
             
-            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
-                    fatalError("Invalid cell class")
-                }
-                cell.movieCellPicture.af_setImage(withURL: viewModel.items[indexPath.row].poster)
-                
-                return cell
-            }
-
+            //            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            //
+            //            cell.collectionView.delegate = self as? UICollectionViewDelegate
+            //
+            //                return viewModel.items.count
+            //            }
+            
+            //            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            //                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
+            //                    fatalError("Invalid cell class")
+            //                }
+            //                cell.movieCellPicture.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+            //
+            //                return cell
+            //            }
+            
             return cell
-        } else if row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
-            cell.label.text = "Most popular"
-            cell.button.setTitle("SHOW ALL", for: .normal)
-            return cell
-        } else if row == 3 {
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Now playing"
             cell.button.setTitle("SHOW ALL", for: .normal)
             return cell
-        }
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
         
-        fatalError("Not expected row")
+        // cell.movies = actor.movies
+        
+        // with this I can set the content of collection view here
+        
+        
+        //            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //
+        //            cell.collectionView.delegate = self as? UICollectionViewDelegate
+        //
+        //                return viewModel.items.count
+        //            }
+        
+        //            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
+        //                    fatalError("Invalid cell class")
+        //                }
+        //                cell.movieCellPicture.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+        //
+        //                return cell
+        //            }
+        
+            return cell
+        default:
+            return UITableViewCell()            
     }
+}
     
     // tap to Movie detail - doesnt work
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -11,6 +11,7 @@ import Foundation
 protocol MovieFullItem {
     var title: String { get }
     var description: String { get }
+//    var poster: URL { get }
     var stars: [String] { get }
     var trailers: [String] { get }
     var reviews: [String] { get }
@@ -19,6 +20,7 @@ protocol MovieFullItem {
 struct MovieFull: MovieFullItem {
     var title: String
     var description: String
+//    var poster: URL
     var stars: [String]
     var trailers: [String]
     var reviews: [String]
@@ -73,11 +75,13 @@ class MovieDetailViewModel {
                 self.movie = MovieFull(
                         title: value.title,
                         description: value.overview,
+//                        poster: $0.url(size: .w185),
                         stars: value.actors.map { $0.name },
                         trailers: [""],
                         reviews: [""])
-//                      trailers: value.videos.map { $0.site },
-//                      reviews: value.reviews.map { $0.content }
+//                      trailers: value.videos[indexPath.row],
+//                      reviews: value.reviews[indexPath.row]
+//                )
                 
                 self.state = .ready
                 self.delegate?.viewModelChangedState(state: .ready)

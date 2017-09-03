@@ -16,12 +16,19 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     
     @IBOutlet weak var searchToogle: UITableView!
     
+    var viewModel: MovieSearchViewModel!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             searchToogle.delegate = self
             searchToogle.dataSource = self
         
         searchToogle.register(UINib(nibName: "searchItemCellTableViewCell", bundle: nil), forCellReuseIdentifier: "searchResultCell")
+        
+        viewModel = MovieSearchViewModel()
+        viewModel.delegate = self as? MovieSearchViewModelDelegate
+        viewModel.reloadMovies()
 
         // Do any additional setup after loading the view.
     }
@@ -36,7 +43,8 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.items.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,16 +54,28 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
             return UITableViewCell()
         
         }
-        cell.imageMovieCell.image = #imageLiteral(resourceName: "johnyDepp")
-        cell.nameMovieCell.text = "Some movie"
-        cell.yearMovieCell.text = "1987"
-        cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
+        cell.nameMovieCell.text = viewModel.items[indexPath.row].name
+        cell.yearMovieCell.text = viewModel.items[indexPath.row].year
+        cell.imageMovieCell.image = nil
+        cell.ratingMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
         return cell
     }
+    
+        // here goes performe segue if clisked with item[indexPatr.row] parametre
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
+}
+
+extension SearchToggleViewController: MovieSearchViewModelDelegate {
+    func viewModelItemsUpdated(items: [MovieSearchListItem]) {
+        searchToogle.reloadData()
+    }
+    
+    func viewModelChangedState(state: MovieSearchViewModel.State) {
+        print(state)
+    }
 }

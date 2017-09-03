@@ -53,11 +53,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             cell.nameMovieCell.text = viewModel.items[indexPath.row].name
-            cell.yearMovieCell.text = "2016"
+            cell.yearMovieCell.text = viewModel.items[indexPath.row].year
             cell.imageMovieCell.image = nil
-            cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
+            cell.ratingMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+            
             return cell
         }
+    
+        // here goes performe segue if clisked with item[indexPatr.row] parametre
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

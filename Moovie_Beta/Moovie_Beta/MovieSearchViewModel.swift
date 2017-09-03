@@ -10,10 +10,14 @@ import Foundation
 
 protocol MovieSearchListItem {
     var name: String { get }
+    var year: String { get }
+    var poster: URL { get }
 }
 
 struct MovieSearchStub: MovieSearchListItem {
     var name: String
+    var year: String
+    var poster: URL
 }
 
 protocol MovieSearchViewModelDelegate: class {
@@ -59,9 +63,16 @@ class MovieSearchViewModel {
         self.movieSource.searchMovie(string: "American Beauty") { result in
             print(result)
             if let value = result.value {
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
+                
                 self.items = value.map {
                     MovieSearchStub(
-                        name: $0.name)
+                        name: $0.name,
+                        year: dateFormatter.string(from: $0.year!),
+                        poster: $0.url(size: .w185)
+                    )
                 }
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)
