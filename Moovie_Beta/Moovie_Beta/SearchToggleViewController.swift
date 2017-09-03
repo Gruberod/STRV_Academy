@@ -55,9 +55,10 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
         
         }
         cell.nameMovieCell.text = viewModel.items[indexPath.row].name
-        cell.yearMovieCell.text = viewModel.items[indexPath.row].year
-        cell.imageMovieCell.image = nil
-        cell.ratingMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+//        cell.yearMovieCell.text = viewModel.items[indexPath.row].year
+        cell.imageMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+        cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
+        
         return cell
     }
     
@@ -66,6 +67,18 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" ,
+            let nextScene = segue.destination as? MovieDetailVC ,
+            let indexPath = self.searchToogle.indexPathForSelectedRow {
+            let selectedMovie = viewModel.items[indexPath.row]
+//            nextScene.currentMovie = selectedMovie as! MovieListItem
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetail", sender: nil)
     }
 
 }

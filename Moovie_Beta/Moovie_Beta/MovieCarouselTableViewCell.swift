@@ -8,22 +8,18 @@
 
 import UIKit
 
-class MovieCarouselTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class MovieCarouselTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var rowheight: NSLayoutConstraint!
     
-    var movies: APIMovieResults?
-    var movie: APIMovieStub?
-    
-    var showWithLabel: Bool = false {
+    var movies = [MovieListItem]() {
         didSet {
-            rowheight.constant = showWithLabel ? 280 : 200
-            self.layoutIfNeeded()
+            collectionView.reloadData()
         }
     }
 
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         
         let pictureOnly = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
@@ -33,37 +29,36 @@ class MovieCarouselTableViewCell: UITableViewCell, UICollectionViewDataSource, U
         collectionView.register(pictureWithTitle, forCellWithReuseIdentifier: "pictureWithTitle")
         
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+}
 
-        // Configure the view for the selected state
-    }
+extension MovieCarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if showWithLabel {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as! PictureWithTitleCollectionViewCell
-//            cell.image = movie.picture
-            cell.imageTitle.text = movie?.title
+        let item = movies[indexPath.row]
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
             
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-//            cell.image = viewModel.movie.picture
-            return cell
+            return UICollectionViewCell()
+            
         }
+        
+        cell.movie = item
+        return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 155, height: 198)
+    }
+    
 }

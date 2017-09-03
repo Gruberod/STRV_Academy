@@ -10,13 +10,15 @@ import Foundation
 
 protocol MovieSearchListItem {
     var name: String { get }
-    var year: String { get }
+    var id: Int { get }
+//    var year: String { get }
     var poster: URL { get }
 }
 
 struct MovieSearchStub: MovieSearchListItem {
     var name: String
-    var year: String
+    var id: Int
+//    var year: String
     var poster: URL
 }
 
@@ -70,7 +72,8 @@ class MovieSearchViewModel {
                 self.items = value.map {
                     MovieSearchStub(
                         name: $0.name,
-                        year: dateFormatter.string(from: $0.year!),
+                        id: $0.id,
+//                        year: dateFormatter.string(from: $0.year!),
                         poster: $0.url(size: .w185)
                     )
                 }

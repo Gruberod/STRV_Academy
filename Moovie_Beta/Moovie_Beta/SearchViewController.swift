@@ -53,9 +53,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             cell.nameMovieCell.text = viewModel.items[indexPath.row].name
-            cell.yearMovieCell.text = viewModel.items[indexPath.row].year
-            cell.imageMovieCell.image = nil
-            cell.ratingMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+//            cell.yearMovieCell.text = viewModel.items[indexPath.row].year
+            cell.imageMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
+            cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
             
             return cell
         }

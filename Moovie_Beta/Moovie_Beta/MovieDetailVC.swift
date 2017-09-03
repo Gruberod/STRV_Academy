@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MovieDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var overviewTable: UITableView!
-    @IBOutlet weak var movieName: UILabel!
     
     var viewModel: MovieDetailViewModel!
+    var currentMovie: MovieListItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         overviewTable.delegate = self
         overviewTable.dataSource = self
         
+        let moviePictureNib = UINib(nibName: "OverviewMainPictureTableViewCell", bundle: nil)
+        overviewTable.register(moviePictureNib, forCellReuseIdentifier: "mainPicture")
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
@@ -40,20 +43,18 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         let review = UINib(nibName: "ReviewTableViewCell", bundle: nil)
         overviewTable.register(review, forCellReuseIdentifier: "review")
         // Do any additional setup after loading the view.
-        
-        overviewTable.rowHeight = UITableViewAutomaticDimension
-        overviewTable.estimatedRowHeight = 45
+
+        overviewTable.estimatedRowHeight = 155
         
         viewModel = MovieDetailViewModel()
         viewModel.delegate = self
-        viewModel.getMovieDetail(id: 98)
+        viewModel.getMovieDetail(id: currentMovie.id)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-        movieName.text = viewModel.movie?.title
+
     }
 }
 
@@ -65,7 +66,7 @@ extension MovieDetailVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 8
+            return 9
         } else {
             return 2
         }
@@ -74,37 +75,41 @@ extension MovieDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
+            cell.mainPicture.af_setImage(withURL: currentMovie.poster)
+            cell.mainMovieLabel.text = viewModel.movie?.title
+            return cell
+        case (0,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
             cell.movieDescription.text = viewModel.movie?.description
             return cell
-        case (0,1):
+        case (0,2):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "CREATOR"
             cell.additionalInfoText.text = "Drew Goddard, Steven S. DeKnight"
             return cell
-        case (0,2):
+        case (0,3):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Stars"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (0,3):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-            cell.showWithLabel = true
-            return cell
         case (0,4):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            return cell
+        case (0,5):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Trailers"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (0,5):
+        case (0,6):
             let cell = tableView.dequeueReusableCell(withIdentifier: "video") as! VideoTableViewCell
             return cell
-        case (0,6):
+        case (0,7):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Gallery"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (0,7):
+        case (0,8):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             return cell
         case (1,0):
@@ -122,13 +127,44 @@ extension MovieDetailVC: UITableViewDataSource {
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        switch(indexPath.section, indexPath.row) {
+            
+        case (0,0):
+            return 200
+        case (0,1):
+            return UITableViewAutomaticDimension
+        case (0,2):
+            return 90
+        case (0,3):
+            return 50
+        case (0,4):
+            return 280
+        case (0,5):
+            return 50
+        case (0,6):
+            return 200
+        case (0,7):
+            return 50
+        case (0,8):
+            return 200
+        case (1,0):
+            return 50
+        case (1,1):
+            return UITableViewAutomaticDimension
+            
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
 }
 
 
 extension MovieDetailVC: MovieDetailViewModelDelegate {
     func viewModelItemsUpdated() {
         overviewTable.reloadData()
-        movieName.text = viewModel.movie?.title
     }
     
     func viewModelChangedState(state: MovieDetailViewModel.State) {

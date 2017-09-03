@@ -13,7 +13,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var movieCellPicture: UIImageView!
     
-    var movie: MovieStub? {
+    var movie: MovieListItem? {
         didSet {
             movieCellPicture.af_setImage(withURL: (movie?.poster)!)
         }

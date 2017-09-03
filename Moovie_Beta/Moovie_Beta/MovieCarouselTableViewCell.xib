@@ -46,9 +46,9 @@
                     <constraint firstItem="MlB-We-Ade" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="zyQ-RR-jJc"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="collectionView" destination="MlB-We-Ade" id="W3w-AU-Be9"/>
-                <outlet property="rowheight" destination="ZwY-UV-FRQ" id="JK9-eQ-jQb"/>
             </connections>
             <point key="canvasLocation" x="-217" y="-137"/>
         </tableViewCell>

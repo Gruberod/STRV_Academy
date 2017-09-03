@@ -35,7 +35,7 @@ class AlamofireActorSource: ActorSource {
     }
 
     func searchActor(string: String, completion: @escaping (APIResult<[APIActorSearch]>) -> Void) {
-        Alamofire.request(ActorRouter.Search(query: "")).validate().responseObject() { (result:DataResponse<APISearch>) in
+        Alamofire.request(ActorRouter.Search(query: string)).validate().responseObject() { (result:DataResponse<APISearch>) in
             completion(result.asAPIResult() { $0.results} )
         }
     }

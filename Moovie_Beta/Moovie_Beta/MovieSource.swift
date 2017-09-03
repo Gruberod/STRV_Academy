@@ -43,7 +43,7 @@ class AlamofireMovieSource: MovieSource {
     
     // TODO:
     func searchMovie(string: String, completion: @escaping (APIResult<[APIMovieSearch]>) -> Void) {
-        Alamofire.request(MovieRouter.Search(query: "")).validate(statusCode: 200..<500).responseObject() { (result:DataResponse<APIMSearch>) in
+        Alamofire.request(MovieRouter.Search(query: string)).validate().responseObject() { (result:DataResponse<APIMSearch>) in
             completion(result.asAPIResult() { $0.results} )
         }
     }

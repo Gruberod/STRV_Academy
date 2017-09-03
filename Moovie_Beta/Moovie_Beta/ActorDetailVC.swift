@@ -84,7 +84,6 @@ extension ActorDetailVC: UITableViewDataSource {
             return cell
         case (4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-            cell.showWithLabel = false
 // add collection view of movie posters - how to pass collection view information?
 
             return cell

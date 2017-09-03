@@ -8,6 +8,7 @@
 
 import Foundation
 import Unbox
+import AlamofireImage
 
 struct APIMovieGenre: Unboxable {
     let id: Int
@@ -155,17 +156,24 @@ struct APIMSearch: Unboxable {
 
 struct APIMovieSearch: Unboxable {
     let name: String
+    let id: Int
     let year: Date?
-    let poster: String
+    let poster: String?
     
     init(unboxer: Unboxer) throws {
-        name = try unboxer.unbox(key: "name")
+        name = try unboxer.unbox(key: "original_title")
+        id = try unboxer.unbox(key: "id")
         let df = DateFormatter()
         df.dateFormat = "YYYY"
         year = unboxer.unbox(key: "release_date", formatter: df)
-        poster = try unboxer.unbox(key: "poster_path")
+        poster = unboxer.unbox(key: "poster_path")
     }
     
     func url(size: Sizes = .original) -> URL {
-        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)}
+        if (poster != nil) {
+            return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster!)
+        } else {
+            return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent("/d4fbNJf9I1eRZ7S28YbJCyCQgPK.jpg")
+        }
+    }
 }

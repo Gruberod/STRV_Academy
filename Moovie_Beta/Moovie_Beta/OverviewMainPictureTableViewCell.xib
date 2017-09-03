@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BxD-Il-DXp">
-                        <rect key="frame" x="0.0" y="0.0" width="456" height="210.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="456" height="188.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xl-Uv-nOw">
                         <rect key="frame" x="40" y="138.5" width="408" height="40"/>
@@ -34,9 +34,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="BxD-Il-DXp" secondAttribute="bottom" constant="8" id="6no-R5-tbk"/>
+                    <constraint firstAttribute="bottom" secondItem="BxD-Il-DXp" secondAttribute="bottom" constant="30" id="6no-R5-tbk"/>
                     <constraint firstAttribute="trailing" secondItem="BxD-Il-DXp" secondAttribute="trailing" id="7QC-3o-ESh"/>
                     <constraint firstAttribute="bottom" secondItem="0xl-Uv-nOw" secondAttribute="bottom" constant="40" id="WSN-Ni-nQm"/>
                     <constraint firstAttribute="trailingMargin" secondItem="0xl-Uv-nOw" secondAttribute="trailing" id="WfG-2Q-b3H"/>
@@ -45,6 +45,7 @@
                     <constraint firstItem="BxD-Il-DXp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mfM-ZE-N8T"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="mainMovieLabel" destination="0xl-Uv-nOw" id="5Kn-HT-nWI"/>
                 <outlet property="mainPicture" destination="BxD-Il-DXp" id="sP4-GP-pim"/>

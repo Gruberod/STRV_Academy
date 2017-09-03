@@ -57,6 +57,7 @@ class ActorSearchViewModel {
         state = .loading
         
         self.actorSource.searchActor(string: "jon Doe") { result in
+            print(result)
             if let value = result.value {
                 self.items = value.map {
                     ActorSearchStub(

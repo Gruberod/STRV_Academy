@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class OverviewViewController: UIViewController {
 
@@ -37,14 +38,17 @@ class OverviewViewController: UIViewController {
         viewModel = MovieListViewModel()
         viewModel.delegate = self as? MovieListViewModelDelegate
 //        viewModelChangedState(state: viewModel.state)
-        viewModel.reloadMovies()
+        
+
+        viewModel.reloadNowPlayingMovies()
+        
+                viewModel.reloadMostPopularMovies()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        overviewTable.rowHeight = UITableViewAutomaticDimension
         overviewTable.estimatedRowHeight = 155
     }
     
@@ -59,96 +63,98 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-    //TODO: Check if I can fill the collection view in table cell like this
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch(indexPath.row) {
+            
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
             cell.mainPicture.image = #imageLiteral(resourceName: "image")
-            cell.mainMovieLabel.text = "Placeholder"
+            cell.mainMovieLabel.text = viewModel.popularItems.first?.title
             return cell
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Most popular"
             cell.button.setTitle("SHOW ALL", for: .normal)
             return cell
+            
         case 2:
+            
+            // why this is never displayed?
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-            
-            // cell.movies = actor.movies
-            
-            // with this I can set the content of collection view here
-            
-            
-            //            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            //
-            //            cell.collectionView.delegate = self as? UICollectionViewDelegate
-            //
-            //                return viewModel.items.count
-            //            }
-            
-            //            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            //                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
-            //                    fatalError("Invalid cell class")
-            //                }
-            //                cell.movieCellPicture.af_setImage(withURL: viewModel.items[indexPath.row].poster)
-            //
-            //                return cell
-            //            }
-            
+            cell.movies = viewModel.popularItems
             return cell
+            
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Now playing"
             cell.button.setTitle("SHOW ALL", for: .normal)
             return cell
+            
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-        
-        // cell.movies = actor.movies
-        
-        // with this I can set the content of collection view here
-        
-        
-        //            func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //
-        //            cell.collectionView.delegate = self as? UICollectionViewDelegate
-        //
-        //                return viewModel.items.count
-        //            }
-        
-        //            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
-        //                    fatalError("Invalid cell class")
-        //                }
-        //                cell.movieCellPicture.af_setImage(withURL: viewModel.items[indexPath.row].poster)
-        //
-        //                return cell
-        //            }
-        
+            cell.movies = viewModel.nowPlayingItems
             return cell
+            
         default:
             return UITableViewCell()            
+        }
     }
-}
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        switch(indexPath.row) {
+            
+        case 0:
+            return 250
+        case 1:
+            return 70
+        case 2:
+            return 200
+        case 3:
+            return 70
+        case 4:
+            return 200
+            
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
     
     // tap to Movie detail - doesnt work
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" ,
+            let nextScene = segue.destination as? MovieDetailVC ,
+            let indexPath = self.overviewTable.indexPathForSelectedRow {
+            let selectedMovie = viewModel.popularItems.first
+            nextScene.currentMovie = selectedMovie
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
+    
+ /*
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetail", sender: nil)
+        
+    }
+ */
 }
 
 
 
-//extension OverviewViewController: MovieListViewModelDelegate {
-//    func viewModelItemsUpdated(items: [MovieListItem]) {
-//        tableView.reloadData()
-//    }
-//    
-//    func viewModelChangedState(state: MovieListViewModel.State) {
-//        print(state)
-//        
+extension OverviewViewController: MovieListViewModelDelegate {
+    func viewModelItemsUpdated(items: [MovieListItem]) {
+        overviewTable.reloadData()
+    }
+
+    func viewModelChangedState(state: MovieListViewModel.State) {
+        print(state)
+        
 //        activityIndicator.isHidden = state != .loading
 //        if !activityIndicator.isHidden {
 //            activityIndicator.startAnimating()
@@ -159,6 +165,6 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
 //        if state != .loading {
 //            tableView.refreshControl?.endRefreshing()
 //        }
-//    }
-//}
+    }
+}
 
