@@ -8,22 +8,18 @@
 
 import Foundation
 
-protocol MovieSearchListItem {
-    var name: String { get }
-    var id: Int { get }
-//    var year: String { get }
-    var poster: URL { get }
-}
-
-struct MovieSearchStub: MovieSearchListItem {
-    var name: String
-    var id: Int
-//    var year: String
-    var poster: URL
-}
+//struct MovieStub: MovieListItem {
+//    var title: String
+//    var id: Int
+//    var genres: [String]
+//    var description: String
+//    var releaseDate: String
+//    var score: String
+//    var poster: URL?
+//}
 
 protocol MovieSearchViewModelDelegate: class {
-    func viewModelItemsUpdated(items: [MovieSearchListItem])
+    func viewModelItemsUpdated(items: [MovieListItem])
     func viewModelChangedState(state: MovieSearchViewModel.State)
 }
 
@@ -37,7 +33,8 @@ class MovieSearchViewModel {
     
     let movieSource: MovieSource
     
-    var items: [MovieSearchListItem] = []
+    var searchInput = ""
+    var items: [MovieListItem] = []
     var state: State = .empty {
         didSet {
             if state != oldValue {
@@ -60,22 +57,21 @@ class MovieSearchViewModel {
         }
         state = .loading
         
-        // call is invalid failure(Alamofire.AFError.responseValidationFailed(Alamofire.AFError.ResponseValidationFailureReason.unacceptableStatusCode(422) (Unproccessable entity))
-        
-        self.movieSource.searchMovie(string: "American Beauty") { result in
+        self.movieSource.searchMovie(string: searchInput) { result in
             print(result)
             if let value = result.value {
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeStyle = .none
-                dateFormatter.dateStyle = .medium
-                
                 self.items = value.map {
-                    MovieSearchStub(
-                        name: $0.name,
+                    
+                    let separatedYear = ($0.releaseDate!).components(separatedBy: "-").first
+                    
+                    return MovieStub(
+                        title: $0.title,
                         id: $0.id,
-//                        year: dateFormatter.string(from: $0.year!),
-                        poster: $0.url(size: .w185)
-                    )
+                        genres: GenreManager.shared.map(ids: $0.genreIds).map { $0.name },
+                        description: $0.overview,
+                        releaseDate: separatedYear,
+                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %",
+                        poster: $0.url(size: .w185))
                 }
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)

@@ -11,8 +11,9 @@ import Foundation
 protocol MovieFullItem {
     var title: String { get }
     var description: String { get }
-    var poster: URL { get }
-    var stars: [String] { get }
+    var poster: URL? { get }
+    var stars: String { get }
+    var creators: String { get }
     var trailers: [String] { get }
     var reviews: [String] { get }
 }
@@ -20,8 +21,9 @@ protocol MovieFullItem {
 struct MovieFull: MovieFullItem {
     var title: String
     var description: String
-    var poster: URL
-    var stars: [String]
+    var poster: URL?
+    var stars: String
+    var creators: String
     var trailers: [String]
     var reviews: [String]
 }
@@ -76,7 +78,8 @@ class MovieDetailViewModel {
                         title: value.title,
                         description: value.overview,
                         poster: value.url(size: .w185),
-                        stars: value.actors.map { $0.name },
+                        stars: value.filterActors(),
+                        creators: value.filterCreators(),
                         trailers: [""],
                         reviews: [""])
 //                      trailers: value.videos[indexPath.row],

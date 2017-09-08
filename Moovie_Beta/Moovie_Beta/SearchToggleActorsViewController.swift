@@ -8,13 +8,14 @@
 
 import UIKit
 
-class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 
     @IBOutlet weak var searchActors: UITableView!
+    @IBOutlet weak var searchInput: UISearchBar!
     
     var viewModel: ActorSearchViewModel!
     
@@ -24,6 +25,8 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
             searchActors.dataSource = self
         
         searchActors.register(UINib(nibName: "actorItemCell", bundle: nil), forCellReuseIdentifier: "actorResultCell")
+        
+        searchInput.delegate = self
         
         viewModel = ActorSearchViewModel()
         viewModel.delegate = self as? ActorSearchViewModelDelegate
@@ -53,23 +56,41 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
         
         }
         
-        cell.actorPicture.af_setImage(withURL: viewModel.items[indexPath.row].picture)
+        if let picture = viewModel.items[indexPath.row].picture {
+            cell.actorPicture.af_setImage(withURL: picture)
+        }
         cell.actorName.text = viewModel.items[indexPath.row].name
         
         return cell
     }
-    
-    // here goes performe segue if clisked with item[indexPatr.row] parametre
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.searchInput = searchBar.text ?? ""
+        viewModel.reloadActors()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" ,
+            let nextScene = segue.destination as? ActorDetailVC,
+            let indexPath = self.searchActors.indexPathForSelectedRow {
+            let selectedActor = viewModel.items[indexPath.row]
+            nextScene.currentActor = selectedActor as! ActorListItem
+        }
     }
 
 }
 
 extension SearchToggleActorsViewController: ActorSearchViewModelDelegate {
-    func viewModelItemsUpdated(items: [ActorSearchListItem]) {
+    func viewModelItemsUpdated(items: [ActorListItem]) {
         searchActors.reloadData()
     }
     

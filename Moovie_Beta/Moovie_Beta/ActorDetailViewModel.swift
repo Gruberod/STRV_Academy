@@ -12,6 +12,7 @@ protocol ActorDetailItem {
     var name: String { get }
     var bio: String { get }
     var birthday: String { get }
+    var picture: URL? { get }
     var placeOfBirth: String { get }
     var acting: [String] { get }
 }
@@ -20,6 +21,7 @@ struct ActorFull {
     var name: String
     var bio: String
     var birthday: String
+    var picture: URL?
     var placeOfBirth: String
     var acting: [String]
 }
@@ -57,10 +59,6 @@ class ActorDetailViewModel {
     }
     
     func getActorDetail(id: Int) {
-        if state == .loading {
-            return
-        }
-        state = .loading
         
         self.actorSource.fetchActorDetail(id: id) { [weak self] result in
             
@@ -73,14 +71,11 @@ class ActorDetailViewModel {
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
                 
-
-                
-                
-                
                 self.actor = ActorFull(
                     name: value.name,
                     bio: value.bio,
                     birthday: dateFormatter.string(from: value.birthday),
+                    picture: value.url(size: .w185),
                     placeOfBirth: value.placeOfBirth,
                     acting: [""])
                 

@@ -55,7 +55,8 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as? PictureWithTitleCollectionViewCell else {
             fatalError("Invalid cell class")
         }
-        cell.image.af_setImage(withURL: viewModel.items[indexPath.row].picture)
+        if let picture = viewModel.items[indexPath.row].picture {
+        cell.image.af_setImage(withURL: picture)}
         cell.imageTitle.text = viewModel.items[indexPath.row].name
         cell.imageSubtitle.text = "movies featured..."
 
@@ -65,6 +66,17 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" ,
+            let nextScene = segue.destination as? ActorDetailVC ,
+            var indexPath = self.actorCOllectionView.indexPathsForSelectedItems?.first {
+            let selectedActor = viewModel.items[indexPath.row]
+            nextScene.currentActor = selectedActor
+        }
+    }
+
 }
 
 extension ActorsOverviewVC: ActorPopularViewModelDelegate {

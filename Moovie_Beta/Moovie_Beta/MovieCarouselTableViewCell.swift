@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol CarouselDelegate: class {
+    func didSelectMovie(movie: MovieListItem)
+}
+
 class MovieCarouselTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    weak var delegate: CarouselDelegate?
     
     var movies = [MovieListItem]() {
         didSet {
@@ -32,7 +38,7 @@ class MovieCarouselTableViewCell: UITableViewCell {
 
 }
 
-extension MovieCarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieCarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -59,6 +65,12 @@ extension MovieCarouselTableViewCell: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 155, height: 198)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        
+        delegate?.didSelectMovie(movie: movie)
     }
     
 }

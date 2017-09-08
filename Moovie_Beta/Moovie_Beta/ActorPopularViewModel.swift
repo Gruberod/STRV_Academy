@@ -10,12 +10,14 @@ import Foundation
 
 protocol ActorListItem {
     var name: String { get }
-    var picture: URL { get }
+    var id: Int { get }
+    var picture: URL? { get }
 }
 
 struct ActorPopularStub: ActorListItem {
     var name: String
-    var picture: URL
+    var id: Int
+    var picture: URL?
 }
 
 protocol ActorPopularViewModelDelegate: class {
@@ -51,16 +53,13 @@ class ActorPopularViewModel {
     }
     
     func reloadActors() {
-        if state == .loading {
-            return
-        }
-        state = .loading
         
         self.actorSource.fetchPopular() { result in
             if let value = result.value {
                 self.items = value.map {
                     ActorPopularStub(
                         name: $0.name,
+                        id: $0.id,
                         picture: $0.url(size: .w185))
                 }
                 print(value)

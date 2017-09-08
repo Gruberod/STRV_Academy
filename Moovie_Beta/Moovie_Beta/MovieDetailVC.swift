@@ -12,6 +12,9 @@ import AlamofireImage
 class MovieDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var overviewTable: UITableView!
+    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var headerScore: UILabel!
     
     var viewModel: MovieDetailViewModel!
     var currentMovie: MovieListItem!
@@ -21,9 +24,6 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         
         overviewTable.delegate = self
         overviewTable.dataSource = self
-        
-        let moviePictureNib = UINib(nibName: "OverviewMainPictureTableViewCell", bundle: nil)
-        overviewTable.register(moviePictureNib, forCellReuseIdentifier: "mainPicture")
         
         let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
         overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
@@ -54,7 +54,9 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 }
 
@@ -66,7 +68,7 @@ extension MovieDetailVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 9
+            return 8
         } else {
             return 2
         }
@@ -75,41 +77,36 @@ extension MovieDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
-            cell.mainPicture.af_setImage(withURL: currentMovie.poster)
-            cell.mainMovieLabel.text = viewModel.movie?.title
-            return cell
-        case (0,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
             cell.movieDescription.text = viewModel.movie?.description
             return cell
-        case (0,2):
+        case (0,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "CREATOR"
-            cell.additionalInfoText.text = "Drew Goddard, Steven S. DeKnight"
+            cell.additionalInfoText.text = viewModel.movie?.creators
             return cell
-        case (0,3):
+        case (0,2):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Stars"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (0,4):
+        case (0,3):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             return cell
-        case (0,5):
+        case (0,4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Trailers"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (0,6):
+        case (0,5):
             let cell = tableView.dequeueReusableCell(withIdentifier: "video") as! VideoTableViewCell
             return cell
-        case (0,7):
+        case (0,6):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Gallery"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (0,8):
+        case (0,7):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             return cell
         case (1,0):
@@ -165,6 +162,9 @@ extension MovieDetailVC: UITableViewDataSource {
 extension MovieDetailVC: MovieDetailViewModelDelegate {
     func viewModelItemsUpdated() {
         overviewTable.reloadData()
+        headerImage.af_setImage(withURL: (currentMovie.poster)!)
+        headerTitle.text = currentMovie.title
+        headerScore.text = currentMovie.score
     }
     
     func viewModelChangedState(state: MovieDetailViewModel.State) {

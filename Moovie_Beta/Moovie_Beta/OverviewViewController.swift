@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class OverviewViewController: UIViewController {
+class OverviewViewController: UIViewController, CarouselDelegate {
 
     @IBOutlet weak var overviewTable: UITableView!
     
@@ -39,10 +39,8 @@ class OverviewViewController: UIViewController {
         viewModel.delegate = self as? MovieListViewModelDelegate
 //        viewModelChangedState(state: viewModel.state)
         
-
         viewModel.reloadNowPlayingMovies()
-        
-                viewModel.reloadMostPopularMovies()
+        viewModel.reloadMostPopularMovies()
 
     }
 
@@ -81,11 +79,9 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 2:
-            
-            // why this is never displayed?
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             cell.movies = viewModel.popularItems
+            cell.delegate = self
             return cell
             
         case 3:
@@ -97,6 +93,7 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
             cell.movies = viewModel.nowPlayingItems
+            cell.delegate = self
             return cell
             
         default:
@@ -123,28 +120,22 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             return UITableViewAutomaticDimension
         }
     }
-    
-    // tap to Movie detail - doesnt work
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" ,
-            let nextScene = segue.destination as? MovieDetailVC ,
-            let indexPath = self.overviewTable.indexPathForSelectedRow {
-            let selectedMovie = viewModel.popularItems.first
-            nextScene.currentMovie = selectedMovie
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetail", sender: nil)
+
+    // NEKLIKA!
+    func didSelectMovie(movie: MovieListItem) {
+        print(movie)
+        
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                let nextScene = segue.destination as? MovieDetailVC
+                nextScene?.currentMovie = movie
+            }
     }
     
- /*
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)
-        
     }
- */
-}
 
+}
 
 
 extension OverviewViewController: MovieListViewModelDelegate {

@@ -51,11 +51,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as? searchItemCellTableViewCell else {
                 fatalError("Invalid cell class")
             }
-            
-            cell.nameMovieCell.text = viewModel.items[indexPath.row].name
-//            cell.yearMovieCell.text = viewModel.items[indexPath.row].year
-            cell.imageMovieCell.af_setImage(withURL: viewModel.items[indexPath.row].poster)
-            cell.ratingMovieCell.image = #imageLiteral(resourceName: "rating")
+
+            cell.nameMovieCell.text = viewModel.items[indexPath.row].title
+            cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
+            if let poster = viewModel.items[indexPath.row].poster {
+                cell.imageMovieCell.af_setImage(withURL: poster)
+            }
+            cell.ratingMovieCell.text = "\(viewModel.items[indexPath.row].score) %"
             
             return cell
         }
@@ -70,7 +72,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 }
 
 extension SearchViewController: MovieSearchViewModelDelegate {
-    func viewModelItemsUpdated(items: [MovieSearchListItem]) {
+    func viewModelItemsUpdated(items: [MovieListItem]) {
         searchResults.reloadData()
     }
     

@@ -8,18 +8,14 @@
 
 import Foundation
 
-protocol ActorSearchListItem {
-    var name: String { get }
-    var picture: URL { get }
-}
-
-struct ActorSearchStub: ActorSearchListItem {
+struct ActorSearchStub: ActorListItem {
     var name: String
-    var picture: URL
+    var id: Int
+    var picture: URL?
 }
 
 protocol ActorSearchViewModelDelegate: class {
-    func viewModelItemsUpdated(items: [ActorSearchListItem])
+    func viewModelItemsUpdated(items: [ActorListItem])
     func viewModelChangedState(state: ActorSearchViewModel.State)
 }
 
@@ -33,7 +29,8 @@ class ActorSearchViewModel {
     
     let actorSource: ActorSource
     
-    var items: [ActorSearchListItem] = []
+    var searchInput = ""
+    var items: [ActorListItem] = []
     var state: State = .empty {
         didSet {
             if state != oldValue {
@@ -51,17 +48,14 @@ class ActorSearchViewModel {
     }
     
     func reloadActors() {
-        if state == .loading {
-            return
-        }
-        state = .loading
         
-        self.actorSource.searchActor(string: "jon Doe") { result in
+        self.actorSource.searchActor(string: searchInput) { result in
             print(result)
             if let value = result.value {
                 self.items = value.map {
                     ActorSearchStub(
                         name: $0.name,
+                        id: $0.id,
                         picture: $0.url(size: .w185)
                     )
                 }

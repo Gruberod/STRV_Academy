@@ -43,7 +43,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzp-UK-eh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1874" y="126"/>
+            <point key="canvasLocation" x="-2825" y="138"/>
         </scene>
         <!--Movies-->
         <scene sceneID="5W0-JB-sSw">
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dam-tg-ka9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="128"/>
+            <point key="canvasLocation" x="-1844" y="137"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="rWG-pq-7ki">
@@ -199,14 +199,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sav-HN-hFv">
-                                <rect key="frame" x="24" y="120" width="327" height="547"/>
+                                <rect key="frame" x="24" y="164" width="327" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <searchBar contentMode="left" searchBarStyle="minimal" placeholder="Search movie or actor..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjm-w6-EKl">
-                                <rect key="frame" x="16" y="20" width="227" height="44"/>
+                            <searchBar contentMode="left" barStyle="black" searchBarStyle="minimal" placeholder="Search movie..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjm-w6-EKl">
+                                <rect key="frame" x="16" y="64" width="227" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -218,7 +219,7 @@
                                 </userDefinedRuntimeAttributes>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sr-F5-lxx">
-                                <rect key="frame" x="243" y="20" width="116" height="44"/>
+                                <rect key="frame" x="243" y="64" width="116" height="44"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
@@ -229,14 +230,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utS-4K-vgd">
-                                <rect key="frame" x="16" y="82" width="66" height="36"/>
+                                <rect key="frame" x="16" y="126" width="66" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Movies">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-Dc-Zi9">
-                                <rect key="frame" x="122" y="82" width="62" height="36"/>
+                                <rect key="frame" x="122" y="126" width="62" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Actors">
                                     <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -271,13 +272,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBarText" destination="bjm-w6-EKl" id="roU-yc-lGi"/>
                         <outlet property="searchToogle" destination="sav-HN-hFv" id="lkH-TK-tFe"/>
                         <segue destination="6uk-bA-5Wy" kind="show" identifier="showDetail" id="MD8-37-n7k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKf-aR-LTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="127"/>
+            <point key="canvasLocation" x="-674" y="136"/>
         </scene>
         <!--FilterVC-->
         <scene sceneID="Otd-Po-UHp">
@@ -370,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Dy-yW-Ib9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="-603"/>
+            <point key="canvasLocation" x="-1884" y="-589"/>
         </scene>
         <!--Movie DetailVC-->
         <scene sceneID="lPd-DR-dso">
@@ -384,26 +386,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNS-XH-f3y" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="333"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-5k-aD7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOl-78-Ocm">
+                                        <rect key="frame" x="24" y="214" width="201" height="46"/>
+                                        <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="46"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF1-PS-eY7">
+                                        <rect key="frame" x="307" y="214" width="44" height="46"/>
+                                        <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ta9-5k-aD7" firstAttribute="top" secondItem="QNS-XH-f3y" secondAttribute="top" id="16L-tx-EJ2"/>
+                                    <constraint firstAttribute="trailing" secondItem="ta9-5k-aD7" secondAttribute="trailing" id="AqY-IK-jsk"/>
+                                    <constraint firstAttribute="bottom" secondItem="ta9-5k-aD7" secondAttribute="bottom" id="EZF-HJ-GHq"/>
+                                    <constraint firstItem="ta9-5k-aD7" firstAttribute="leading" secondItem="QNS-XH-f3y" secondAttribute="leading" id="Jdy-mT-755"/>
+                                    <constraint firstAttribute="height" constant="333" id="RcA-wz-qyy"/>
+                                    <constraint firstAttribute="bottom" secondItem="rOl-78-Ocm" secondAttribute="bottom" constant="73" id="VLl-nl-sbq"/>
+                                    <constraint firstItem="wF1-PS-eY7" firstAttribute="bottom" secondItem="rOl-78-Ocm" secondAttribute="bottom" id="VjJ-RB-sYc"/>
+                                    <constraint firstItem="rOl-78-Ocm" firstAttribute="leading" secondItem="QNS-XH-f3y" secondAttribute="leading" constant="24" id="bNg-1b-fgT"/>
+                                    <constraint firstAttribute="trailing" secondItem="rOl-78-Ocm" secondAttribute="trailing" constant="150" id="iEb-2d-hAk"/>
+                                    <constraint firstItem="wF1-PS-eY7" firstAttribute="top" secondItem="rOl-78-Ocm" secondAttribute="top" id="oiD-Ja-pcm"/>
+                                    <constraint firstAttribute="trailing" secondItem="wF1-PS-eY7" secondAttribute="trailing" constant="24" id="y09-jU-UsQ"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2tU-kh-B48">
-                                <rect key="frame" x="24" y="20" width="327" height="647"/>
+                                <rect key="frame" x="24" y="353" width="327" height="314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QNS-XH-f3y" firstAttribute="top" secondItem="vj9-Lj-Auz" secondAttribute="bottom" id="1Re-Ug-K9p"/>
+                            <constraint firstAttribute="trailing" secondItem="QNS-XH-f3y" secondAttribute="trailing" id="B1Q-ot-5nt"/>
                             <constraint firstAttribute="trailing" secondItem="2tU-kh-B48" secondAttribute="trailing" constant="24" id="Blq-9n-Azj"/>
+                            <constraint firstItem="2tU-kh-B48" firstAttribute="top" secondItem="QNS-XH-f3y" secondAttribute="bottom" id="Egh-hr-IfW"/>
                             <constraint firstItem="2tU-kh-B48" firstAttribute="leading" secondItem="XQs-8h-Wv4" secondAttribute="leading" constant="24" id="ZfC-ch-ahL"/>
-                            <constraint firstItem="2tU-kh-B48" firstAttribute="top" secondItem="vj9-Lj-Auz" secondAttribute="bottom" id="qyR-dg-NLN"/>
+                            <constraint firstItem="QNS-XH-f3y" firstAttribute="leading" secondItem="XQs-8h-Wv4" secondAttribute="leading" id="oBC-Ns-t8L"/>
                             <constraint firstAttribute="bottom" secondItem="2tU-kh-B48" secondAttribute="bottom" id="rCQ-4W-1g0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headerImage" destination="ta9-5k-aD7" id="51J-al-Hsd"/>
+                        <outlet property="headerScore" destination="wF1-PS-eY7" id="4Vq-lO-1ao"/>
+                        <outlet property="headerTitle" destination="rOl-78-Ocm" id="gYk-Vp-3xx"/>
                         <outlet property="overviewTable" destination="2tU-kh-B48" id="ga6-lu-Yej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6YB-YB-RwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994.39999999999998" y="-603.14842578710648"/>
+            <point key="canvasLocation" x="-674.39999999999998" y="-603.14842578710648"/>
         </scene>
         <!--Actors OverviewVC-->
         <scene sceneID="QRP-Te-TYO">
@@ -432,6 +474,9 @@
                                 <state key="normal" image="icSearch">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="89h-5B-Eau" kind="show" id="r2v-Gs-NN1"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="viG-Mk-32o">
                                 <rect key="frame" x="16" y="143" width="343" height="475"/>
@@ -510,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFy-F8-GWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-167" y="892"/>
+            <point key="canvasLocation" x="-673" y="1072"/>
         </scene>
         <!--  -->
         <scene sceneID="Pmo-9B-dvI">
@@ -527,8 +572,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4F-Vk-6b8" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reese_image" translatesAutoresizingMaskIntoConstraints="NO" id="7us-JN-mxp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7us-JN-mxp">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="333" id="4vl-ee-1E0"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="ACTRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nx-XH-j4K">
                                         <rect key="frame" x="24" y="203" width="327" height="14"/>
@@ -547,13 +595,13 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1nx-XH-j4K" secondAttribute="trailing" constant="24" id="03f-BV-LFm"/>
                                     <constraint firstAttribute="height" constant="333" id="0xU-mj-urS"/>
-                                    <constraint firstAttribute="trailing" secondItem="7us-JN-mxp" secondAttribute="trailing" id="1cz-xj-aOM"/>
-                                    <constraint firstItem="7us-JN-mxp" firstAttribute="leading" secondItem="J4F-Vk-6b8" secondAttribute="leading" id="8rn-Si-EvZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="7us-JN-mxp" secondAttribute="bottom" id="2HH-33-M3D"/>
                                     <constraint firstItem="4RK-I6-Ydi" firstAttribute="top" secondItem="1nx-XH-j4K" secondAttribute="bottom" constant="10" id="9Vc-6T-1cc"/>
                                     <constraint firstItem="4RK-I6-Ydi" firstAttribute="leading" secondItem="J4F-Vk-6b8" secondAttribute="leading" constant="24" id="BHc-8r-U9w"/>
                                     <constraint firstItem="1nx-XH-j4K" firstAttribute="leading" secondItem="J4F-Vk-6b8" secondAttribute="leading" constant="24" id="DlE-Jk-f7t"/>
-                                    <constraint firstAttribute="bottom" secondItem="7us-JN-mxp" secondAttribute="bottom" id="Eo3-Ju-vBO"/>
-                                    <constraint firstItem="7us-JN-mxp" firstAttribute="top" secondItem="J4F-Vk-6b8" secondAttribute="top" id="ZYY-bF-e9u"/>
+                                    <constraint firstItem="7us-JN-mxp" firstAttribute="top" secondItem="J4F-Vk-6b8" secondAttribute="top" id="S3y-SN-FUU"/>
+                                    <constraint firstAttribute="trailing" secondItem="7us-JN-mxp" secondAttribute="trailing" id="ciQ-tu-D6k"/>
+                                    <constraint firstItem="7us-JN-mxp" firstAttribute="leading" secondItem="J4F-Vk-6b8" secondAttribute="leading" id="ex7-8J-cw2"/>
                                     <constraint firstAttribute="trailing" secondItem="4RK-I6-Ydi" secondAttribute="trailing" constant="100" id="tgb-1t-In4"/>
                                     <constraint firstAttribute="bottom" secondItem="4RK-I6-Ydi" secondAttribute="bottom" constant="14" id="xlu-9g-hrf"/>
                                 </constraints>
@@ -583,12 +631,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actorName" destination="4RK-I6-Ydi" id="ybl-v7-RpK"/>
+                        <outlet property="actorPicture" destination="7us-JN-mxp" id="1UW-7Z-e2t"/>
                         <outlet property="actorTable" destination="AVy-N4-K6h" id="1Mv-YQ-spP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8M-1j-BY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="892"/>
+            <point key="canvasLocation" x="588" y="1072"/>
         </scene>
         <!--Profile-->
         <scene sceneID="gNO-dh-LJK">
@@ -673,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9y3-3c-mlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1874.4000000000001" y="891.90404797601207"/>
+            <point key="canvasLocation" x="-2826" y="1072"/>
         </scene>
         <!--Search Toggle Actors View Controller-->
         <scene sceneID="8m3-Ba-hu7">
@@ -688,18 +737,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ir-7A-ixw">
-                                <rect key="frame" x="24" y="120" width="327" height="547"/>
+                                <rect key="frame" x="24" y="164" width="327" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <searchBar contentMode="left" barStyle="black" searchBarStyle="minimal" placeholder="Search movie or actor..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-z9-waf">
-                                <rect key="frame" x="16" y="20" width="227" height="44"/>
+                            <searchBar contentMode="left" barStyle="black" searchBarStyle="minimal" placeholder="Search actor..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-z9-waf">
+                                <rect key="frame" x="16" y="64" width="227" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bA-3h-cBL">
-                                <rect key="frame" x="243" y="20" width="116" height="44"/>
+                                <rect key="frame" x="243" y="64" width="116" height="44"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
@@ -710,7 +760,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-RU-RvD">
-                                <rect key="frame" x="16" y="82" width="66" height="36"/>
+                                <rect key="frame" x="16" y="126" width="66" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Movies">
                                     <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -720,7 +770,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wx-LU-dS7">
-                                <rect key="frame" x="122" y="82" width="62" height="36"/>
+                                <rect key="frame" x="122" y="126" width="62" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Actors">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -750,11 +800,13 @@
                     </view>
                     <connections>
                         <outlet property="searchActors" destination="4ir-7A-ixw" id="ZJf-IN-JRi"/>
+                        <outlet property="searchInput" destination="hJp-z9-waf" id="0gd-3n-btn"/>
+                        <segue destination="gdv-Uo-Fxl" kind="show" identifier="showDetail" id="4EO-ro-oew"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ds-b7-FHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="729" y="125"/>
+            <point key="canvasLocation" x="278" y="135"/>
         </scene>
         <!--Actors-->
         <scene sceneID="i3i-nU-OHo">
@@ -775,7 +827,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBL-Mm-cs2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994.39999999999998" y="891.90404797601207"/>
+            <point key="canvasLocation" x="-1708" y="1072"/>
         </scene>
     </scenes>
     <resources>
@@ -789,11 +841,11 @@
         <image name="icnMoviesTapbar" width="26" height="23"/>
         <image name="icnProfileTapbar" width="20" height="23"/>
         <image name="profile_image" width="375" height="368"/>
-        <image name="reese_image" width="375" height="368"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="r2v-Gs-NN1"/>
+        <segue reference="4EO-ro-oew"/>
         <segue reference="SG0-ag-ukC"/>
-        <segue reference="z26-7M-RtK"/>
-        <segue reference="MD8-37-n7k"/>
+        <segue reference="LiS-hN-GtM"/>
     </inferredMetricsTieBreakers>
 </document>

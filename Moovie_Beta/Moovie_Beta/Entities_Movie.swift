@@ -26,8 +26,8 @@ struct APIMovieStub: Unboxable {
     let title: String
     let genreIds: [Int]
     let overview: String
-    let releaseDate: Date
-    let poster: String
+    let releaseDate: String?
+    let poster: String?
     
     init(unboxer: Unboxer) throws {
         id = try unboxer.unbox(key: "id")
@@ -35,15 +35,16 @@ struct APIMovieStub: Unboxable {
         title = try unboxer.unbox(key: "title")
         genreIds = try unboxer.unbox(key: "genre_ids")
         overview = try unboxer.unbox(key: "overview")
-        poster = try unboxer.unbox(key: "poster_path")
-        
-        let df = DateFormatter()
-        df.dateFormat = "YYYY-MM-dd"
-        releaseDate = try unboxer.unbox(key: "release_date", formatter: df)
+        poster = unboxer.unbox(key: "poster_path")
+        releaseDate = unboxer.unbox(key: "release_date")
     }
     
-    func url(size: Sizes = .original) -> URL {
-        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)}
+    func url(size: Sizes = .original) -> URL? {
+        guard let poster = poster else {
+            return nil
+        }
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)
+    }
 }
 
 struct APIMovieResults: Unboxable {
@@ -73,6 +74,17 @@ struct APIMovieVideo: Unboxable {
         name = try unboxer.unbox(key: "name")
         site = try unboxer.unbox(key: "site")
         type = try unboxer.unbox(key: "type")
+    }
+}
+
+struct APIMovieCreator: Unboxable {
+    
+    let job: String
+    let name: String
+    
+    init(unboxer: Unboxer) throws {
+        job = try unboxer.unbox(key: "job")
+        name = try unboxer.unbox(key: "name")
     }
 }
 
@@ -121,6 +133,7 @@ struct APIMovieFull: Unboxable {
     let homepage: URL?
     let poster: String?
     let genres: [APIMovieGenre]
+    let creators: [APIMovieCreator]
     let actors: [APIMovieActor]
     let videos: [APIMovieVideo]?
     let reviews: [APIMovieReviews]?
@@ -138,16 +151,91 @@ struct APIMovieFull: Unboxable {
         homepage = unboxer.unbox(key: "homepage")
         genres = try unboxer.unbox(key: "genres")
         actors = try unboxer.unbox(keyPath: "credits.cast")
+        creators = try unboxer.unbox(keyPath: "credits.crew")
         videos = unboxer.unbox(keyPath: "videos.results")
         reviews = unboxer.unbox(keyPath: "reviews.results")
     }
     
-    func url(size: Sizes = .original) -> URL {
-        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster!)}
+    func url(size: Sizes = .original) -> URL? {
+        guard let poster = poster else {
+            return nil
+        }
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)
+    }
+    
+//    func unwrapActors(actors: Array) {
+//        for actor in actors
+//    }
+    
+    // Filter creators and return string of Director and Writers
+    func filterCreators() -> String {
+        var mainCreators: [String] = []
+        for creator in creators {
+            if creator.job == "Director" || creator.job == "Writer" {
+                mainCreators.append(creator.name)
+            }
+        }
+        if mainCreators.isEmpty {
+            return "There isn't any crew added to this movie."
+        } else {
+            return mainCreators.joined(separator: ", ")
+        }
+    }
+
+    func filterActors() -> String {
+        var mainActorsNames: [String] = []
+        var mainActorsCharecters: [String] = []
+        for actor in actors {
+            mainActorsNames.append(actor.name)
+        }
+        if mainActorsNames.isEmpty {
+            return "There isn't any crew added to this movie."
+        } else {
+            return mainActorsNames.joined(separator: ", ")
+        }
+        
+        for actor in actors {
+            mainActorsCharecters.append(actor.character)
+        }
+        if mainActorsCharecters.isEmpty {
+            return "There isn't any crew added to this movie."
+        } else {
+            return mainActorsCharecters.joined(separator: ", ")
+        }
+    }
+
+//    func filterVideos() -> String {
+//        var mainCreators: [String] = []
+//        for creator in creators {
+//            if creator.job == "Director" || creator.job == "Writer" {
+//                mainCreators.append(creator.name)
+//            }
+//        }
+//        if mainCreators.isEmpty {
+//            return "There isn't any crew added to this movie."
+//        } else {
+//            return mainCreators.joined(separator: ", ")
+//        }
+//    }
+    
+//    func filterReviews() -> String {
+//        var mainReviews: [Dictionary] = [] as! [Dictionary]
+//        for review in reviews {
+//            if creator.job == "Director" || creator.job == "Writer" {
+//                mainCreators.append(creator.name)
+//            }
+//        }
+//        if mainReviews.isEmpty {
+//            return "There isn't any crew added to this movie."
+//        } else {
+//            return mainReviews.joined(separator: ", ")
+//        }
+//    }
+    
 }
 
 struct APIMSearch: Unboxable {
-    let results: [APIMovieSearch]
+    let results: [APIMovieStub]
     
     init(unboxer: Unboxer) throws {
         results = try unboxer.unbox(key: "results")
@@ -157,23 +245,21 @@ struct APIMSearch: Unboxable {
 struct APIMovieSearch: Unboxable {
     let name: String
     let id: Int
-    let year: Date?
+    let year: String?
     let poster: String?
     
     init(unboxer: Unboxer) throws {
+        // year as a array separated by "-" and than take first
         name = try unboxer.unbox(key: "original_title")
         id = try unboxer.unbox(key: "id")
-        let df = DateFormatter()
-        df.dateFormat = "YYYY"
-        year = unboxer.unbox(key: "release_date", formatter: df)
+        year = unboxer.unbox(key: "release_date")
         poster = unboxer.unbox(key: "poster_path")
     }
     
-    func url(size: Sizes = .original) -> URL {
-        if (poster != nil) {
-            return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster!)
-        } else {
-            return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent("/d4fbNJf9I1eRZ7S28YbJCyCQgPK.jpg")
+    func url(size: Sizes = .original) -> URL? {
+        guard let poster = poster else {
+            return nil
         }
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)
     }
 }

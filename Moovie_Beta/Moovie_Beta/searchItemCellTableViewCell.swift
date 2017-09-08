@@ -14,7 +14,7 @@ class searchItemCellTableViewCell: UITableViewCell {
     @IBOutlet weak var imageMovieCell: UIImageView!
     @IBOutlet weak var nameMovieCell: UILabel!
     @IBOutlet weak var yearMovieCell: UILabel!
-    @IBOutlet weak var ratingMovieCell: UIImageView!
+    @IBOutlet weak var ratingMovieCell: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
