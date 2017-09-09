@@ -10,49 +10,114 @@ import Foundation
 import Unbox
 import AlamofireImage
 
-struct APIMovieGenre: Unboxable {
+/////////////////////////////////////////////////////////
+// Prepares full movie information for movie detail page
+////////////////////////////////////////////////////////
+struct APIMovieFull: Unboxable {
     let id: Int
-    let name: String
-    
-    init(unboxer: Unboxer) throws {
-        id = try unboxer.unbox(key: "id")
-        name = try unboxer.unbox(key: "name")
-    }
-}
-
-struct APIMovieStub: Unboxable {
-    let id: Int
-    let score: Float
+    let score: Float?
     let title: String
-    let genreIds: [Int]
     let overview: String
-    let releaseDate: String?
+    let releaseDate: Date?
     let poster: String?
+    let genres: [APIMovieGenre]
+    let creators: [APIMovieCreator]
+    let actors: [APIMovieActor]
+//    let pictures: [APIPictureGallery]
+    let videos: [APIMovieVideo]
+    let reviews: [APIMovieReviews]
     
     init(unboxer: Unboxer) throws {
         id = try unboxer.unbox(key: "id")
-        score = try unboxer.unbox(key: "vote_average")
+        score = unboxer.unbox(key: "vote_average")
         title = try unboxer.unbox(key: "title")
-        genreIds = try unboxer.unbox(key: "genre_ids")
         overview = try unboxer.unbox(key: "overview")
         poster = unboxer.unbox(key: "poster_path")
-        releaseDate = unboxer.unbox(key: "release_date")
+        let df = DateFormatter()
+        df.dateFormat = "YYYY-MM-dd"
+        releaseDate = unboxer.unbox(key: "release_date", formatter: df)
+        genres = try unboxer.unbox(key: "genres")
+        actors = try unboxer.unbox(keyPath: "credits.cast")
+        creators = try unboxer.unbox(keyPath: "credits.crew")
+//        pictures = try unboxer.unbox(key: "posters")
+        videos = try unboxer.unbox(keyPath: "videos.results")
+        reviews = try unboxer.unbox(keyPath: "reviews.results")
     }
     
+    // transforms poster link to url
     func url(size: Sizes = .original) -> URL? {
         guard let poster = poster else {
             return nil
         }
         return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)
     }
-}
-
-struct APIMovieResults: Unboxable {
-    let results: [APIMovieStub]
     
-    init(unboxer: Unboxer) throws {
-        results = try unboxer.unbox(key: "results")
+    // Filter creators and return string of Director and Writers
+    func filterCreators() -> String {
+        var mainCreators: [String] = []
+        for creator in creators {
+            if creator.job == "Director" || creator.job == "Writer" {
+                mainCreators.append(creator.name)
+            }
+        }
+        if mainCreators.isEmpty {
+            return "There isn't any crew added to this movie."
+        } else {
+            return mainCreators.joined(separator: ", ")
+        }
     }
+    
+    // Filter actors for the movie with pictures/name/roles
+    func filterActors() -> String {
+        var mainActorsNames: [String] = []
+        var mainActorsCharecters: [String] = []
+        for actor in actors {
+            mainActorsNames.append(actor.name)
+        }
+        if mainActorsNames.isEmpty {
+            return "There isn't any crew added to this movie."
+        } else {
+            return mainActorsNames.joined(separator: ", ")
+        }
+        
+        for actor in actors {
+            mainActorsCharecters.append(actor.character)
+        }
+        if mainActorsCharecters.isEmpty {
+            return "There isn't any crew added to this movie."
+        } else {
+            return mainActorsCharecters.joined(separator: ", ")
+        }
+    }
+    
+    //    func filterVideos() -> String {
+    //        var mainCreators: [String] = []
+    //        for creator in creators {
+    //            if creator.job == "Director" || creator.job == "Writer" {
+    //                mainCreators.append(creator.name)
+    //            }
+    //        }
+    //        if mainCreators.isEmpty {
+    //            return "There isn't any crew added to this movie."
+    //        } else {
+    //            return mainCreators.joined(separator: ", ")
+    //        }
+    //    }
+    
+    //    func filterReviews() -> String {
+    //        var mainReviews: [Dictionary] = [] as! [Dictionary]
+    //        for review in reviews {
+    //            if creator.job == "Director" || creator.job == "Writer" {
+    //                mainCreators.append(creator.name)
+    //            }
+    //        }
+    //        if mainReviews.isEmpty {
+    //            return "There isn't any crew added to this movie."
+    //        } else {
+    //            return mainReviews.joined(separator: ", ")
+    //        }
+    //    }
+    
 }
 
 struct APIMovieVideo: Unboxable {
@@ -88,6 +153,15 @@ struct APIMovieCreator: Unboxable {
     }
 }
 
+struct APIPictureGallery: Unboxable {
+    
+    let picture: String?
+    
+    init(unboxer: Unboxer) throws {
+        picture = unboxer.unbox(key: "file_path")
+    }
+}
+
 struct APIMovieActor: Unboxable {
     
     enum ActorGender: Int, UnboxableEnum {
@@ -99,6 +173,7 @@ struct APIMovieActor: Unboxable {
     let name: String
     let order: Int
     let id: Int
+    let picture: String?
     let gender: ActorGender?
     
     init(unboxer: Unboxer) throws {
@@ -106,6 +181,7 @@ struct APIMovieActor: Unboxable {
         character = try unboxer.unbox(key: "character")
         name = try unboxer.unbox(key: "name")
         order = try unboxer.unbox(key: "order")
+        picture = unboxer.unbox(key: "profile_path")
         gender = unboxer.unbox(key: "gender")
     }
 }
@@ -114,7 +190,7 @@ struct APIMovieReviews: Unboxable {
     let id: String
     let author: String
     let content: String
-
+    
     init(unboxer: Unboxer) throws {
         id = try unboxer.unbox(key: "id")
         author = try unboxer.unbox(key: "author")
@@ -122,38 +198,37 @@ struct APIMovieReviews: Unboxable {
     }
 }
 
-struct APIMovieFull: Unboxable {
+struct APIMovieGenre: Unboxable {
     let id: Int
-    let score: Float?
-    let title: String
-    let overview: String
-    let releaseDate: Date?
-    
-    let budget: Int?
-    let homepage: URL?
-    let poster: String?
-    let genres: [APIMovieGenre]
-    let creators: [APIMovieCreator]
-    let actors: [APIMovieActor]
-    let videos: [APIMovieVideo]?
-    let reviews: [APIMovieReviews]?
+    let name: String
     
     init(unboxer: Unboxer) throws {
         id = try unboxer.unbox(key: "id")
-        score = unboxer.unbox(key: "vote_average")
+        name = try unboxer.unbox(key: "name")
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////
+// Prepares partial movie information for other than detail pages
+/////////////////////////////////////////////////////////////////
+struct APIMovieStub: Unboxable {
+    let id: Int
+    let score: Float
+    let title: String
+    let genreIds: [Int]
+    let overview: String
+    let releaseDate: String?
+    let poster: String?
+    
+    init(unboxer: Unboxer) throws {
+        id = try unboxer.unbox(key: "id")
+        score = try unboxer.unbox(key: "vote_average")
         title = try unboxer.unbox(key: "title")
+        genreIds = try unboxer.unbox(key: "genre_ids")
         overview = try unboxer.unbox(key: "overview")
         poster = unboxer.unbox(key: "poster_path")
-        let df = DateFormatter()
-        df.dateFormat = "YYYY-MM-dd"
-        releaseDate = unboxer.unbox(key: "release_date", formatter: df)
-        budget = unboxer.unbox(key: "budget")
-        homepage = unboxer.unbox(key: "homepage")
-        genres = try unboxer.unbox(key: "genres")
-        actors = try unboxer.unbox(keyPath: "credits.cast")
-        creators = try unboxer.unbox(keyPath: "credits.crew")
-        videos = unboxer.unbox(keyPath: "videos.results")
-        reviews = unboxer.unbox(keyPath: "reviews.results")
+        releaseDate = unboxer.unbox(key: "release_date")
     }
     
     func url(size: Sizes = .original) -> URL? {
@@ -162,78 +237,23 @@ struct APIMovieFull: Unboxable {
         }
         return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)
     }
-    
-//    func unwrapActors(actors: Array) {
-//        for actor in actors
-//    }
-    
-    // Filter creators and return string of Director and Writers
-    func filterCreators() -> String {
-        var mainCreators: [String] = []
-        for creator in creators {
-            if creator.job == "Director" || creator.job == "Writer" {
-                mainCreators.append(creator.name)
-            }
-        }
-        if mainCreators.isEmpty {
-            return "There isn't any crew added to this movie."
-        } else {
-            return mainCreators.joined(separator: ", ")
-        }
-    }
-
-    func filterActors() -> String {
-        var mainActorsNames: [String] = []
-        var mainActorsCharecters: [String] = []
-        for actor in actors {
-            mainActorsNames.append(actor.name)
-        }
-        if mainActorsNames.isEmpty {
-            return "There isn't any crew added to this movie."
-        } else {
-            return mainActorsNames.joined(separator: ", ")
-        }
-        
-        for actor in actors {
-            mainActorsCharecters.append(actor.character)
-        }
-        if mainActorsCharecters.isEmpty {
-            return "There isn't any crew added to this movie."
-        } else {
-            return mainActorsCharecters.joined(separator: ", ")
-        }
-    }
-
-//    func filterVideos() -> String {
-//        var mainCreators: [String] = []
-//        for creator in creators {
-//            if creator.job == "Director" || creator.job == "Writer" {
-//                mainCreators.append(creator.name)
-//            }
-//        }
-//        if mainCreators.isEmpty {
-//            return "There isn't any crew added to this movie."
-//        } else {
-//            return mainCreators.joined(separator: ", ")
-//        }
-//    }
-    
-//    func filterReviews() -> String {
-//        var mainReviews: [Dictionary] = [] as! [Dictionary]
-//        for review in reviews {
-//            if creator.job == "Director" || creator.job == "Writer" {
-//                mainCreators.append(creator.name)
-//            }
-//        }
-//        if mainReviews.isEmpty {
-//            return "There isn't any crew added to this movie."
-//        } else {
-//            return mainReviews.joined(separator: ", ")
-//        }
-//    }
-    
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+// Prepares results for overvie home page with most popular and now playing movies
+///////////////////////////////////////////////////////////////////////////////////
+struct APIMovieResults: Unboxable {
+    let results: [APIMovieStub]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
+
+
+//////////////////////////////////////
+// Prepares results for movies search
+//////////////////////////////////////
 struct APIMSearch: Unboxable {
     let results: [APIMovieStub]
     
@@ -249,7 +269,6 @@ struct APIMovieSearch: Unboxable {
     let poster: String?
     
     init(unboxer: Unboxer) throws {
-        // year as a array separated by "-" and than take first
         name = try unboxer.unbox(key: "original_title")
         id = try unboxer.unbox(key: "id")
         year = unboxer.unbox(key: "release_date")

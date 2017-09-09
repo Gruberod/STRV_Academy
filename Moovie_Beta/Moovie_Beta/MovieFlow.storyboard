@@ -102,7 +102,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" image="icnMoviesTapbar" id="LXE-ai-cfS"/>
-                    <navigationItem key="navigationItem" id="jiv-la-vVZ"/>
+                    <navigationItem key="navigationItem" id="jiv-la-vVZ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ZWa-b4-A9J"/>
+                    </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="overviewTable" destination="uGE-uj-Rib" id="hgV-Tb-YUB"/>
@@ -199,12 +201,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sav-HN-hFv">
-                                <rect key="frame" x="24" y="164" width="327" height="454"/>
+                                <rect key="frame" x="24" y="120" width="327" height="547"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <searchBar contentMode="left" barStyle="black" searchBarStyle="minimal" placeholder="Search movie..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjm-w6-EKl">
-                                <rect key="frame" x="16" y="64" width="227" height="44"/>
+                                <rect key="frame" x="16" y="20" width="227" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -219,7 +221,7 @@
                                 </userDefinedRuntimeAttributes>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sr-F5-lxx">
-                                <rect key="frame" x="243" y="64" width="116" height="44"/>
+                                <rect key="frame" x="243" y="20" width="116" height="44"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
@@ -230,14 +232,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utS-4K-vgd">
-                                <rect key="frame" x="16" y="126" width="66" height="36"/>
+                                <rect key="frame" x="16" y="82" width="66" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Movies">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-Dc-Zi9">
-                                <rect key="frame" x="122" y="126" width="62" height="36"/>
+                                <rect key="frame" x="122" y="82" width="62" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Actors">
                                     <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -390,30 +392,29 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="333"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-5k-aD7">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
+                                        <rect key="frame" x="0.0" y="-21" width="375" height="354"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOl-78-Ocm">
-                                        <rect key="frame" x="24" y="214" width="201" height="46"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOl-78-Ocm">
+                                        <rect key="frame" x="24" y="260" width="201" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="46"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF1-PS-eY7">
-                                        <rect key="frame" x="307" y="214" width="44" height="46"/>
-                                        <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF1-PS-eY7">
+                                        <rect key="frame" x="351" y="260" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ta9-5k-aD7" firstAttribute="top" secondItem="QNS-XH-f3y" secondAttribute="top" id="16L-tx-EJ2"/>
+                                    <constraint firstItem="ta9-5k-aD7" firstAttribute="top" secondItem="QNS-XH-f3y" secondAttribute="top" constant="-21" id="16L-tx-EJ2"/>
                                     <constraint firstAttribute="trailing" secondItem="ta9-5k-aD7" secondAttribute="trailing" id="AqY-IK-jsk"/>
                                     <constraint firstAttribute="bottom" secondItem="ta9-5k-aD7" secondAttribute="bottom" id="EZF-HJ-GHq"/>
                                     <constraint firstItem="ta9-5k-aD7" firstAttribute="leading" secondItem="QNS-XH-f3y" secondAttribute="leading" id="Jdy-mT-755"/>
                                     <constraint firstAttribute="height" constant="333" id="RcA-wz-qyy"/>
                                     <constraint firstAttribute="bottom" secondItem="rOl-78-Ocm" secondAttribute="bottom" constant="73" id="VLl-nl-sbq"/>
-                                    <constraint firstItem="wF1-PS-eY7" firstAttribute="bottom" secondItem="rOl-78-Ocm" secondAttribute="bottom" id="VjJ-RB-sYc"/>
                                     <constraint firstItem="rOl-78-Ocm" firstAttribute="leading" secondItem="QNS-XH-f3y" secondAttribute="leading" constant="24" id="bNg-1b-fgT"/>
                                     <constraint firstAttribute="trailing" secondItem="rOl-78-Ocm" secondAttribute="trailing" constant="150" id="iEb-2d-hAk"/>
                                     <constraint firstItem="wF1-PS-eY7" firstAttribute="top" secondItem="rOl-78-Ocm" secondAttribute="top" id="oiD-Ja-pcm"/>
@@ -637,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8M-1j-BY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="1072"/>
+            <point key="canvasLocation" x="586" y="1072"/>
         </scene>
         <!--Profile-->
         <scene sceneID="gNO-dh-LJK">
@@ -844,8 +845,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="r2v-Gs-NN1"/>
-        <segue reference="4EO-ro-oew"/>
-        <segue reference="SG0-ag-ukC"/>
         <segue reference="LiS-hN-GtM"/>
+        <segue reference="Ixx-xE-ugS"/>
+        <segue reference="4EO-ro-oew"/>
     </inferredMetricsTieBreakers>
 </document>

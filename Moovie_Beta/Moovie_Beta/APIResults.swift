@@ -38,8 +38,6 @@ enum APIResult<T> {
     }
 }
 
-// when result is an array?
-
 extension DataResponse {
     
     func asAPIResult() -> APIResult<Value> {

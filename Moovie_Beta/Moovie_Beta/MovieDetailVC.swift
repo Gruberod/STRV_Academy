@@ -19,6 +19,8 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
     var viewModel: MovieDetailViewModel!
     var currentMovie: MovieListItem!
     
+    var galleryItem: GalleryPictureItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,14 +44,15 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         
         let review = UINib(nibName: "ReviewTableViewCell", bundle: nil)
         overviewTable.register(review, forCellReuseIdentifier: "review")
-        // Do any additional setup after loading the view.
+        
+        let gallery = UINib(nibName: "GalleryTableViewCell", bundle: nil)
+        overviewTable.register(gallery, forCellReuseIdentifier: "galleryCell")
 
         overviewTable.estimatedRowHeight = 155
         
         viewModel = MovieDetailViewModel()
         viewModel.delegate = self
-        viewModel.getMovieDetail(id: currentMovie.id)
-        
+        viewModel.getMovieDetail(id: currentMovie.id)        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +73,12 @@ extension MovieDetailVC: UITableViewDataSource {
         if section == 0 {
             return 8
         } else {
-            return 2
+//            guard let (viewModel.movie?.reviews.count) != nil else {
+//                return 0
+//            }
+//            return (viewModel.movie?.reviews.count)!
+//        }
+        return 2
         }
     }
 
@@ -92,6 +100,7 @@ extension MovieDetailVC: UITableViewDataSource {
             return cell
         case (0,3):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+//            cell.movies = viewModel.movie?.stars
             return cell
         case (0,4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
@@ -107,7 +116,8 @@ extension MovieDetailVC: UITableViewDataSource {
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (0,7):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "galleryCell") as! GalleryTableViewCell
+//            cell.pictures = viewModel.movie?.pictures as! [GalleryPictureItem]
             return cell
         case (1,0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
@@ -116,9 +126,8 @@ extension MovieDetailVC: UITableViewDataSource {
             return cell
         case (1,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell
-            cell.reviewTitle.text = "Great show!"
-            cell.reviewAuthor.text = "pusinka"
-            cell.reviewText.text = "Didn't really have any expectations for Daredevil. After watching the movie as a kid and not overly enjoying it, I think Marvel has done an amazing job now that they have Daredevil back in their control."
+            cell.reviewAuthor.text = viewModel.movie?.reviews.first?.author
+            cell.reviewText.text = viewModel.movie?.reviews.first?.content
             return cell
         default:
             return UITableViewCell()

@@ -9,6 +9,7 @@
 import Foundation
 
 struct ActorSearchStub: ActorListItem {
+    var knownFor: String?
     var name: String
     var id: Int
     var picture: URL?
@@ -54,6 +55,7 @@ class ActorSearchViewModel {
             if let value = result.value {
                 self.items = value.map {
                     ActorSearchStub(
+                        knownFor: nil,
                         name: $0.name,
                         id: $0.id,
                         picture: $0.url(size: .w185)

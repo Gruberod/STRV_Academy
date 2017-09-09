@@ -13,7 +13,6 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-
     @IBOutlet weak var searchActors: UITableView!
     @IBOutlet weak var searchInput: UISearchBar!
     
@@ -31,13 +30,6 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
         viewModel = ActorSearchViewModel()
         viewModel.delegate = self as? ActorSearchViewModelDelegate
         viewModel.reloadActors()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,7 +75,7 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
             let nextScene = segue.destination as? ActorDetailVC,
             let indexPath = self.searchActors.indexPathForSelectedRow {
             let selectedActor = viewModel.items[indexPath.row]
-            nextScene.currentActor = selectedActor as! ActorListItem
+            nextScene.currentActor = selectedActor
         }
     }
 

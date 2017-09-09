@@ -12,20 +12,30 @@ protocol MovieFullItem {
     var title: String { get }
     var description: String { get }
     var poster: URL? { get }
-    var stars: String { get }
+    var stars: [APIMovieActor] { get }
     var creators: String { get }
-    var trailers: [String] { get }
-    var reviews: [String] { get }
+//    var pictures: [APIPictureGallery] { get }
+    var trailers: [APIMovieVideo] { get }
+    var reviews: [APIMovieReviews] { get }
 }
 
 struct MovieFull: MovieFullItem {
     var title: String
     var description: String
     var poster: URL?
-    var stars: String
+    var stars: [APIMovieActor]
     var creators: String
-    var trailers: [String]
-    var reviews: [String]
+//    var pictures: [APIPictureGallery]
+    var trailers: [APIMovieVideo]
+    var reviews: [APIMovieReviews]
+}
+
+protocol GalleryPictureItem {
+    var picture: URL? { get }
+}
+
+struct GalleryItem: GalleryPictureItem {
+    var picture: URL?
 }
 
 protocol MovieDetailViewModelDelegate: class {
@@ -60,7 +70,6 @@ class MovieDetailViewModel {
         self.movieSource = movieSource
     }
     
-
     func getMovieDetail(id: Int) {
         if state == .loading {
             return
@@ -77,14 +86,13 @@ class MovieDetailViewModel {
                 self.movie = MovieFull(
                         title: value.title,
                         description: value.overview,
-                        poster: value.url(size: .w185),
-                        stars: value.filterActors(),
+                        poster: value.url(size: .w500),
+                        stars: value.actors,
                         creators: value.filterCreators(),
-                        trailers: [""],
-                        reviews: [""])
-//                      trailers: value.videos[indexPath.row],
-//                      reviews: value.reviews[indexPath.row]
-//                )
+//                        pictures: value.pictures,
+                        trailers: value.videos,
+                        reviews: value.reviews
+                )
                 
                 self.state = .ready
                 self.delegate?.viewModelChangedState(state: .ready)

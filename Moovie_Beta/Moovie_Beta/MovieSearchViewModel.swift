@@ -8,16 +8,6 @@
 
 import Foundation
 
-//struct MovieStub: MovieListItem {
-//    var title: String
-//    var id: Int
-//    var genres: [String]
-//    var description: String
-//    var releaseDate: String
-//    var score: String
-//    var poster: URL?
-//}
-
 protocol MovieSearchViewModelDelegate: class {
     func viewModelItemsUpdated(items: [MovieListItem])
     func viewModelChangedState(state: MovieSearchViewModel.State)
@@ -58,10 +48,8 @@ class MovieSearchViewModel {
         state = .loading
         
         self.movieSource.searchMovie(string: searchInput) { result in
-            print(result)
             if let value = result.value {
                 self.items = value.map {
-                    
                     let separatedYear = ($0.releaseDate!).components(separatedBy: "-").first
                     
                     return MovieStub(

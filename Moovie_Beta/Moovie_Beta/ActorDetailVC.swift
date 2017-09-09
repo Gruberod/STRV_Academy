@@ -38,6 +38,9 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         
         let carouselHeaderOneliner = UINib(nibName: "carouselHeaderOnelinerTableViewCell", bundle: nil)
         actorTable.register(carouselHeaderOneliner, forCellReuseIdentifier: "carouselHeaderOneliner")
+        
+        let actorActing = UINib(nibName: "ActorActingTableViewCell", bundle: nil)
+        actorTable.register(actorActing, forCellReuseIdentifier: "actorActing")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,10 +51,8 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
-    
         actorTable.rowHeight = UITableViewAutomaticDimension
         actorTable.estimatedRowHeight = 45
-        
     }
 
 }
@@ -85,7 +86,9 @@ extension ActorDetailVC: UITableViewDataSource {
             return cell
         case (4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-// add collection view of movie posters - how to pass collection view information?
+//            let carouselData = viewModel.actor?.movieStub
+//            cell.movies = carouselData
+//            cell.delegate = self as! CarouselDelegate
 
             return cell
         case (5):
@@ -94,6 +97,9 @@ extension ActorDetailVC: UITableViewDataSource {
             cell.showAll.setTitle("", for: .normal)
             return cell
         case (6):
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "actorActing") as! ActorActingTableViewCell
+//            cell.data = viewModel.actor?.acting[indexPath.row]
+//            return cell
             return UITableViewCell()
         default:
             return UITableViewCell()

@@ -18,7 +18,6 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     
     var viewModel: MovieSearchViewModel!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
             searchToogle.delegate = self
@@ -31,13 +30,10 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
         viewModel = MovieSearchViewModel()
         viewModel.delegate = self as? MovieSearchViewModelDelegate
         viewModel.reloadMovies()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,26 +42,24 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
  
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath ) as? searchItemCellTableViewCell else {
-
             return UITableViewCell()
-        
         }
+        
         cell.nameMovieCell.text = viewModel.items[indexPath.row].title
         cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
+        cell.ratingMovieCell.text = viewModel.items[indexPath.row].score
+        
         if let poster = viewModel.items[indexPath.row].poster {
             cell.imageMovieCell.af_setImage(withURL: poster)
         }
-        cell.ratingMovieCell.text = viewModel.items[indexPath.row].score
         
         return cell
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -87,20 +81,9 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
 
     }
 
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" ,
-//            let nextScene = segue.destination as? MovieDetailVC ,
-//            let indexPath = self.searchToogle.indexPathForSelectedRow {
-//            let selectedMovie = viewModel.items[indexPath.row]
-//            nextScene.currentMovie = selectedMovie as! MovieListItem
-//        }
-//    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         viewModel.searchInput = searchBar.text ?? ""
         viewModel.reloadMovies()
-        
     }
 
 }

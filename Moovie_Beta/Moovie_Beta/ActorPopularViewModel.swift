@@ -12,12 +12,14 @@ protocol ActorListItem {
     var name: String { get }
     var id: Int { get }
     var picture: URL? { get }
+    var knownFor: String? { get }
 }
 
 struct ActorPopularStub: ActorListItem {
     var name: String
     var id: Int
     var picture: URL?
+    var knownFor: String?
 }
 
 protocol ActorPopularViewModelDelegate: class {
@@ -56,13 +58,16 @@ class ActorPopularViewModel {
         
         self.actorSource.fetchPopular() { result in
             if let value = result.value {
+
                 self.items = value.map {
                     ActorPopularStub(
                         name: $0.name,
                         id: $0.id,
-                        picture: $0.url(size: .w185))
+                        picture: $0.url(size: .w185),
+                        knownFor: $0.filterMoviesKnownFor()
+                    )
                 }
-                print(value)
+
                 self.state = self.items.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.items)
                 

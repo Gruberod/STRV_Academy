@@ -14,7 +14,8 @@ protocol ActorDetailItem {
     var birthday: String { get }
     var picture: URL? { get }
     var placeOfBirth: String { get }
-    var acting: [String] { get }
+    var acting: [APIActorActing] { get }
+    var knownFor: [APIActorKnownFor] { get }
 }
 
 struct ActorFull {
@@ -23,7 +24,9 @@ struct ActorFull {
     var birthday: String
     var picture: URL?
     var placeOfBirth: String
-    var acting: [String]
+    var acting: [APIActorActing]
+    var knownFor: [APIActorKnownFor]
+    var movieStub: MovieStub
 }
 
 protocol ActorDetailViewModelDelegate: class {
@@ -75,9 +78,12 @@ class ActorDetailViewModel {
                     name: value.name,
                     bio: value.bio,
                     birthday: dateFormatter.string(from: value.birthday),
-                    picture: value.url(size: .w185),
+                    picture: value.url(size: .w500),
                     placeOfBirth: value.placeOfBirth,
-                    acting: [""])
+                    acting: value.acting,
+                    knownFor: value.knownFor,
+                    movieStub: value.makeMovieStub(data: value.knownFor.first!)
+                )
                 
                 self.state = .ready
                 self.delegate?.viewModelItemsUpdated()

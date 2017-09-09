@@ -31,13 +31,11 @@ class ActorsOverviewVC: UIViewController {
         //    refreshControl.addTarget(self, action: #selector(ActorsOverview.reloadAction), for: .valueChanged)
         //
         //    tableView.refreshControl = refreshControl
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-
     }
 }
 
@@ -58,7 +56,7 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
         if let picture = viewModel.items[indexPath.row].picture {
         cell.image.af_setImage(withURL: picture)}
         cell.imageTitle.text = viewModel.items[indexPath.row].name
-        cell.imageSubtitle.text = "movies featured..."
+        cell.imageSubtitle.text = viewModel.items[indexPath.row].knownFor
 
         return cell
     }

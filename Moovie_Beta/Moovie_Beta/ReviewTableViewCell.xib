@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,38 +27,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="408" height="213.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJV-qu-Bhb">
-                        <rect key="frame" x="8" y="8" width="39" height="18"/>
-                        <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osy-Ye-Oxx">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osy-Ye-Oxx">
                         <rect key="frame" x="8" y="189.5" width="392" height="16"/>
                         <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
                         <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-Tn-Dzp">
-                        <rect key="frame" x="8" y="28" width="392" height="139.5"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiW-ts-Or3" userLabel="Review Author">
-                        <rect key="frame" x="368" y="8" width="32" height="15"/>
-                        <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="8" y="8" width="39" height="171.5"/>
+                        <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="iiW-ts-Or3" secondAttribute="trailing" constant="8" id="7Ub-QI-RaF"/>
-                    <constraint firstItem="uJV-qu-Bhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9YX-Iy-xLo"/>
-                    <constraint firstItem="iiW-ts-Or3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="AuD-3v-hGp"/>
-                    <constraint firstItem="Osy-Ye-Oxx" firstAttribute="top" secondItem="6Ec-Tn-Dzp" secondAttribute="bottom" constant="22" id="CIU-FQ-v3e"/>
-                    <constraint firstItem="6Ec-Tn-Dzp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ImD-Cd-gDG"/>
+                    <constraint firstItem="iiW-ts-Or3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AKu-hE-Met"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Osy-Ye-Oxx" secondAttribute="trailing" id="OAi-Uh-vvi"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="6Ec-Tn-Dzp" secondAttribute="trailing" id="jhj-tj-6SU"/>
-                    <constraint firstItem="uJV-qu-Bhb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="qsb-2y-baT"/>
-                    <constraint firstItem="6Ec-Tn-Dzp" firstAttribute="top" secondItem="uJV-qu-Bhb" secondAttribute="bottom" constant="2" id="sVz-Bf-lTn"/>
+                    <constraint firstItem="Osy-Ye-Oxx" firstAttribute="top" secondItem="iiW-ts-Or3" secondAttribute="bottom" constant="10" id="pWJ-44-xH2"/>
+                    <constraint firstItem="iiW-ts-Or3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="svL-tP-1vh"/>
                     <constraint firstItem="Osy-Ye-Oxx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="uTc-gc-QnG"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Osy-Ye-Oxx" secondAttribute="bottom" id="y3n-Oi-rsk"/>
                 </constraints>
@@ -66,9 +52,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="reviewAuthor" destination="iiW-ts-Or3" id="SA4-e0-duh"/>
-                <outlet property="reviewRating" destination="6Ec-Tn-Dzp" id="j5Z-fp-lwZ"/>
                 <outlet property="reviewText" destination="Osy-Ye-Oxx" id="hjO-oh-ye3"/>
-                <outlet property="reviewTitle" destination="uJV-qu-Bhb" id="9ho-p5-5EP"/>
             </connections>
             <point key="canvasLocation" x="78" y="139"/>
         </tableViewCell>

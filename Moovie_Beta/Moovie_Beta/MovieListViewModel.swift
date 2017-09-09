@@ -9,9 +9,6 @@
 import Foundation
 import AlamofireImage
 
-
-// how to get full movie detail?
-
 protocol MovieListItem {
     var title: String { get }
     var id: Int { get }
@@ -66,14 +63,13 @@ class MovieListViewModel {
     }
     
     func reloadNowPlayingMovies() {
-// var page which keeps the number - when scrollViewDidEndDragig i++, append to previous array of results
+// var page which keeps the number - when scrollViewDidEndDragig i++, append to previous array of results?
         
         self.movieSource.fetchNowPlaying() { result in
             if let value = result.value {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
-                
                 
                 self.nowPlayingItems = value.map {
                     let separatedYear = ($0.releaseDate!).components(separatedBy: "-").first
@@ -105,8 +101,6 @@ class MovieListViewModel {
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
                 
-                print ("Most popular \(result)")
-                
                 self.popularItems = value.map {
                     let separatedYear = ($0.releaseDate!).components(separatedBy: "-").first
                     
@@ -119,7 +113,7 @@ class MovieListViewModel {
                         score: $0.score == 0 ? "" : "\(Int($0.score*10)) %",
                         poster: $0.url(size: .w185))
                 }
-                print(value)
+
                 self.state = self.popularItems.isEmpty ? .empty : .ready
                 self.delegate?.viewModelItemsUpdated(items: self.popularItems)
                 

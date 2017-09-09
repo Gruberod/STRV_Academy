@@ -5,7 +5,9 @@
 //  Created by Gruberova, Daniela on 06/08/2017.
 //  Copyright © 2017 Gruberova, Daniela. All rights reserved.
 //
-
+////////////////////////////////////////////////////
+//Prepared for displaying recent rearches, not used
+////////////////////////////////////////////////////
 import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -28,41 +30,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         viewModel = MovieSearchViewModel()
         viewModel.delegate = self as? MovieSearchViewModelDelegate
         viewModel.reloadMovies()
-
-                // Do any additional setup after loading the view.
-            }
+    }
         
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
         
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.items.count
+    }
         
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return viewModel.items.count
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as? searchItemCellTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as? searchItemCellTableViewCell else {
                 fatalError("Invalid cell class")
-            }
-
-            cell.nameMovieCell.text = viewModel.items[indexPath.row].title
-            cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
-            if let poster = viewModel.items[indexPath.row].poster {
-                cell.imageMovieCell.af_setImage(withURL: poster)
-            }
-            cell.ratingMovieCell.text = "\(viewModel.items[indexPath.row].score) %"
-            
-            return cell
         }
-    
-        // here goes performe segue if clisked with item[indexPatr.row] parametre
+
+        cell.nameMovieCell.text = viewModel.items[indexPath.row].title
+        cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
+        
+        if let poster = viewModel.items[indexPath.row].poster {
+            cell.imageMovieCell.af_setImage(withURL: poster)
+        }
+        cell.ratingMovieCell.text = "\(viewModel.items[indexPath.row].score) %"
+        
+        return cell
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

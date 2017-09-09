@@ -15,6 +15,8 @@ class OverviewViewController: UIViewController, CarouselDelegate {
     
     var viewModel: MovieListViewModel!
     
+    var movie: MovieListItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overviewTable.delegate = self
@@ -29,25 +31,24 @@ class OverviewViewController: UIViewController, CarouselDelegate {
         let mainMovieNib = UINib(nibName: "OverviewMainPictureTableViewCell", bundle: nil)
         overviewTable.register(mainMovieNib, forCellReuseIdentifier: "mainPicture")
 
-        
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(OverviewViewController.reloadAction), for: .valueChanged)
-//        
-//        tableView.refreshControl = refreshControl
-//        
         viewModel = MovieListViewModel()
         viewModel.delegate = self as? MovieListViewModelDelegate
-//        viewModelChangedState(state: viewModel.state)
         
         viewModel.reloadNowPlayingMovies()
         viewModel.reloadMostPopularMovies()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         overviewTable.estimatedRowHeight = 155
+    }
+    
+    func didSelectMovie(movie: MovieListItem) {
+        self.movie = movie
+        
+        performSegue(withIdentifier: "showDetail", sender: nil)
+
     }
     
 }
@@ -68,6 +69,9 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
+            
+            // If I try to load picture from viewmodel it crashes - delay?
+            
             cell.mainPicture.image = #imageLiteral(resourceName: "image")
             cell.mainMovieLabel.text = viewModel.popularItems.first?.title
             return cell
@@ -121,20 +125,10 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    // NEKLIKA!
-    func didSelectMovie(movie: MovieListItem) {
-        print(movie)
-        
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                let nextScene = segue.destination as? MovieDetailVC
-                nextScene?.currentMovie = movie
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextScene = segue.destination as? MovieDetailVC
+        nextScene?.currentMovie = movie
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetail", sender: nil)
-    }
-
 }
 
 
@@ -145,17 +139,6 @@ extension OverviewViewController: MovieListViewModelDelegate {
 
     func viewModelChangedState(state: MovieListViewModel.State) {
         print(state)
-        
-//        activityIndicator.isHidden = state != .loading
-//        if !activityIndicator.isHidden {
-//            activityIndicator.startAnimating()
-//        }
-//        
-//        emptyOverlayView.isHidden = state != .empty
-//        
-//        if state != .loading {
-//            tableView.refreshControl?.endRefreshing()
-//        }
     }
 }
 
