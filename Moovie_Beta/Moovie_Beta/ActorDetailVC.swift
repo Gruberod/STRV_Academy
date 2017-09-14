@@ -86,10 +86,8 @@ extension ActorDetailVC: UITableViewDataSource {
             return cell
         case (4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-//            let carouselData = viewModel.actor?.movieStub
-//            cell.movies = carouselData
-//            cell.delegate = self as! CarouselDelegate
-
+            cell.movies = viewModel.actor!.movieStub
+            
             return cell
         case (5):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell

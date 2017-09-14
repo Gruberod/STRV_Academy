@@ -26,7 +26,7 @@ struct ActorFull {
     var placeOfBirth: String
     var acting: [APIActorActing]
     var knownFor: [APIActorKnownFor]
-    var movieStub: MovieStub
+    var movieStub: [MovieStub]
 }
 
 protocol ActorDetailViewModelDelegate: class {
@@ -82,7 +82,7 @@ class ActorDetailViewModel {
                     placeOfBirth: value.placeOfBirth,
                     acting: value.acting,
                     knownFor: value.knownFor,
-                    movieStub: value.makeMovieStub(data: value.knownFor.first!)
+                    movieStub: value.knownFor.map { value.makeMovieStub(data: $0) }
                 )
                 
                 self.state = .ready
