@@ -56,7 +56,7 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
         if let picture = viewModel.items[indexPath.row].picture {
         cell.image.af_setImage(withURL: picture)}
         cell.imageTitle.text = viewModel.items[indexPath.row].name
-        cell.imageSubtitle.text = viewModel.items[indexPath.row].knownFor
+        cell.imageSubtitle.text = viewModel.items[indexPath.row].popularKnownFor
 
         return cell
     }
@@ -71,14 +71,14 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
             let nextScene = segue.destination as? ActorDetailVC ,
             var indexPath = self.actorCOllectionView.indexPathsForSelectedItems?.first {
             let selectedActor = viewModel.items[indexPath.row]
-            nextScene.currentActor = selectedActor
+            nextScene.currentActor = selectedActor 
         }
     }
 
 }
 
 extension ActorsOverviewVC: ActorPopularViewModelDelegate {
-    func viewModelItemsUpdated(items: [ActorListItem]) {
+    func viewModelItemsUpdated(items: [Actor]) {
         actorCOllectionView.reloadData()
     }
     

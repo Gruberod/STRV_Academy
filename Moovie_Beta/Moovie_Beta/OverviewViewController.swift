@@ -15,15 +15,15 @@ class OverviewViewController: UIViewController, CarouselDelegate {
     
     var viewModel: MovieListViewModel!
     
-    var movie: MovieListItem?
+    var movie: MovieFullItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         overviewTable.delegate = self
         overviewTable.dataSource = self
         
-        let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
-        overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
+        let cellNib = UINib(nibName: "CarouselTableViewCell", bundle: nil)
+        overviewTable.register(cellNib, forCellReuseIdentifier: "carouselTableViewCell")
         
         let carouselTitleNib = UINib(nibName: "CarouselLabelTableViewCell", bundle: nil)
         overviewTable.register(carouselTitleNib, forCellReuseIdentifier: "carouselTitle")
@@ -32,7 +32,7 @@ class OverviewViewController: UIViewController, CarouselDelegate {
         overviewTable.register(mainMovieNib, forCellReuseIdentifier: "mainPicture")
 
         viewModel = MovieListViewModel()
-        viewModel.delegate = self as? MovieListViewModelDelegate
+        viewModel.delegate = self
         
         viewModel.reloadNowPlayingMovies()
         viewModel.reloadMostPopularMovies()
@@ -44,7 +44,7 @@ class OverviewViewController: UIViewController, CarouselDelegate {
         overviewTable.estimatedRowHeight = 155
     }
     
-    func didSelectMovie(movie: MovieListItem) {
+    func didSelectMovie(movie: MovieFullItem) {
         self.movie = movie
         
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -83,7 +83,7 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
             cell.movies = viewModel.popularItems
             cell.delegate = self
             return cell
@@ -95,7 +95,7 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
             cell.movies = viewModel.nowPlayingItems
             cell.delegate = self
             return cell
@@ -133,7 +133,7 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
 
 
 extension OverviewViewController: MovieListViewModelDelegate {
-    func viewModelItemsUpdated(items: [MovieListItem]) {
+    func viewModelItemsUpdated(items: [MovieFullItem]) {
         overviewTable.reloadData()
     }
 

@@ -12,26 +12,31 @@ import Unbox
 /////////////////////////////////////////////////
 // Prepares full actor info for movie detail page
 /////////////////////////////////////////////////
-struct APIActorFull: Unboxable {
+struct APIActor: Unboxable {
     let name: String
-    let bio: String
-    let birthday: Date
-    let placeOfBirth: String
+    let id: Int
     let picture: String?
-    let knownFor: [APIActorKnownFor]
-    let acting: [APIActorActing]
+    let bio: String?
+    let birthday: Date?
+    let placeOfBirth: String?
+    let knownFor: [APIActorKnownFor]?
+    let popularKnownFor: [APIActorKnownFor]?
+    let acting: [APIActorActing]?
 
 
     init(unboxer: Unboxer) throws {
-        name = try unboxer.unbox(key: "name")
-        bio = try unboxer.unbox(key: "biography")
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd"
-        birthday = try unboxer.unbox(key: "birthday", formatter: df)
-        placeOfBirth = try unboxer.unbox(key: "place_of_birth")
+        
+        name = try unboxer.unbox(key: "name")
+        id = try unboxer.unbox(key: "id")
         picture = unboxer.unbox(key: "profile_path")
-        knownFor = try unboxer.unbox(keyPath: "combined_credits.cast")
-        acting = try unboxer.unbox(keyPath: "combined_credits.cast")
+        bio = unboxer.unbox(key: "biography")
+        birthday = unboxer.unbox(key: "birthday", formatter: df)
+        placeOfBirth = unboxer.unbox(key: "place_of_birth")
+        knownFor = unboxer.unbox(keyPath: "combined_credits.cast")
+        popularKnownFor = unboxer.unbox(key: "known_for")
+        acting = unboxer.unbox(keyPath: "combined_credits.cast")
     }
     
     func url(size: Sizes = .original) -> URL? {
@@ -39,21 +44,39 @@ struct APIActorFull: Unboxable {
             return nil
         }
         return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
-    
+/*
     func makeMovieStub(data: APIActorKnownFor) -> MovieStub {
         return MovieStub(title: data.title, id: data.id, genres: [""], description: "", releaseDate: nil, score: "", poster: data.url(size: .w500))
+    }
+*/
+    func filterMoviesKnownFor() -> String {
+        var mainMovies: [String] = []
+        guard let popularKnownFor = popularKnownFor else {
+            return "No movies found"
+        }
+        for movie in popularKnownFor {
+            if let title = movie.title {
+                mainMovies.append(title)
+            }
+        }
+        
+        if mainMovies.isEmpty {
+            return "There aren't any movies."
+        } else {
+            return mainMovies.joined(separator: ", ")
+        }
     }
     
 }
 
 struct APIActorKnownFor: Unboxable {
     let posterPath: String?
-    let title: String
+    let title: String?
     let id: Int
     
     init(unboxer: Unboxer) throws {
         posterPath = unboxer.unbox(key: "poster_path")
-        title = try unboxer.unbox(key: "title")
+        title = unboxer.unbox(key: "title")
         id = try unboxer.unbox(key: "id")
     }
     
@@ -61,10 +84,11 @@ struct APIActorKnownFor: Unboxable {
         guard let posterPath = posterPath else {
             return nil
         }
-        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(posterPath)}
-    
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(posterPath)
+    }
     
 }
+
 
 struct APIActorActing: Unboxable {
     let character: String
@@ -84,22 +108,44 @@ struct APIActorActing: Unboxable {
 // Prepares collection of most popular movie actors with picture/name/movies
 ////////////////////////////////////////////////////////////////////////////
 struct APIPopular: Unboxable {
-    let results: [APIActorPopular]
+    let results: [APIActor]
     
     init(unboxer: Unboxer) throws {
         results = try unboxer.unbox(key: "results")
     }
 }
 
+
+///////////////////////////////
+// Prepares actor search items
+///////////////////////////////
+struct APISearch: Unboxable {
+    let results: [APIActor]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
+
+
+/*
+
+
 struct APIActorPopular: Unboxable {
     let name: String
     let id: Int
+    let bio: String?
+    let birthday: Date?
+    let placeOfBirth: String?
     let picture: String?
     var knownFor: [APIPopularKnownFor]
+    let acting: [APIActorActing]
     
     init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "name")
         id = try unboxer.unbox(key: "id")
+        bio = nil
+        birthday
         picture = unboxer.unbox(key: "profile_path")
         knownFor = try unboxer.unbox(key: "known_for")
 
@@ -128,6 +174,7 @@ struct APIActorPopular: Unboxable {
     }
 }
 
+
 struct APIPopularKnownFor: Unboxable {
     let movieTitle: String?
     
@@ -137,16 +184,6 @@ struct APIPopularKnownFor: Unboxable {
 }
 
 
-///////////////////////////////
-// Prepares actor search items
-///////////////////////////////
-struct APISearch: Unboxable {
-    let results: [APIActorSearch]
-    
-    init(unboxer: Unboxer) throws {
-        results = try unboxer.unbox(key: "results")
-    }
-}
 
 struct APIActorSearch: Unboxable {
     let name: String
@@ -165,3 +202,4 @@ struct APIActorSearch: Unboxable {
         }
         return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
 }
+ */

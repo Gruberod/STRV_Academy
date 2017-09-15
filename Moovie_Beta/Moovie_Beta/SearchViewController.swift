@@ -28,7 +28,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchResults.register(UINib(nibName: "searchItemCellTableViewCell", bundle: nil), forCellReuseIdentifier: "searchResultCell")
         
         viewModel = MovieSearchViewModel()
-        viewModel.delegate = self as? MovieSearchViewModelDelegate
+        viewModel.delegate = self
         viewModel.reloadMovies()
     }
         
@@ -52,7 +52,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let poster = viewModel.items[indexPath.row].poster {
             cell.imageMovieCell.af_setImage(withURL: poster)
         }
-        cell.ratingMovieCell.text = "\(viewModel.items[indexPath.row].score) %"
+        cell.ratingMovieCell.text = viewModel.items[indexPath.row].score?.description
         
         return cell
     }
@@ -65,7 +65,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 }
 
 extension SearchViewController: MovieSearchViewModelDelegate {
-    func viewModelItemsUpdated(items: [MovieListItem]) {
+    func viewModelItemsUpdated(items: [MovieFullItem]) {
         searchResults.reloadData()
     }
     

@@ -8,22 +8,8 @@
 
 import Foundation
 
-protocol ActorListItem {
-    var name: String { get }
-    var id: Int { get }
-    var picture: URL? { get }
-    var knownFor: String? { get }
-}
-
-struct ActorPopularStub: ActorListItem {
-    var name: String
-    var id: Int
-    var picture: URL?
-    var knownFor: String?
-}
-
 protocol ActorPopularViewModelDelegate: class {
-    func viewModelItemsUpdated(items: [ActorListItem])
+    func viewModelItemsUpdated(items: [Actor])
     func viewModelChangedState(state: ActorPopularViewModel.State)
 }
 
@@ -37,7 +23,7 @@ class ActorPopularViewModel {
     
     let actorSource: ActorSource
     
-    var items: [ActorListItem] = []
+    var items: [Actor] = []
     var state: State = .empty {
         didSet {
             if state != oldValue {
@@ -58,13 +44,21 @@ class ActorPopularViewModel {
         
         self.actorSource.fetchPopular() { result in
             if let value = result.value {
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
 
                 self.items = value.map {
-                    ActorPopularStub(
+                    Actor(
                         name: $0.name,
                         id: $0.id,
                         picture: $0.url(size: .w185),
-                        knownFor: $0.filterMoviesKnownFor()
+                        bio: $0.bio,
+                        birthday: $0.birthday?.description,
+                        placeOfBirth: $0.placeOfBirth,
+                        knownFor: $0.knownFor,
+                        popularKnownFor: $0.filterMoviesKnownFor(),
+                        acting: $0.acting
                     )
                 }
 

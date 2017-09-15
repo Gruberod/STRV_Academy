@@ -8,7 +8,7 @@
 
 import Foundation
 import AlamofireImage
-
+/*
 protocol MovieListItem {
     var title: String { get }
     var id: Int { get }
@@ -28,9 +28,9 @@ struct MovieStub: MovieListItem {
     var score: String
     var poster: URL?
 }
-
+*/
 protocol MovieListViewModelDelegate: class {
-    func viewModelItemsUpdated(items: [MovieListItem])
+    func viewModelItemsUpdated(items: [MovieFullItem])
     func viewModelChangedState(state: MovieListViewModel.State)
 }
 
@@ -44,8 +44,8 @@ class MovieListViewModel {
     
     let movieSource: MovieSource
     
-    var popularItems: [MovieListItem] = []
-    var nowPlayingItems: [MovieListItem] = []
+    var popularItems: [MovieFull] = []
+    var nowPlayingItems: [MovieFull] = []
     var state: State = .empty {
         didSet {
             if state != oldValue {
@@ -63,28 +63,31 @@ class MovieListViewModel {
     }
     
     func reloadNowPlayingMovies() {
-// var page which keeps the number - when scrollViewDidEndDragig i++, append to previous array of results?
-        
+       
         self.movieSource.fetchNowPlaying() { result in
             if let value = result.value {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none
-                dateFormatter.dateStyle = .medium
+                dateFormatter.dateStyle = .short
                 
                 self.nowPlayingItems = value.map {
-                    let separatedYear = ($0.releaseDate!).components(separatedBy: "-").first
-                    
-                    return MovieStub(
-                        title: $0.title,
+                    MovieFull(
                         id: $0.id,
-                        genres: GenreManager.shared.map(ids: $0.genreIds).map { $0.name },
-                        description: $0.overview,
-                        releaseDate: separatedYear,
-                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %",
-                        poster: $0.url(size: .w185))
+                        title: $0.title,
+                        poster: $0.url(size: .w500),
+                        score: $0.score,
+                        overview: $0.overview,
+                        releaseDate: dateFormatter.string(from: $0.releaseDate!),
+                        genres: $0.genres,
+                        creators: $0.filterCreators(),
+                        actors: $0.actors,
+                        videos: $0.videos,
+                        reviews: $0.reviews
+                    )
                 }
+                
                 self.state = self.nowPlayingItems.isEmpty ? .empty : .ready
-                self.delegate?.viewModelItemsUpdated(items: self.nowPlayingItems)
+                self.delegate?.viewModelItemsUpdated(items: (self.nowPlayingItems))
                 
             } else {
                 self.error = result.error
@@ -99,23 +102,26 @@ class MovieListViewModel {
             if let value = result.value {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none
-                dateFormatter.dateStyle = .medium
+                dateFormatter.dateStyle = .short
                 
                 self.popularItems = value.map {
-                    let separatedYear = ($0.releaseDate!).components(separatedBy: "-").first
-                    
-                    return MovieStub(
-                        title: $0.title,
+                    MovieFull(
                         id: $0.id,
-                        genres: GenreManager.shared.map(ids: $0.genreIds).map { $0.name },
-                        description: $0.overview,
-                        releaseDate: separatedYear,
-                        score: $0.score == 0 ? "" : "\(Int($0.score*10)) %",
-                        poster: $0.url(size: .w185))
+                        title: $0.title,
+                        poster: $0.url(size: .w500),
+                        score: $0.score,
+                        overview: $0.overview,
+                        releaseDate: dateFormatter.string(from: $0.releaseDate!),
+                        genres: $0.genres,
+                        creators: $0.filterCreators(),
+                        actors: $0.actors,
+                        videos: $0.videos,
+                        reviews: $0.reviews
+                    )
                 }
 
                 self.state = self.popularItems.isEmpty ? .empty : .ready
-                self.delegate?.viewModelItemsUpdated(items: self.popularItems)
+                self.delegate?.viewModelItemsUpdated(items: (self.popularItems))
                 
             } else {
                 self.error = result.error

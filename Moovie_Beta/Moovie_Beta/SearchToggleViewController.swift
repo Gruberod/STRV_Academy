@@ -28,7 +28,7 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
         searchBarText.delegate = self
         
         viewModel = MovieSearchViewModel()
-        viewModel.delegate = self as? MovieSearchViewModelDelegate
+        viewModel.delegate = self
         viewModel.reloadMovies()
     }
 
@@ -52,7 +52,7 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
         
         cell.nameMovieCell.text = viewModel.items[indexPath.row].title
         cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
-        cell.ratingMovieCell.text = viewModel.items[indexPath.row].score
+        cell.ratingMovieCell.text = viewModel.items[indexPath.row].score?.description
         
         if let poster = viewModel.items[indexPath.row].poster {
             cell.imageMovieCell.af_setImage(withURL: poster)
@@ -89,7 +89,7 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
 }
 
 extension SearchToggleViewController: MovieSearchViewModelDelegate {
-    func viewModelItemsUpdated(items: [MovieListItem]) {
+    func viewModelItemsUpdated(items: [MovieFullItem]) {
         searchToogle.reloadData()
     }
     

@@ -17,9 +17,9 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var headerScore: UILabel!
     
     var viewModel: MovieDetailViewModel!
-    var currentMovie: MovieListItem!
+    var currentMovie: MovieFullItem!
     
-    var galleryItem: GalleryPictureItem?
+//    var galleryItem: GalleryPictureItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         overviewTable.delegate = self
         overviewTable.dataSource = self
         
-        let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
-        overviewTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
+        let cellNib = UINib(nibName: "CarouselTableViewCell", bundle: nil)
+        overviewTable.register(cellNib, forCellReuseIdentifier: "carouselTableViewCell")
         
         let movieDescription = UINib(nibName: "MovieDescriptionTableViewCell", bundle: nil)
         overviewTable.register(movieDescription, forCellReuseIdentifier: "movieDescription")
@@ -86,7 +86,7 @@ extension MovieDetailVC: UITableViewDataSource {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
-            cell.movieDescription.text = viewModel.movie?.description
+            cell.movieDescription.text = viewModel.movie?.overview
             return cell
         case (0,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
@@ -99,7 +99,7 @@ extension MovieDetailVC: UITableViewDataSource {
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (0,3):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
 //            cell.movies = viewModel.movie?.stars
             return cell
         case (0,4):
@@ -126,8 +126,8 @@ extension MovieDetailVC: UITableViewDataSource {
             return cell
         case (1,1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell
-            cell.reviewAuthor.text = viewModel.movie?.reviews.first?.author
-            cell.reviewText.text = viewModel.movie?.reviews.first?.content
+            cell.reviewAuthor.text = viewModel.movie?.reviews?.first?.author
+            cell.reviewText.text = viewModel.movie?.reviews?.first?.content
             return cell
         default:
             return UITableViewCell()
@@ -173,7 +173,7 @@ extension MovieDetailVC: MovieDetailViewModelDelegate {
         overviewTable.reloadData()
         headerImage.af_setImage(withURL: (currentMovie.poster)!)
         headerTitle.text = currentMovie.title
-        headerScore.text = currentMovie.score
+        headerScore.text = currentMovie.score?.description
     }
     
     func viewModelChangedState(state: MovieDetailViewModel.State) {

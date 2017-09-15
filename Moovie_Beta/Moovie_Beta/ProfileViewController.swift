@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (1):
-        let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
             return cell
         default:
             return UITableViewCell()

@@ -28,7 +28,7 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
         searchInput.delegate = self
         
         viewModel = ActorSearchViewModel()
-        viewModel.delegate = self as? ActorSearchViewModelDelegate
+        viewModel.delegate = self
         viewModel.reloadActors()
     }
     
@@ -82,7 +82,7 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
 }
 
 extension SearchToggleActorsViewController: ActorSearchViewModelDelegate {
-    func viewModelItemsUpdated(items: [ActorListItem]) {
+    func viewModelItemsUpdated(items: [Actor]) {
         searchActors.reloadData()
     }
     

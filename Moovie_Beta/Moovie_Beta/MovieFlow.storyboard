@@ -335,7 +335,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-1J-Usp">
-                                <rect key="frame" x="322" y="20" width="37" height="25"/>
+                                <rect key="frame" x="322" y="20.5" width="37" height="25"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <state key="normal" title="CLEAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -738,19 +738,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ir-7A-ixw">
-                                <rect key="frame" x="24" y="164" width="327" height="454"/>
+                                <rect key="frame" x="24" y="120" width="327" height="547"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <searchBar contentMode="left" barStyle="black" searchBarStyle="minimal" placeholder="Search actor..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-z9-waf">
-                                <rect key="frame" x="16" y="64" width="227" height="44"/>
+                                <rect key="frame" x="16" y="20" width="227" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bA-3h-cBL">
-                                <rect key="frame" x="243" y="64" width="116" height="44"/>
+                                <rect key="frame" x="243" y="20" width="116" height="44"/>
                                 <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="13"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
@@ -761,7 +761,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-RU-RvD">
-                                <rect key="frame" x="16" y="126" width="66" height="36"/>
+                                <rect key="frame" x="16" y="82" width="66" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Movies">
                                     <color key="titleColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -771,7 +771,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wx-LU-dS7">
-                                <rect key="frame" x="122" y="126" width="62" height="36"/>
+                                <rect key="frame" x="122" y="82" width="62" height="36"/>
                                 <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="24"/>
                                 <state key="normal" title="Actors">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -844,9 +844,9 @@
         <image name="profile_image" width="375" height="368"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r2v-Gs-NN1"/>
         <segue reference="LiS-hN-GtM"/>
         <segue reference="Ixx-xE-ugS"/>
+        <segue reference="z26-7M-RtK"/>
         <segue reference="4EO-ro-oew"/>
     </inferredMetricsTieBreakers>
 </document>

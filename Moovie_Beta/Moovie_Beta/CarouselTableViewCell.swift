@@ -1,5 +1,5 @@
 //
-//  MovieCarouselTableViewCell.swift
+//  CarouselTableViewCell.swift
 //  Moovie_Beta
 //
 //  Created by Gruberova, Daniela on 04/08/2017.
@@ -9,16 +9,16 @@
 import UIKit
 
 protocol CarouselDelegate: class {
-    func didSelectMovie(movie: MovieListItem)
+    func didSelectMovie(movie: MovieFullItem)
 }
 
-class MovieCarouselTableViewCell: UITableViewCell {
+class CarouselTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     weak var delegate: CarouselDelegate?
     
-    var movies = [MovieListItem]() {
+    var movies = [MovieFull]() {
         didSet {
             collectionView.reloadData()
         }
@@ -28,8 +28,8 @@ class MovieCarouselTableViewCell: UITableViewCell {
         
         super.awakeFromNib()
         
-        let pictureOnly = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
-        collectionView.register(pictureOnly, forCellWithReuseIdentifier: "movieCell")
+        let pictureOnly = UINib(nibName: "CarouselCollectionViewCell", bundle: nil)
+        collectionView.register(pictureOnly, forCellWithReuseIdentifier: "carouselCollectionViewCell")
         
         let pictureWithTitle = UINib(nibName: "PictureWithTitleCollectionViewCell", bundle: nil)
         collectionView.register(pictureWithTitle, forCellWithReuseIdentifier: "pictureWithTitle")
@@ -38,7 +38,7 @@ class MovieCarouselTableViewCell: UITableViewCell {
 
 }
 
-extension MovieCarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+extension CarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -52,7 +52,7 @@ extension MovieCarouselTableViewCell: UICollectionViewDataSource, UICollectionVi
         
         let item = movies[indexPath.row]
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCollectionViewCell", for: indexPath) as? CarouselCollectionViewCell else {
             
             return UICollectionViewCell()
             

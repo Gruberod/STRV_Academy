@@ -15,7 +15,7 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var actorPicture: UIImageView!
     
     var viewModel: ActorDetailViewModel!
-    var currentActor : ActorListItem!
+    var currentActor : Actor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         viewModel.delegate = self
         viewModel.getActorDetail(id: currentActor.id)
         
-        let cellNib = UINib(nibName: "MovieCarouselTableViewCell", bundle: nil)
-        actorTable.register(cellNib, forCellReuseIdentifier: "carouselCell")
+        let cellNib = UINib(nibName: "CarouselTableViewCell", bundle: nil)
+        actorTable.register(cellNib, forCellReuseIdentifier: "carouselTableViewCell")
         
         let movieDescription = UINib(nibName: "MovieDescriptionTableViewCell", bundle: nil)
         actorTable.register(movieDescription, forCellReuseIdentifier: "movieDescription")
@@ -85,8 +85,8 @@ extension ActorDetailVC: UITableViewDataSource {
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (4):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselCell") as! MovieCarouselTableViewCell
-            cell.movies = viewModel.actor!.movieStub
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
+//            cell.movies = viewModel.actor!.knownFor
             
             return cell
         case (5):

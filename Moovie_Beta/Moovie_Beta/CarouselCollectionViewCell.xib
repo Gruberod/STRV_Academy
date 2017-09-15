@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="UYX-3b-M3g" customClass="MovieCollectionViewCell" customModule="Moovie_Beta" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carouselCollectionViewCell" id="UYX-3b-M3g" customClass="CarouselCollectionViewCell" customModule="Moovie_Beta" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="155" height="198"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -35,7 +35,7 @@
             </constraints>
             <size key="customSize" width="138" height="180"/>
             <connections>
-                <outlet property="movieCellPicture" destination="cnE-5B-gUh" id="rgI-7s-l8i"/>
+                <outlet property="carouselCellPicture" destination="cnE-5B-gUh" id="a7z-ZA-7He"/>
             </connections>
             <point key="canvasLocation" x="220" y="48"/>
         </collectionViewCell>

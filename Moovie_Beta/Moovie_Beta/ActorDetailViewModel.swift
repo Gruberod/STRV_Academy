@@ -8,25 +8,29 @@
 
 import Foundation
 
-protocol ActorDetailItem {
+protocol ActorItem {
     var name: String { get }
-    var bio: String { get }
-    var birthday: String { get }
+    var id: Int { get }
     var picture: URL? { get }
-    var placeOfBirth: String { get }
-    var acting: [APIActorActing] { get }
-    var knownFor: [APIActorKnownFor] { get }
+    var bio: String? { get }
+    var birthday: String? { get }
+    var placeOfBirth: String? { get }
+    var knownFor: [APIActorKnownFor]? { get }
+    var popularKnownFor: String? { get }
+    var acting: [APIActorActing]? { get }
+
 }
 
-struct ActorFull {
+struct Actor {
     var name: String
-    var bio: String
-    var birthday: String
+    var id: Int
     var picture: URL?
-    var placeOfBirth: String
-    var acting: [APIActorActing]
-    var knownFor: [APIActorKnownFor]
-    var movieStub: [MovieStub]
+    var bio: String?
+    var birthday: String?
+    var placeOfBirth: String?
+    var knownFor: [APIActorKnownFor]?
+    var popularKnownFor: String?
+    var acting: [APIActorActing]?
 }
 
 protocol ActorDetailViewModelDelegate: class {
@@ -43,7 +47,7 @@ class ActorDetailViewModel {
     }
     
     let actorSource: ActorSource
-    var actor: ActorFull?
+    var actor: Actor?
     
     var state: State = .empty {
         didSet {
@@ -74,15 +78,16 @@ class ActorDetailViewModel {
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
                 
-                self.actor = ActorFull(
+                self.actor = Actor(
                     name: value.name,
-                    bio: value.bio,
-                    birthday: dateFormatter.string(from: value.birthday),
+                    id: value.id,
                     picture: value.url(size: .w500),
+                    bio: value.bio,
+                    birthday: dateFormatter.string(from: value.birthday!),
                     placeOfBirth: value.placeOfBirth,
-                    acting: value.acting,
                     knownFor: value.knownFor,
-                    movieStub: value.knownFor.map { value.makeMovieStub(data: $0) }
+                    popularKnownFor: value.filterMoviesKnownFor(),
+                    acting: value.acting
                 )
                 
                 self.state = .ready

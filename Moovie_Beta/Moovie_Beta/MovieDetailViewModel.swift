@@ -9,25 +9,31 @@
 import Foundation
 
 protocol MovieFullItem {
+    var id: Int { get }
     var title: String { get }
-    var description: String { get }
     var poster: URL? { get }
-    var stars: [APIMovieActor] { get }
-    var creators: String { get }
-//    var pictures: [APIPictureGallery] { get }
-    var trailers: [APIMovieVideo] { get }
-    var reviews: [APIMovieReviews] { get }
+    var score: Float? { get }
+    var overview: String? { get }
+    var releaseDate: String? { get }
+    var genres: [APIMovieGenre]? { get }
+    var creators: String? { get }
+    var actors: [APIMovieActor]? { get }
+    var videos: [APIMovieVideo]? { get }
+    var reviews: [APIMovieReviews]? { get }
 }
 
 struct MovieFull: MovieFullItem {
+    var id: Int
     var title: String
-    var description: String
     var poster: URL?
-    var stars: [APIMovieActor]
-    var creators: String
-//    var pictures: [APIPictureGallery]
-    var trailers: [APIMovieVideo]
-    var reviews: [APIMovieReviews]
+    var score: Float?
+    var overview: String?
+    var releaseDate: String?
+    var genres: [APIMovieGenre]?
+    var creators: String?
+    var actors: [APIMovieActor]?
+    var videos: [APIMovieVideo]?
+    var reviews: [APIMovieReviews]?
 }
 
 protocol GalleryPictureItem {
@@ -83,14 +89,21 @@ class MovieDetailViewModel {
             }
             
             if let value = result.value {
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .short
+                
                 self.movie = MovieFull(
+                        id: value.id,
                         title: value.title,
-                        description: value.overview,
                         poster: value.url(size: .w500),
-                        stars: value.actors,
+                        score: value.score,
+                        overview: value.overview,
+                        releaseDate: dateFormatter.string(from: value.releaseDate!),
+                        genres: value.genres,
                         creators: value.filterCreators(),
-//                        pictures: value.pictures,
-                        trailers: value.videos,
+                        actors: value.actors,
+                        videos: value.videos,
                         reviews: value.reviews
                 )
                 

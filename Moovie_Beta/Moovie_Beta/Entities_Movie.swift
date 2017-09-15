@@ -13,35 +13,35 @@ import AlamofireImage
 /////////////////////////////////////////////////////////
 // Prepares full movie information for movie detail page
 ////////////////////////////////////////////////////////
-struct APIMovieFull: Unboxable {
+struct APIMovie: Unboxable {
     let id: Int
-    let score: Float?
     let title: String
-    let overview: String
-    let releaseDate: Date?
     let poster: String?
-    let genres: [APIMovieGenre]
-    let creators: [APIMovieCreator]
-    let actors: [APIMovieActor]
-//    let pictures: [APIPictureGallery]
-    let videos: [APIMovieVideo]
-    let reviews: [APIMovieReviews]
+    let score: Float?
+    let overview: String?
+    let releaseDate: Date?
+    let genres: [APIMovieGenre]?
+    let creators: [APIMovieCreator]?
+    let actors: [APIMovieActor]?
+    let videos: [APIMovieVideo]?
+    let reviews: [APIMovieReviews]?
     
     init(unboxer: Unboxer) throws {
-        id = try unboxer.unbox(key: "id")
-        score = unboxer.unbox(key: "vote_average")
-        title = try unboxer.unbox(key: "title")
-        overview = try unboxer.unbox(key: "overview")
-        poster = unboxer.unbox(key: "poster_path")
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd"
+        
+        id = try unboxer.unbox(key: "id")
+        title = try unboxer.unbox(key: "title")
+        poster = unboxer.unbox(key: "poster_path")
+        score = unboxer.unbox(key: "vote_average")
+        overview = unboxer.unbox(key: "overview")
         releaseDate = unboxer.unbox(key: "release_date", formatter: df)
-        genres = try unboxer.unbox(key: "genres")
-        actors = try unboxer.unbox(keyPath: "credits.cast")
-        creators = try unboxer.unbox(keyPath: "credits.crew")
-//        pictures = try unboxer.unbox(key: "posters")
-        videos = try unboxer.unbox(keyPath: "videos.results")
-        reviews = try unboxer.unbox(keyPath: "reviews.results")
+        genres = unboxer.unbox(key: "genres")
+        actors = unboxer.unbox(keyPath: "credits.cast")
+        creators = unboxer.unbox(keyPath: "credits.crew")
+        videos = unboxer.unbox(keyPath: "videos.results")
+        reviews = unboxer.unbox(keyPath: "reviews.results")
+        
     }
     
     // transforms poster link to url
@@ -55,6 +55,9 @@ struct APIMovieFull: Unboxable {
     // Filter creators and return string of Director and Writers
     func filterCreators() -> String {
         var mainCreators: [String] = []
+        guard let creators = creators else {
+            return "No crew found"
+        }
         for creator in creators {
             if creator.job == "Director" || creator.job == "Writer" {
                 mainCreators.append(creator.name)
@@ -71,6 +74,9 @@ struct APIMovieFull: Unboxable {
     func filterActors() -> String {
         var mainActorsNames: [String] = []
         var mainActorsCharecters: [String] = []
+        guard let actors = actors else {
+            return "No actors found"
+        }
         for actor in actors {
             mainActorsNames.append(actor.name)
         }
@@ -208,7 +214,29 @@ struct APIMovieGenre: Unboxable {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+// Prepares results for overvie home page with most popular and now playing movies
+///////////////////////////////////////////////////////////////////////////////////
+struct APIMovieResults: Unboxable {
+    let results: [APIMovie]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
 
+
+//////////////////////////////////////
+// Prepares results for movies search
+//////////////////////////////////////
+struct APIMSearch: Unboxable {
+    let results: [APIMovie]
+    
+    init(unboxer: Unboxer) throws {
+        results = try unboxer.unbox(key: "results")
+    }
+}
+/*
 //////////////////////////////////////////////////////////////////
 // Prepares partial movie information for other than detail pages
 /////////////////////////////////////////////////////////////////
@@ -239,28 +267,6 @@ struct APIMovieStub: Unboxable {
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-// Prepares results for overvie home page with most popular and now playing movies
-///////////////////////////////////////////////////////////////////////////////////
-struct APIMovieResults: Unboxable {
-    let results: [APIMovieStub]
-    
-    init(unboxer: Unboxer) throws {
-        results = try unboxer.unbox(key: "results")
-    }
-}
-
-
-//////////////////////////////////////
-// Prepares results for movies search
-//////////////////////////////////////
-struct APIMSearch: Unboxable {
-    let results: [APIMovieStub]
-    
-    init(unboxer: Unboxer) throws {
-        results = try unboxer.unbox(key: "results")
-    }
-}
 
 struct APIMovieSearch: Unboxable {
     let name: String
@@ -282,3 +288,4 @@ struct APIMovieSearch: Unboxable {
         return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(poster)
     }
 }
+ */

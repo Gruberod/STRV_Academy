@@ -8,15 +8,9 @@
 
 import Foundation
 
-struct ActorSearchStub: ActorListItem {
-    var knownFor: String?
-    var name: String
-    var id: Int
-    var picture: URL?
-}
 
 protocol ActorSearchViewModelDelegate: class {
-    func viewModelItemsUpdated(items: [ActorListItem])
+    func viewModelItemsUpdated(items: [Actor])
     func viewModelChangedState(state: ActorSearchViewModel.State)
 }
 
@@ -31,7 +25,7 @@ class ActorSearchViewModel {
     let actorSource: ActorSource
     
     var searchInput = ""
-    var items: [ActorListItem] = []
+    var items: [Actor] = []
     var state: State = .empty {
         didSet {
             if state != oldValue {
@@ -53,12 +47,21 @@ class ActorSearchViewModel {
         self.actorSource.searchActor(string: searchInput) { result in
             print(result)
             if let value = result.value {
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
+                
                 self.items = value.map {
-                    ActorSearchStub(
-                        knownFor: nil,
+                    Actor(
                         name: $0.name,
                         id: $0.id,
-                        picture: $0.url(size: .w185)
+                        picture: $0.url(size: .w185),
+                        bio: $0.bio,
+                        birthday: $0.birthday?.description,
+                        placeOfBirth: $0.placeOfBirth,
+                        knownFor: $0.knownFor,
+                        popularKnownFor: $0.filterMoviesKnownFor(),
+                        acting: $0.acting
                     )
                 }
                 self.state = self.items.isEmpty ? .empty : .ready

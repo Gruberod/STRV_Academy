@@ -13,7 +13,7 @@ class actorItemCell: UITableViewCell {
     @IBOutlet weak var actorPicture: UIImageView!
     @IBOutlet weak var actorName: UILabel!
     
-    var actor: APIActorSearch? {
+    var actor: APIActor? {
         didSet {
 //            actorPicture.image = actor?.picture
             actorName.text = actor?.name

@@ -14,34 +14,34 @@ import Unbox
 
 protocol MovieSource {
     
-    func fetchMovieDetail(id: Int, completion: @escaping (APIResult<APIMovieFull>) -> Void)
-    func fetchNowPlaying(completion: @escaping (APIResult<[APIMovieStub]>) -> Void)
-    func fetchMostPopular(completion: @escaping (APIResult<[APIMovieStub]>) -> Void)
-    func searchMovie(string: String, completion: @escaping (APIResult<[APIMovieStub]>) -> Void)
+    func fetchMovieDetail(id: Int, completion: @escaping (APIResult<APIMovie>) -> Void)
+    func fetchNowPlaying(completion: @escaping (APIResult<[APIMovie]>) -> Void)
+    func fetchMostPopular(completion: @escaping (APIResult<[APIMovie]>) -> Void)
+    func searchMovie(string: String, completion: @escaping (APIResult<[APIMovie]>) -> Void)
     
 }
 
 class AlamofireMovieSource: MovieSource {
     
-    func fetchMovieDetail(id: Int, completion: @escaping (APIResult<APIMovieFull>) -> Void) {
-        Alamofire.request(MovieRouter.Detail(movieId: id)).validate().responseObject() { (result:DataResponse<APIMovieFull>) in
+    func fetchMovieDetail(id: Int, completion: @escaping (APIResult<APIMovie>) -> Void) {
+        Alamofire.request(MovieRouter.Detail(movieId: id)).validate().responseObject() { (result:DataResponse<APIMovie>) in
             completion(result.asAPIResult())
         }
     }
     
-    func fetchNowPlaying(completion: @escaping (APIResult<[APIMovieStub]>) -> Void) {
+    func fetchNowPlaying(completion: @escaping (APIResult<[APIMovie]>) -> Void) {
         Alamofire.request(MovieRouter.NowPlaying()).validate().responseObject() { (result:DataResponse<APIMovieResults>) in
             completion(result.asAPIResult() { $0.results } )
         }
     }
     
-    func fetchMostPopular(completion: @escaping (APIResult<[APIMovieStub]>) -> Void) {
+    func fetchMostPopular(completion: @escaping (APIResult<[APIMovie]>) -> Void) {
         Alamofire.request(MovieRouter.Popular()).validate().responseObject() { (result:DataResponse<APIMovieResults>) in
             completion(result.asAPIResult() { $0.results } )
         }
     }
     
-    func searchMovie(string: String, completion: @escaping (APIResult<[APIMovieStub]>) -> Void) {
+    func searchMovie(string: String, completion: @escaping (APIResult<[APIMovie]>) -> Void) {
         Alamofire.request(MovieRouter.Search(query: string)).validate().responseObject() { (result:DataResponse<APIMSearch>) in
             completion(result.asAPIResult() { $0.results } )
         }
