@@ -34,9 +34,9 @@ struct APIActor: Unboxable {
         bio = unboxer.unbox(key: "biography")
         birthday = unboxer.unbox(key: "birthday", formatter: df)
         placeOfBirth = unboxer.unbox(key: "place_of_birth")
-        knownFor = unboxer.unbox(keyPath: "combined_credits.cast")
+        knownFor = unboxer.unbox(keyPath: "credits.cast")
         popularKnownFor = unboxer.unbox(key: "known_for")
-        acting = unboxer.unbox(keyPath: "combined_credits.cast")
+        acting = unboxer.unbox(keyPath: "credits.cast")
     }
     
     func url(size: Sizes = .original) -> URL? {
@@ -66,7 +66,6 @@ struct APIActor: Unboxable {
             return mainMovies.joined(separator: ", ")
         }
     }
-    
 }
 
 struct APIActorKnownFor: Unboxable {
@@ -91,16 +90,17 @@ struct APIActorKnownFor: Unboxable {
 
 
 struct APIActorActing: Unboxable {
-    let character: String
-    let originalName: String
-    let airYear: Date
+    let character: String?
+    let movieTitle: String?
+    let airYear: Date?
 
     init(unboxer: Unboxer) throws {
-        character = try unboxer.unbox(key: "character")
-        originalName = try unboxer.unbox(key: "original_name")
         let df = DateFormatter()
-        df.dateFormat = "YYYY"
-        airYear = try unboxer.unbox(key: "first_air_date", formatter: df)
+        df.dateFormat = "YYYY-MM-dd"
+        
+        character = unboxer.unbox(key: "character")
+        movieTitle = unboxer.unbox(key: "title")
+        airYear = unboxer.unbox(key: "release_date", formatter: df)
     }
 }
 

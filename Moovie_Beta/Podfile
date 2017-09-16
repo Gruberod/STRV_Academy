@@ -11,4 +11,6 @@ target 'Moovie_Beta' do
   pod 'Unbox'
   pod 'UnboxedAlamofire'
   pod 'AlamofireImage'
+  pod 'YouTubePlayer'
+  pod 'SwiftDate'
 end

@@ -70,6 +70,7 @@
                     <constraint firstItem="Ukp-Fs-19R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ovR-pb-3pp"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="imageMovieCell" destination="Ukp-Fs-19R" id="QsC-NN-SfV"/>
                 <outlet property="nameMovieCell" destination="h4o-5z-Y1K" id="Imu-Ib-REP"/>

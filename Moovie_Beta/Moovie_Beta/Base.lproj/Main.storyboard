@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cIp-9N-3ci">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cIp-9N-3ci">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -181,8 +181,8 @@
         <!--MovieFlow-->
         <scene sceneID="RfA-O1-ju5">
             <objects>
-                <viewControllerPlaceholder storyboardName="MovieFlow" id="Bf3-Ss-gM2" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F63-UW-tXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="MovieFlow" id="Bf3-Ss-gM2" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1902" y="11"/>
         </scene>
@@ -477,6 +477,6 @@
         <image name="logo" width="215" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="l3y-9S-I9g"/>
+        <segue reference="o7x-CN-jDq"/>
     </inferredMetricsTieBreakers>
 </document>

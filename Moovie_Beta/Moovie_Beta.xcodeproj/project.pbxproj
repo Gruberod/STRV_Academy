@@ -403,8 +403,6 @@
 				0D3475D31F642DAD00975C4C /* GalleryCollectionViewCell.xib */,
 				0D87E3701F484B85004A9579 /* MovieDescriptionTableViewCell.swift */,
 				0D87E3711F484B85004A9579 /* MovieDescriptionTableViewCell.xib */,
-				0D87E37C1F485419004A9579 /* PictureWithTitleCollectionViewCell.swift */,
-				0D87E37D1F485419004A9579 /* PictureWithTitleCollectionViewCell.xib */,
 				0D87E3861F4856BB004A9579 /* ReviewTableViewCell.swift */,
 				0D87E3871F4856BB004A9579 /* ReviewTableViewCell.xib */,
 				0D1C82291F3744B600449F93 /* searchItemCellTableViewCell.swift */,
@@ -422,6 +420,8 @@
 		0DA7A4721F6BD2290001F130 /* Carousel */ = {
 			isa = PBXGroup;
 			children = (
+				0D87E37C1F485419004A9579 /* PictureWithTitleCollectionViewCell.swift */,
+				0D87E37D1F485419004A9579 /* PictureWithTitleCollectionViewCell.xib */,
 				0D80F0AC1F34C670001070C6 /* CarouselTableViewCell.swift */,
 				0D80F0AD1F34C670001070C6 /* CarouselTableViewCell.xib */,
 				0DA93E181F384FD9006BE8D5 /* CarouselCollectionViewCell.swift */,
@@ -653,16 +653,20 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
 				"${BUILT_PRODUCTS_DIR}/UnboxedAlamofire/UnboxedAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnboxedAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

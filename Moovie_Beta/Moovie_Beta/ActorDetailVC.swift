@@ -7,12 +7,29 @@
 //
 
 import UIKit
-
+import SwiftDate
+/*
+class ImageViewWithFade: UIImageView {
+    
+    let gradient: CAGradientLayer = CAGradientLayer()
+    let backgroundCol = UIColor(colorLiteralRed: 19/255.0, green: 20/255.0, blue: 23/255.0, alpha: 1.0)
+    
+    override func awakeFromNib() {
+        
+        self.image = self.image.alpha(0.6)
+        gradient.frame = self.frame
+        gradient.colors = [UIColor.clear.cgColor, backgroundCol.cgColor]
+        gradient.locations = [0.5, 1.0]
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}
+*/
 class ActorDetailVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var actorTable: UITableView!
     @IBOutlet weak var actorName: UILabel!
     @IBOutlet weak var actorPicture: UIImageView!
+//    @IBOutlet weak var gradient: ImageViewWithFade!
     
     var viewModel: ActorDetailViewModel!
     var currentActor : Actor!
@@ -26,6 +43,7 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         viewModel = ActorDetailViewModel()
         viewModel.delegate = self
         viewModel.getActorDetail(id: currentActor.id)
+
         
         let cellNib = UINib(nibName: "CarouselTableViewCell", bundle: nil)
         actorTable.register(cellNib, forCellReuseIdentifier: "carouselTableViewCell")
@@ -53,6 +71,7 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         
         actorTable.rowHeight = UITableViewAutomaticDimension
         actorTable.estimatedRowHeight = 45
+        actorTable.tableFooterView = UIView()
     }
 
 }
@@ -60,47 +79,55 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
 extension ActorDetailVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        let actingItemsCount = viewModel.actor?.acting?.count ?? 0
+        
+        return 6+actingItemsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.row) {
-        case (0):
+        switch indexPath.row {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
             cell.movieDescription.text = viewModel.actor?.bio
             return cell
-        case (1):
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "BIRTHDAY"
             cell.additionalInfoText.text = viewModel.actor?.birthday
             return cell
-        case (2):
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "PLACE OF BIRTH"
             cell.additionalInfoText.text = viewModel.actor?.placeOfBirth
             return cell
-        case (3):
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Known for"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (4):
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
-//            cell.movies = viewModel.actor!.knownFor
-            
+            viewModel.createDataForCarousel(input: viewModel.actor?.knownFor)
+            cell.movies = viewModel.carouselData
             return cell
-        case (5):
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Acting"
             cell.showAll.setTitle("", for: .normal)
             return cell
-        case (6):
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "actorActing") as! ActorActingTableViewCell
-//            cell.data = viewModel.actor?.acting[indexPath.row]
-//            return cell
-            return UITableViewCell()
         default:
-            return UITableViewCell()
+            let movieYear = viewModel.actor?.acting?[indexPath.row-6].airYear
+            let cell = tableView.dequeueReusableCell(withIdentifier: "actorActing") as! ActorActingTableViewCell
+            var actingRole: String?
+            if let character = viewModel.actor?.acting?[indexPath.row-6].character {
+                actingRole = "as \(character)"
+            }
+            
+            cell.actorActingYear.text = movieYear?.string(custom: "yyyy")
+            cell.actorActingFilm.text = viewModel.actor?.acting?[indexPath.row-6].movieTitle
+            cell.actorActingRole.text = actingRole
+            return cell
+
         }
     }
 }

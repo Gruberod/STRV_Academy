@@ -6,36 +6,34 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="video" rowHeight="168" id="KGk-i7-Jjw" customClass="VideoTableViewCell" customModule="Moovie_Beta" customModuleProvider="target">
+        <tableViewCell contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="video" rowHeight="168" id="KGk-i7-Jjw" customClass="VideoTableViewCell" customModule="Moovie_Beta" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="167.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-7d-ue0">
-                        <rect key="frame" x="8" y="8" width="304" height="152"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="152" id="0XG-Ov-evP"/>
-                        </constraints>
-                    </imageView>
+                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljs-lh-aKS" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="167.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="aMg-7d-ue0" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="v9q-Dq-xhu"/>
-                    <constraint firstItem="aMg-7d-ue0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vOX-rr-Amb"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="aMg-7d-ue0" secondAttribute="bottom" id="xZC-qU-f9h"/>
-                    <constraint firstItem="aMg-7d-ue0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="xkF-Fk-XPh"/>
+                    <constraint firstItem="ljs-lh-aKS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1ej-Xt-yyS"/>
+                    <constraint firstAttribute="bottom" secondItem="ljs-lh-aKS" secondAttribute="bottom" id="PFe-F6-bbS"/>
+                    <constraint firstItem="ljs-lh-aKS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gKx-0C-eJl"/>
+                    <constraint firstAttribute="trailing" secondItem="ljs-lh-aKS" secondAttribute="trailing" id="qPs-SG-ztO"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="video" destination="aMg-7d-ue0" id="x6K-hK-ona"/>
+                <outlet property="video" destination="ljs-lh-aKS" id="boS-Jv-jbB"/>
             </connections>
             <point key="canvasLocation" x="34" y="34"/>
         </tableViewCell>

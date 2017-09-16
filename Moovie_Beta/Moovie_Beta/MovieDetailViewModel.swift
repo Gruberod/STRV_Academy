@@ -14,11 +14,12 @@ protocol MovieFullItem {
     var poster: URL? { get }
     var score: Float? { get }
     var overview: String? { get }
-    var releaseDate: String? { get }
+    var releaseDate: Date? { get }
     var genres: [APIMovieGenre]? { get }
     var creators: String? { get }
     var actors: [APIMovieActor]? { get }
     var videos: [APIMovieVideo]? { get }
+    var images: [APIImages]? { get }
     var reviews: [APIMovieReviews]? { get }
 }
 
@@ -28,11 +29,12 @@ struct MovieFull: MovieFullItem {
     var poster: URL?
     var score: Float?
     var overview: String?
-    var releaseDate: String?
+    var releaseDate: Date?
     var genres: [APIMovieGenre]?
     var creators: String?
     var actors: [APIMovieActor]?
     var videos: [APIMovieVideo]?
+    var images: [APIImages]?
     var reviews: [APIMovieReviews]?
 }
 
@@ -76,6 +78,29 @@ class MovieDetailViewModel {
         self.movieSource = movieSource
     }
     
+    var carouselData = [MovieFull]()
+    
+    func createDataForCarousel(input: [APIImages]?) {
+        guard let input = input else {
+            return
+        }
+        self.carouselData = input.map {
+            MovieFull(id: 0,
+                      title: "",
+                      poster: $0.url(size: .w500),
+                      score: nil,
+                      overview: nil,
+                      releaseDate: nil,
+                      genres: nil,
+                      creators: nil,
+                      actors: nil,
+                      videos: nil,
+                      images: nil,
+                      reviews: nil
+            )
+        }
+    }
+    
     func getMovieDetail(id: Int) {
         if state == .loading {
             return
@@ -99,11 +124,12 @@ class MovieDetailViewModel {
                         poster: value.url(size: .w500),
                         score: value.score,
                         overview: value.overview,
-                        releaseDate: dateFormatter.string(from: value.releaseDate!),
+                        releaseDate: value.releaseDate,
                         genres: value.genres,
                         creators: value.filterCreators(),
                         actors: value.actors,
                         videos: value.videos,
+                        images: value.images,
                         reviews: value.reviews
                 )
                 

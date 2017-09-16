@@ -69,11 +69,12 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
+            guard viewModel.popularItems.count >= 3, let mainPosterUrl = viewModel.popularItems[2].poster else {
+                return cell
+            }
             
-            // If I try to load picture from viewmodel it crashes - delay?
-            
-            cell.mainPicture.image = #imageLiteral(resourceName: "image")
-            cell.mainMovieLabel.text = viewModel.popularItems.first?.title
+            cell.mainPicture.af_setImage(withURL: mainPosterUrl)
+            cell.mainMovieLabel.text = viewModel.popularItems[2].title
             return cell
             
         case 1:

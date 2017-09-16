@@ -16,7 +16,10 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     
     var movie: MovieFullItem? {
         didSet {
-            carouselCellPicture.af_setImage(withURL: (movie?.poster)!)
+            guard let poster = movie?.poster else {
+                return
+            }
+            carouselCellPicture.af_setImage(withURL: poster)
         }
     }
 }

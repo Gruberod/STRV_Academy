@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import YouTubePlayer
 
 class MovieDetailVC: UIViewController, UITableViewDelegate {
 
@@ -57,6 +58,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.navigationBar.backItem?.title = ""
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -73,12 +75,7 @@ extension MovieDetailVC: UITableViewDataSource {
         if section == 0 {
             return 8
         } else {
-//            guard let (viewModel.movie?.reviews.count) != nil else {
-//                return 0
-//            }
-//            return (viewModel.movie?.reviews.count)!
-//        }
-        return 2
+            return viewModel.movie?.reviews?.count ?? 0
         }
     }
 
@@ -100,7 +97,11 @@ extension MovieDetailVC: UITableViewDataSource {
             return cell
         case (0,3):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
-//            cell.movies = viewModel.movie?.stars
+            cell.hasSubtitles = true
+            guard let stars = viewModel.movie?.actors else {
+                return cell
+            }
+            cell.stars = stars
             return cell
         case (0,4):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
@@ -109,6 +110,7 @@ extension MovieDetailVC: UITableViewDataSource {
             return cell
         case (0,5):
             let cell = tableView.dequeueReusableCell(withIdentifier: "video") as! VideoTableViewCell
+            cell.video.loadVideoID((viewModel.movie?.videos?.first?.key)!)
             return cell
         case (0,6):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
@@ -116,18 +118,20 @@ extension MovieDetailVC: UITableViewDataSource {
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
         case (0,7):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "galleryCell") as! GalleryTableViewCell
-//            cell.pictures = viewModel.movie?.pictures as! [GalleryPictureItem]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
+            cell.hasSubtitles = false
+            viewModel.createDataForCarousel(input: viewModel.movie?.images)
+            cell.movies = viewModel.carouselData
             return cell
         case (1,0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Reviews"
             cell.showAll.setTitle("SHOW ALL", for: .normal)
             return cell
-        case (1,1):
+        case (1,_):
             let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell
-            cell.reviewAuthor.text = viewModel.movie?.reviews?.first?.author
-            cell.reviewText.text = viewModel.movie?.reviews?.first?.content
+            cell.reviewAuthor.text = viewModel.movie?.reviews?[indexPath.row-1].author
+            cell.reviewText.text = viewModel.movie?.reviews?[indexPath.row-1].content
             return cell
         default:
             return UITableViewCell()
@@ -139,21 +143,21 @@ extension MovieDetailVC: UITableViewDataSource {
         switch(indexPath.section, indexPath.row) {
             
         case (0,0):
-            return 200
+            return UITableViewAutomaticDimension
         case (0,1):
             return UITableViewAutomaticDimension
         case (0,2):
-            return 90
+            return 50
         case (0,3):
-            return 50
+            return 260
         case (0,4):
-            return 280
+            return 50
         case (0,5):
-            return 50
+            return 250
         case (0,6):
-            return 200
-        case (0,7):
             return 50
+        case (0,7):
+            return 200
         case (0,8):
             return 200
         case (1,0):

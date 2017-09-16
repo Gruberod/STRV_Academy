@@ -28,25 +28,35 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osy-Ye-Oxx">
-                        <rect key="frame" x="8" y="189.5" width="392" height="16"/>
+                        <rect key="frame" x="8" y="181.5" width="392" height="16"/>
                         <fontDescription key="fontDescription" name="Calibre-Regular" family="Calibre" pointSize="16"/>
                         <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiW-ts-Or3" userLabel="Review Author">
-                        <rect key="frame" x="8" y="8" width="39" height="171.5"/>
+                        <rect key="frame" x="8" y="16" width="39" height="155.5"/>
                         <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBJ-FP-zrH">
+                        <rect key="frame" x="0.0" y="212" width="408" height="1"/>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="2mJ-e8-K7B"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="iiW-ts-Or3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AKu-hE-Met"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Osy-Ye-Oxx" secondAttribute="trailing" id="OAi-Uh-vvi"/>
+                    <constraint firstAttribute="bottom" secondItem="jBJ-FP-zrH" secondAttribute="bottom" id="lTk-a6-6Ce"/>
+                    <constraint firstAttribute="trailing" secondItem="jBJ-FP-zrH" secondAttribute="trailing" id="mph-Cj-04B"/>
                     <constraint firstItem="Osy-Ye-Oxx" firstAttribute="top" secondItem="iiW-ts-Or3" secondAttribute="bottom" constant="10" id="pWJ-44-xH2"/>
-                    <constraint firstItem="iiW-ts-Or3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="svL-tP-1vh"/>
+                    <constraint firstItem="iiW-ts-Or3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="svL-tP-1vh"/>
                     <constraint firstItem="Osy-Ye-Oxx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="uTc-gc-QnG"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Osy-Ye-Oxx" secondAttribute="bottom" id="y3n-Oi-rsk"/>
+                    <constraint firstItem="jBJ-FP-zrH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xTg-LQ-c3b"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Osy-Ye-Oxx" secondAttribute="bottom" constant="8" id="y3n-Oi-rsk"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

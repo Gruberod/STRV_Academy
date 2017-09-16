@@ -49,6 +49,7 @@
                     <constraint firstItem="7FT-LH-jXk" firstAttribute="leading" secondItem="c0Q-Na-81q" secondAttribute="trailing" constant="8" symbolic="YES" id="jca-k5-GkA"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="actorName" destination="7FT-LH-jXk" id="Uac-hH-bay"/>
                 <outlet property="actorPicture" destination="c0Q-Na-81q" id="rZP-UJ-pmY"/>

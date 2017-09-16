@@ -24,6 +24,7 @@ struct APIMovie: Unboxable {
     let creators: [APIMovieCreator]?
     let actors: [APIMovieActor]?
     let videos: [APIMovieVideo]?
+    let images: [APIImages]?
     let reviews: [APIMovieReviews]?
     
     init(unboxer: Unboxer) throws {
@@ -40,6 +41,7 @@ struct APIMovie: Unboxable {
         actors = unboxer.unbox(keyPath: "credits.cast")
         creators = unboxer.unbox(keyPath: "credits.crew")
         videos = unboxer.unbox(keyPath: "videos.results")
+        images = unboxer.unbox(keyPath: "images.backdrops")
         reviews = unboxer.unbox(keyPath: "reviews.results")
         
     }
@@ -126,25 +128,28 @@ struct APIMovie: Unboxable {
     
 }
 
-struct APIMovieVideo: Unboxable {
-    
-    enum VideoType: String, UnboxableEnum {
-        case trailer = "Trailer"
-        case teaser = "Teaser"
-        case clip = "Clip"
-        case featurette = "Featurette"
-    }
-    
-    let key: String
-    let name: String
-    let site: String
-    let type: VideoType
+struct APIImages: Unboxable {
+    let picture: String?
     
     init(unboxer: Unboxer) throws {
-        key = try unboxer.unbox(key: "key")
-        name = try unboxer.unbox(key: "name")
-        site = try unboxer.unbox(key: "site")
-        type = try unboxer.unbox(key: "type")
+        picture = unboxer.unbox(key: "file_path")
+    }
+    func url(size: Sizes = .original) -> URL? {
+        guard let picture = picture else {
+            return nil
+        }
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)
+    }
+}
+
+struct APIMovieVideo: Unboxable {
+    let key: String?
+    let name: String?
+
+    init(unboxer: Unboxer) throws {
+        key = unboxer.unbox(key: "key")
+        name = unboxer.unbox(key: "name")
+
     }
 }
 
@@ -170,25 +175,23 @@ struct APIPictureGallery: Unboxable {
 
 struct APIMovieActor: Unboxable {
     
-    enum ActorGender: Int, UnboxableEnum {
-        case male = 1
-        case female = 2
-    }
-    
     let character: String
     let name: String
-    let order: Int
     let id: Int
     let picture: String?
-    let gender: ActorGender?
     
     init(unboxer: Unboxer) throws {
         id = try unboxer.unbox(key: "id")
         character = try unboxer.unbox(key: "character")
         name = try unboxer.unbox(key: "name")
-        order = try unboxer.unbox(key: "order")
         picture = unboxer.unbox(key: "profile_path")
-        gender = unboxer.unbox(key: "gender")
+    }
+    
+    func url(size: Sizes = .original) -> URL? {
+        guard let picture = picture else {
+            return nil
+        }
+        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)
     }
 }
 

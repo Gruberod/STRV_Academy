@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Calibre-Medium.otf">
+            <string>Calibre-Medium</string>
+        </array>
         <array key="Calibre-Semibold.otf">
             <string>Calibre-Semibold</string>
         </array>
@@ -23,40 +26,67 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="52.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XOp-7e-pWM">
-                        <rect key="frame" x="24" y="0.0" width="272" height="52.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tableView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFs-8M-wdH">
-                        <rect key="frame" x="24" y="19.5" width="42" height="14"/>
+                        <rect key="frame" x="0.0" y="20" width="40" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="xbS-Tu-kCs"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="14"/>
                         <color key="textColor" red="0.62727606300000005" green="0.63142883780000003" blue="0.63134115930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film and Role" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYO-Wi-yDX">
-                        <rect key="frame" x="76" y="19.5" width="220" height="14"/>
-                        <fontDescription key="fontDescription" name="Calibre-Semibold" family="Calibre" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7s-Zg-S7w">
+                        <rect key="frame" x="40" y="10" width="280" height="32.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Film" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYO-Wi-yDX">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="11.5"/>
+                                <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="role" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-nB-j4V">
+                                <rect key="frame" x="0.0" y="14.5" width="280" height="18"/>
+                                <fontDescription key="fontDescription" name="Calibre-Medium" family="Calibre" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HYO-Wi-yDX" firstAttribute="top" secondItem="s7s-Zg-S7w" secondAttribute="top" id="0EQ-3n-1aK"/>
+                            <constraint firstItem="IjO-nB-j4V" firstAttribute="top" secondItem="HYO-Wi-yDX" secondAttribute="bottom" constant="3" id="0Eh-c1-s2G"/>
+                            <constraint firstAttribute="trailing" secondItem="IjO-nB-j4V" secondAttribute="trailing" id="16f-c5-5Qe"/>
+                            <constraint firstItem="HYO-Wi-yDX" firstAttribute="leading" secondItem="s7s-Zg-S7w" secondAttribute="leading" id="7qn-pE-XHG"/>
+                            <constraint firstItem="IjO-nB-j4V" firstAttribute="leading" secondItem="s7s-Zg-S7w" secondAttribute="leading" id="RhT-OB-lcC"/>
+                            <constraint firstAttribute="bottom" secondItem="IjO-nB-j4V" secondAttribute="bottom" id="aQ2-Z6-gcJ"/>
+                            <constraint firstAttribute="trailing" secondItem="HYO-Wi-yDX" secondAttribute="trailing" id="iwF-jH-2qm"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVC-pZ-8AP">
+                        <rect key="frame" x="0.0" y="51.5" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="1rq-5Z-txp"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="XOp-7e-pWM" secondAttribute="trailing" constant="24" id="1Jf-qQ-lEh"/>
-                    <constraint firstItem="XOp-7e-pWM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4Nk-xg-ubb"/>
-                    <constraint firstAttribute="bottom" secondItem="XOp-7e-pWM" secondAttribute="bottom" id="5Ts-qY-dNo"/>
+                    <constraint firstItem="tVC-pZ-8AP" firstAttribute="top" secondItem="s7s-Zg-S7w" secondAttribute="bottom" constant="9" id="37Y-X6-Vv5"/>
+                    <constraint firstItem="s7s-Zg-S7w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3bG-bg-i3A"/>
+                    <constraint firstAttribute="trailing" secondItem="s7s-Zg-S7w" secondAttribute="trailing" id="6Ju-Ke-j9e"/>
                     <constraint firstItem="yFs-8M-wdH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CQZ-Pl-5ST"/>
-                    <constraint firstItem="HYO-Wi-yDX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UrF-zY-Be2"/>
-                    <constraint firstItem="HYO-Wi-yDX" firstAttribute="leading" secondItem="yFs-8M-wdH" secondAttribute="trailing" constant="10" id="a0D-wY-stK"/>
-                    <constraint firstItem="XOp-7e-pWM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="hH7-0L-kmd"/>
-                    <constraint firstAttribute="trailing" secondItem="yFs-8M-wdH" secondAttribute="trailing" constant="254" id="hna-A0-tyY"/>
-                    <constraint firstItem="yFs-8M-wdH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="p1b-ob-eLc"/>
-                    <constraint firstAttribute="trailing" secondItem="HYO-Wi-yDX" secondAttribute="trailing" constant="24" id="qLA-7y-Y4l"/>
+                    <constraint firstAttribute="trailing" secondItem="tVC-pZ-8AP" secondAttribute="trailing" id="XdO-aG-4we"/>
+                    <constraint firstItem="s7s-Zg-S7w" firstAttribute="leading" secondItem="yFs-8M-wdH" secondAttribute="trailing" id="aji-NW-z3w"/>
+                    <constraint firstAttribute="bottom" secondItem="tVC-pZ-8AP" secondAttribute="bottom" id="k36-iJ-5OA"/>
+                    <constraint firstItem="yFs-8M-wdH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="p1b-ob-eLc"/>
+                    <constraint firstItem="tVC-pZ-8AP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="usl-IP-VoP"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="actingFilmAndRole" destination="HYO-Wi-yDX" id="pPd-Uf-heM"/>
-                <outlet property="actingYear" destination="yFs-8M-wdH" id="3AK-qX-sBx"/>
+                <outlet property="actorActingFilm" destination="HYO-Wi-yDX" id="Bjw-v3-Qx7"/>
+                <outlet property="actorActingRole" destination="IjO-nB-j4V" id="zbO-Cu-QLO"/>
+                <outlet property="actorActingYear" destination="yFs-8M-wdH" id="qhf-C3-oUa"/>
             </connections>
             <point key="canvasLocation" x="34" y="58.5"/>
         </tableViewCell>

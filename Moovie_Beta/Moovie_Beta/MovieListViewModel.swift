@@ -77,11 +77,12 @@ class MovieListViewModel {
                         poster: $0.url(size: .w500),
                         score: $0.score,
                         overview: $0.overview,
-                        releaseDate: dateFormatter.string(from: $0.releaseDate!),
+                        releaseDate: $0.releaseDate,
                         genres: $0.genres,
                         creators: $0.filterCreators(),
                         actors: $0.actors,
                         videos: $0.videos,
+                        images: $0.images,
                         reviews: $0.reviews
                     )
                 }
@@ -111,11 +112,12 @@ class MovieListViewModel {
                         poster: $0.url(size: .w500),
                         score: $0.score,
                         overview: $0.overview,
-                        releaseDate: dateFormatter.string(from: $0.releaseDate!),
+                        releaseDate: $0.releaseDate,
                         genres: $0.genres,
                         creators: $0.filterCreators(),
                         actors: $0.actors,
                         videos: $0.videos,
+                        images: $0.images,
                         reviews: $0.reviews
                     )
                 }

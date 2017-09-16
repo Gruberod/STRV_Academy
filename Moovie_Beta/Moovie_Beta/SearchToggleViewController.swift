@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -49,10 +50,15 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath ) as? searchItemCellTableViewCell else {
             return UITableViewCell()
         }
+        let movieYear = viewModel.items[indexPath.row].releaseDate
+        var score: String?
+        if let scoreValue = viewModel.items[indexPath.row].score {
+            score = "\(Int(scoreValue*10)) %"
+        }
         
         cell.nameMovieCell.text = viewModel.items[indexPath.row].title
-        cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
-        cell.ratingMovieCell.text = viewModel.items[indexPath.row].score?.description
+        cell.yearMovieCell.text = movieYear?.string(custom: "yyyy")
+        cell.ratingMovieCell.text = score
         
         if let poster = viewModel.items[indexPath.row].poster {
             cell.imageMovieCell.af_setImage(withURL: poster)

@@ -24,8 +24,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="456" height="218.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BxD-Il-DXp">
-                        <rect key="frame" x="0.0" y="0.0" width="456" height="188.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BxD-Il-DXp">
+                        <rect key="frame" x="0.0" y="0.0" width="456" height="218.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xl-Uv-nOw">
                         <rect key="frame" x="40" y="138.5" width="408" height="40"/>
@@ -36,7 +36,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="BxD-Il-DXp" secondAttribute="bottom" constant="30" id="6no-R5-tbk"/>
+                    <constraint firstAttribute="bottom" secondItem="BxD-Il-DXp" secondAttribute="bottom" id="6no-R5-tbk"/>
                     <constraint firstAttribute="trailing" secondItem="BxD-Il-DXp" secondAttribute="trailing" id="7QC-3o-ESh"/>
                     <constraint firstAttribute="bottom" secondItem="0xl-Uv-nOw" secondAttribute="bottom" constant="40" id="WSN-Ni-nQm"/>
                     <constraint firstAttribute="trailingMargin" secondItem="0xl-Uv-nOw" secondAttribute="trailing" id="WfG-2Q-b3H"/>

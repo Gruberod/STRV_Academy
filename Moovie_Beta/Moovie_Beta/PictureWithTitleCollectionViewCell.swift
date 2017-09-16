@@ -14,9 +14,15 @@ class PictureWithTitleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageTitle: UILabel!
     @IBOutlet weak var imageSubtitle: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var star: APIMovieActor? {
+        didSet {
+            guard let picture = star?.url(size: .w500) else {
+                return
+            }
+            image.af_setImage(withURL: picture)
+            imageTitle.text = star?.name
+            imageSubtitle.text = star?.character
+        }
     }
 
 }

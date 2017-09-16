@@ -53,19 +53,22 @@ class MovieSearchViewModel {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .short
+
                 
                 self.items = value.map {
-                    MovieFull(
+
+                    return MovieFull(
                         id: $0.id,
                         title: $0.title,
                         poster: $0.url(size: .w500),
                         score: $0.score,
                         overview: $0.overview,
-                        releaseDate: dateFormatter.string(from: $0.releaseDate!),
+                        releaseDate: $0.releaseDate,
                         genres: $0.genres,
                         creators: $0.filterCreators(),
                         actors: $0.actors,
                         videos: $0.videos,
+                        images: $0.images,
                         reviews: $0.reviews
                     )
                 }

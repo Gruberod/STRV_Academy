@@ -47,7 +47,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         cell.nameMovieCell.text = viewModel.items[indexPath.row].title
-        cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
+//        cell.yearMovieCell.text = viewModel.items[indexPath.row].releaseDate
         
         if let poster = viewModel.items[indexPath.row].poster {
             cell.imageMovieCell.af_setImage(withURL: poster)

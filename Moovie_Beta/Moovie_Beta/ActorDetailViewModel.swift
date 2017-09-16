@@ -65,6 +65,29 @@ class ActorDetailViewModel {
         self.actorSource = actorSource
     }
     
+    var carouselData = [MovieFull]()
+    
+    func createDataForCarousel(input: [APIActorKnownFor]?) {
+        guard let input = input else {
+            return
+        }
+        self.carouselData = input.map {
+            MovieFull(id: $0.id,
+                      title: $0.title ?? "",
+                      poster: $0.url(size: .w500),
+                      score: nil,
+                      overview: nil,
+                      releaseDate: nil,
+                      genres: nil,
+                      creators: nil,
+                      actors: nil,
+                      videos: nil,
+                      images: nil,
+                      reviews: nil
+            )
+        }
+    }
+    
     func getActorDetail(id: Int) {
         
         self.actorSource.fetchActorDetail(id: id) { [weak self] result in
@@ -77,19 +100,24 @@ class ActorDetailViewModel {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none
                 dateFormatter.dateStyle = .medium
+                var birthday: String?
+                if let birthdayDate = value.birthday {
+                    birthday = dateFormatter.string(from: birthdayDate)
+                }
                 
                 self.actor = Actor(
                     name: value.name,
                     id: value.id,
                     picture: value.url(size: .w500),
                     bio: value.bio,
-                    birthday: dateFormatter.string(from: value.birthday!),
+                    // how to guard if the value is present?
+                    birthday: birthday,
                     placeOfBirth: value.placeOfBirth,
                     knownFor: value.knownFor,
                     popularKnownFor: value.filterMoviesKnownFor(),
                     acting: value.acting
                 )
-                
+                print(value)
                 self.state = .ready
                 self.delegate?.viewModelItemsUpdated()
                 

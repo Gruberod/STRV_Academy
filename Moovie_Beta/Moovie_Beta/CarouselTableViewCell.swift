@@ -23,6 +23,14 @@ class CarouselTableViewCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
+    
+    var stars = [APIMovieActor]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var hasSubtitles = false
 
     override func awakeFromNib() {
         
@@ -45,26 +53,38 @@ extension CarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return hasSubtitles ? stars.count : movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let item = movies[indexPath.row]
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCollectionViewCell", for: indexPath) as? CarouselCollectionViewCell else {
+        if hasSubtitles {
+            let item = stars[indexPath.row]
             
-            return UICollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureWithTitle", for: indexPath) as? PictureWithTitleCollectionViewCell else {
+                
+                return UICollectionViewCell()
+                
+            }
             
+            cell.star = item
+            return cell
+        } else {
+        
+            let item = movies[indexPath.row]
+        
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCollectionViewCell", for: indexPath) as? CarouselCollectionViewCell else {
+            
+                return UICollectionViewCell()
+            
+            }
+        
+            cell.movie = item
+            return cell
         }
-        
-        cell.movie = item
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 155, height: 198)
+        return hasSubtitles ? CGSize(width: 155, height: 260) : CGSize(width: 155, height: 198)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
