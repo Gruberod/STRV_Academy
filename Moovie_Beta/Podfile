@@ -13,4 +13,5 @@ target 'Moovie_Beta' do
   pod 'AlamofireImage'
   pod 'YouTubePlayer'
   pod 'SwiftDate'
+  pod 'SwiftyImage', '~> 1.1'
 end

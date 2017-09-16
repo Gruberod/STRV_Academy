@@ -5,6 +5,7 @@ PODS:
   - AlamofireNetworkActivityIndicator (2.2.0):
     - Alamofire (~> 4.5)
   - SwiftDate (4.1.2)
+  - SwiftyImage (1.1.0)
   - Unbox (2.5.0)
   - UnboxedAlamofire (2.0.3):
     - Alamofire (~> 4.1)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - SwiftDate
+  - SwiftyImage (~> 1.1)
   - Unbox
   - UnboxedAlamofire
   - YouTubePlayer
@@ -25,10 +27,11 @@ SPEC CHECKSUMS:
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
+  SwiftyImage: 4d3feb0211beb7217b39ac553e3ee64ceb72d611
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
   UnboxedAlamofire: 3ecaf2a745aa018ba3497c0d61487b7338190ac6
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 3385f3a5902d1ea493e3db9d72d1319ec9c9b58a
+PODFILE CHECKSUM: 5d089bded023c1ededadeeeaf1fb8de162e57678
 
 COCOAPODS: 1.3.1

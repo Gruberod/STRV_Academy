@@ -80,7 +80,7 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Most popular"
-            cell.button.setTitle("SHOW ALL", for: .normal)
+            cell.button.setTitle("", for: .normal)
             return cell
             
         case 2:
@@ -92,7 +92,7 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Now playing"
-            cell.button.setTitle("SHOW ALL", for: .normal)
+            cell.button.setTitle("", for: .normal)
             return cell
             
         case 4:

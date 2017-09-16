@@ -10,9 +10,6 @@ import Foundation
 import Alamofire
 
 
-// why so many error handlers?
-
-
 enum APIError: Error {
     case invalidJson(Any)
 }

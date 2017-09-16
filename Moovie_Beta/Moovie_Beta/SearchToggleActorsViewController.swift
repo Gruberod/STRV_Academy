@@ -68,6 +68,8 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,6 +78,7 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
             let indexPath = self.searchActors.indexPathForSelectedRow {
             let selectedActor = viewModel.items[indexPath.row]
             nextScene.currentActor = selectedActor
+            nextScene.buttonHidden = false
         }
     }
 

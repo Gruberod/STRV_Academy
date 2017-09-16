@@ -55,7 +55,7 @@ class ActorSearchViewModel {
                     Actor(
                         name: $0.name,
                         id: $0.id,
-                        picture: $0.url(size: .w185),
+                        picture: $0.url(size: .w342),
                         bio: $0.bio,
                         birthday: $0.birthday?.description,
                         placeOfBirth: $0.placeOfBirth,

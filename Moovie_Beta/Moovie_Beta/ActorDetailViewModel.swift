@@ -74,7 +74,7 @@ class ActorDetailViewModel {
         self.carouselData = input.map {
             MovieFull(id: $0.id,
                       title: $0.title ?? "",
-                      poster: $0.url(size: .w500),
+                      poster: $0.url(size: .w185),
                       score: nil,
                       overview: nil,
                       releaseDate: nil,
@@ -108,9 +108,8 @@ class ActorDetailViewModel {
                 self.actor = Actor(
                     name: value.name,
                     id: value.id,
-                    picture: value.url(size: .w500),
+                    picture: value.url(size: .w780),
                     bio: value.bio,
-                    // how to guard if the value is present?
                     birthday: birthday,
                     placeOfBirth: value.placeOfBirth,
                     knownFor: value.knownFor,

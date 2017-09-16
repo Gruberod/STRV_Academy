@@ -16,7 +16,7 @@ class PictureWithTitleCollectionViewCell: UICollectionViewCell {
     
     var star: APIMovieActor? {
         didSet {
-            guard let picture = star?.url(size: .w500) else {
+            guard let picture = star?.url(size: .w342) else {
                 return
             }
             image.af_setImage(withURL: picture)

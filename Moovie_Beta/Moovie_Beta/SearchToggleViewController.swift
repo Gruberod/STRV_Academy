@@ -74,6 +74,8 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,7 +84,7 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
             let indexPath = self.searchToogle.indexPathForSelectedRow {
             let selectedMovie = viewModel.items[indexPath.row]
             nextScene.currentMovie = selectedMovie
-            print(selectedMovie)
+            nextScene.buttonHidden = false
         }
 
     }

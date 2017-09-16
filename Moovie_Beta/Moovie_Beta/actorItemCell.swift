@@ -12,18 +12,6 @@ class actorItemCell: UITableViewCell {
 
     @IBOutlet weak var actorPicture: UIImageView!
     @IBOutlet weak var actorName: UILabel!
-    
-    var actor: APIActor? {
-        didSet {
-//            actorPicture.image = actor?.picture
-            actorName.text = actor?.name
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -26,11 +26,6 @@ class ActorsOverviewVC: UIViewController {
         let itemWithTitle = UINib(nibName: "PictureWithTitleCollectionViewCell", bundle: nil)
         actorCOllectionView.register(itemWithTitle, forCellWithReuseIdentifier: "pictureWithTitle")
         
-        
-        //    let refreshControl = UIRefreshControl()
-        //    refreshControl.addTarget(self, action: #selector(ActorsOverview.reloadAction), for: .valueChanged)
-        //
-        //    tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +62,11 @@ extension ActorsOverviewVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" ,
-            let nextScene = segue.destination as? ActorDetailVC ,
+        if segue.identifier == "showDetail",
+            let nextScene = segue.destination as? ActorDetailVC,
             var indexPath = self.actorCOllectionView.indexPathsForSelectedItems?.first {
             let selectedActor = viewModel.items[indexPath.row]
-            nextScene.currentActor = selectedActor 
+            nextScene.currentActor = selectedActor
         }
     }
 

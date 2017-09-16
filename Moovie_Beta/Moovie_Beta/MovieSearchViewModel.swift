@@ -60,7 +60,7 @@ class MovieSearchViewModel {
                     return MovieFull(
                         id: $0.id,
                         title: $0.title,
-                        poster: $0.url(size: .w500),
+                        poster: $0.url(size: .w342),
                         score: $0.score,
                         overview: $0.overview,
                         releaseDate: $0.releaseDate,

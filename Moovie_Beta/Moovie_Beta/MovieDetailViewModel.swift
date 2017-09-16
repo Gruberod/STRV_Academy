@@ -38,14 +38,6 @@ struct MovieFull: MovieFullItem {
     var reviews: [APIMovieReviews]?
 }
 
-protocol GalleryPictureItem {
-    var picture: URL? { get }
-}
-
-struct GalleryItem: GalleryPictureItem {
-    var picture: URL?
-}
-
 protocol MovieDetailViewModelDelegate: class {
     func viewModelItemsUpdated()
     func viewModelChangedState(state: MovieDetailViewModel.State)
@@ -87,7 +79,7 @@ class MovieDetailViewModel {
         self.carouselData = input.map {
             MovieFull(id: 0,
                       title: "",
-                      poster: $0.url(size: .w500),
+                      poster: $0.url(size: .w342),
                       score: nil,
                       overview: nil,
                       releaseDate: nil,

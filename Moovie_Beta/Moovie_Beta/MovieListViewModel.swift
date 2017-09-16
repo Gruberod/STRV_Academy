@@ -8,27 +8,7 @@
 
 import Foundation
 import AlamofireImage
-/*
-protocol MovieListItem {
-    var title: String { get }
-    var id: Int { get }
-    var genres: [String] { get }
-    var description: String { get }
-    var releaseDate: String? { get }
-    var score: String { get }
-    var poster: URL? { get }
-}
 
-struct MovieStub: MovieListItem {
-    var title: String
-    var id: Int
-    var genres: [String]
-    var description: String
-    var releaseDate: String?
-    var score: String
-    var poster: URL?
-}
-*/
 protocol MovieListViewModelDelegate: class {
     func viewModelItemsUpdated(items: [MovieFullItem])
     func viewModelChangedState(state: MovieListViewModel.State)

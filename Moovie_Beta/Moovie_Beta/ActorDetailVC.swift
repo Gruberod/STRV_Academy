@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftDate
+import SwiftyImage
 /*
 class ImageViewWithFade: UIImageView {
     
@@ -29,10 +30,17 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var actorTable: UITableView!
     @IBOutlet weak var actorName: UILabel!
     @IBOutlet weak var actorPicture: UIImageView!
-//    @IBOutlet weak var gradient: ImageViewWithFade!
+    @IBOutlet weak var gradient: UIImageView!
+    @IBOutlet weak var cancelButton: UIButton?
+
+    @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     
     var viewModel: ActorDetailViewModel!
-    var currentActor : Actor!
+    var currentActor: Actor!
+    var buttonHidden: Bool! = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +71,8 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        cancelButton?.isHidden = buttonHidden
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -103,7 +113,7 @@ extension ActorDetailVC: UITableViewDataSource {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Known for"
-            cell.showAll.setTitle("SHOW ALL", for: .normal)
+            cell.showAll.setTitle("", for: .normal)
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
@@ -137,6 +147,7 @@ extension ActorDetailVC: ActorDetailViewModelDelegate {
         actorTable.reloadData()
         actorName.text = currentActor.name
         actorPicture.af_setImage(withURL: (currentActor.picture)!)
+        gradient.image = UIImage.size(width: 375, height: 333).color(gradient: [UIColor.clear, UIColor(colorLiteralRed: 19/255.0, green: 20/255.0, blue: 23/255.0, alpha: 0.9)], locations: [0.5, 1.0], from: CGPoint(x: 1, y: 0), to: CGPoint(x: 1, y: 1)).image
     }
     
     func viewModelChangedState(state: ActorDetailViewModel.State) {

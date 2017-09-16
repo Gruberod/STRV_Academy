@@ -44,11 +44,7 @@ struct APIActor: Unboxable {
             return nil
         }
         return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
-/*
-    func makeMovieStub(data: APIActorKnownFor) -> MovieStub {
-        return MovieStub(title: data.title, id: data.id, genres: [""], description: "", releaseDate: nil, score: "", poster: data.url(size: .w500))
-    }
-*/
+
     func filterMoviesKnownFor() -> String {
         var mainMovies: [String] = []
         guard let popularKnownFor = popularKnownFor else {
@@ -126,80 +122,3 @@ struct APISearch: Unboxable {
         results = try unboxer.unbox(key: "results")
     }
 }
-
-
-/*
-
-
-struct APIActorPopular: Unboxable {
-    let name: String
-    let id: Int
-    let bio: String?
-    let birthday: Date?
-    let placeOfBirth: String?
-    let picture: String?
-    var knownFor: [APIPopularKnownFor]
-    let acting: [APIActorActing]
-    
-    init(unboxer: Unboxer) throws {
-        name = try unboxer.unbox(key: "name")
-        id = try unboxer.unbox(key: "id")
-        bio = nil
-        birthday
-        picture = unboxer.unbox(key: "profile_path")
-        knownFor = try unboxer.unbox(key: "known_for")
-
-    }
-    
-    func url(size: Sizes = .original) -> URL? {
-        guard let picture = picture else {
-            return nil
-        }
-        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)
-    }
-    
-    func filterMoviesKnownFor() -> String {
-        var mainMovies: [String] = []
-            for movie in knownFor {
-                if let movieTitle = movie.movieTitle {
-                    mainMovies.append(movieTitle)
-                }
-        }
-
-        if mainMovies.isEmpty {
-            return "There aren't any movies."
-        } else {
-            return mainMovies.joined(separator: ", ")
-        }
-    }
-}
-
-
-struct APIPopularKnownFor: Unboxable {
-    let movieTitle: String?
-    
-    init(unboxer: Unboxer) throws {
-        movieTitle = unboxer.unbox(key: "original_title")
-    }
-}
-
-
-
-struct APIActorSearch: Unboxable {
-    let name: String
-    let id: Int
-    let picture: String?
-    
-    init(unboxer: Unboxer) throws {
-        name = try unboxer.unbox(key: "name")
-        id = try unboxer.unbox(key: "id")
-        picture = unboxer.unbox(key: "profile_path")
-    }
-    
-    func url(size: Sizes = .original) -> URL? {
-        guard let picture = picture else {
-            return nil
-        }
-        return Constants.imageBaseURL.appendingPathComponent(size.rawValue).appendingPathComponent(picture)}
-}
- */

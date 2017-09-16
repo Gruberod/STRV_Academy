@@ -15,12 +15,16 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var overviewTable: UITableView!
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var gradient: UIImageView!
     @IBOutlet weak var headerScore: UILabel!
+    @IBOutlet weak var cancelButton: UIButton?
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     var viewModel: MovieDetailViewModel!
     var currentMovie: MovieFullItem!
-    
-//    var galleryItem: GalleryPictureItem?
+    var buttonHidden: Bool! = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +61,9 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        cancelButton?.isHidden = buttonHidden
+        
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationController?.navigationBar.backItem?.title = ""
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -68,34 +75,32 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
 extension MovieDetailVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 8
-        } else {
-            return viewModel.movie?.reviews?.count ?? 0
-        }
+        let reviewItemsCount = viewModel.movie?.reviews?.count ?? 0
+        return 7+reviewItemsCount
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.section, indexPath.row) {
-        case (0,0):
+        switch (indexPath.row) {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieDescription") as! MovieDescriptionViewCell
             cell.movieDescription.text = viewModel.movie?.overview
             return cell
-        case (0,1):
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "additionalDetail") as! AdditionalDetailInfo
             cell.additionalInfoTitle.text = "CREATOR"
             cell.additionalInfoText.text = viewModel.movie?.creators
             return cell
-        case (0,2):
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Stars"
-            cell.showAll.setTitle("SHOW ALL", for: .normal)
+            cell.showAll.setTitle("", for: .normal)
             return cell
-        case (0,3):
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
             cell.hasSubtitles = true
             guard let stars = viewModel.movie?.actors else {
@@ -103,38 +108,39 @@ extension MovieDetailVC: UITableViewDataSource {
             }
             cell.stars = stars
             return cell
-        case (0,4):
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Trailers"
-            cell.showAll.setTitle("SHOW ALL", for: .normal)
+            cell.showAll.setTitle("", for: .normal)
             return cell
-        case (0,5):
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "video") as! VideoTableViewCell
-            cell.video.loadVideoID((viewModel.movie?.videos?.first?.key)!)
+            guard let videoKey = viewModel.movie?.videos?.first?.key else {
+                return cell
+            }
+            cell.video.loadVideoID(videoKey)
             return cell
-        case (0,6):
+        case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Gallery"
-            cell.showAll.setTitle("SHOW ALL", for: .normal)
+            cell.showAll.setTitle("", for: .normal)
             return cell
-        case (0,7):
+        case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTableViewCell") as! CarouselTableViewCell
             cell.hasSubtitles = false
             viewModel.createDataForCarousel(input: viewModel.movie?.images)
             cell.movies = viewModel.carouselData
             return cell
-        case (1,0):
+        case 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
             cell.title.text = "Reviews"
-            cell.showAll.setTitle("SHOW ALL", for: .normal)
-            return cell
-        case (1,_):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell
-            cell.reviewAuthor.text = viewModel.movie?.reviews?[indexPath.row-1].author
-            cell.reviewText.text = viewModel.movie?.reviews?[indexPath.row-1].content
+            cell.showAll.setTitle("", for: .normal)
             return cell
         default:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "review") as! ReviewTableViewCell
+            cell.reviewAuthor.text = viewModel.movie?.reviews?[indexPath.row-7].author
+            cell.reviewText.text = viewModel.movie?.reviews?[indexPath.row-7].content
+            return cell
         }
     }
     
@@ -142,29 +148,10 @@ extension MovieDetailVC: UITableViewDataSource {
         
         switch(indexPath.section, indexPath.row) {
             
-        case (0,0):
-            return UITableViewAutomaticDimension
-        case (0,1):
-            return UITableViewAutomaticDimension
-        case (0,2):
-            return 50
         case (0,3):
             return 260
-        case (0,4):
-            return 50
         case (0,5):
             return 250
-        case (0,6):
-            return 50
-        case (0,7):
-            return 200
-        case (0,8):
-            return 200
-        case (1,0):
-            return 50
-        case (1,1):
-            return UITableViewAutomaticDimension
-            
         default:
             return UITableViewAutomaticDimension
         }
@@ -175,9 +162,17 @@ extension MovieDetailVC: UITableViewDataSource {
 extension MovieDetailVC: MovieDetailViewModelDelegate {
     func viewModelItemsUpdated() {
         overviewTable.reloadData()
-        headerImage.af_setImage(withURL: (currentMovie.poster)!)
+        var score: String?
+        guard let posterUrl = currentMovie.poster else {
+            return
+        }
+        headerImage.af_setImage(withURL: posterUrl)
+        gradient.image = UIImage.size(width: 375, height: 333).color(gradient: [UIColor.clear, UIColor(colorLiteralRed: 19/255.0, green: 20/255.0, blue: 23/255.0, alpha: 0.9)], locations: [0.5, 1.0], from: CGPoint(x: 1, y: 0), to: CGPoint(x: 1, y: 1)).image
         headerTitle.text = currentMovie.title
-        headerScore.text = currentMovie.score?.description
+        if let scoreValue = currentMovie.score {
+            score = "\(Int(scoreValue*10)) %"
+        }
+        headerScore.text = score
     }
     
     func viewModelChangedState(state: MovieDetailViewModel.State) {
