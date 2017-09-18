@@ -27,7 +27,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="177" height="260"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="johnyDepp" translatesAutoresizingMaskIntoConstraints="NO" id="NP3-YE-JFH">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP3-YE-JFH">
                         <rect key="frame" x="8" y="8" width="161" height="196"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="196" id="LU8-Wv-feT"/>
@@ -70,7 +70,4 @@
             <point key="canvasLocation" x="-29.5" y="189.5"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="johnyDepp" width="88" height="112"/>
-    </resources>
 </document>

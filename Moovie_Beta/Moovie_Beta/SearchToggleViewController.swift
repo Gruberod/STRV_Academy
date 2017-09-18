@@ -92,6 +92,7 @@ class SearchToggleViewController: UIViewController,UITableViewDelegate, UITableV
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         viewModel.searchInput = searchBar.text ?? ""
         viewModel.reloadMovies()
+        searchBar.resignFirstResponder()
     }
 
 }

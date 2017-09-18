@@ -37,7 +37,6 @@ class ActorDetailVC: UIViewController, UITableViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 
-    
     var viewModel: ActorDetailViewModel!
     var currentActor: Actor!
     var buttonHidden: Bool! = true
@@ -147,7 +146,7 @@ extension ActorDetailVC: ActorDetailViewModelDelegate {
         actorTable.reloadData()
         actorName.text = currentActor.name
         actorPicture.af_setImage(withURL: (currentActor.picture)!)
-        gradient.image = UIImage.size(width: 375, height: 333).color(gradient: [UIColor.clear, UIColor(colorLiteralRed: 19/255.0, green: 20/255.0, blue: 23/255.0, alpha: 0.9)], locations: [0.5, 1.0], from: CGPoint(x: 1, y: 0), to: CGPoint(x: 1, y: 1)).image
+        gradient.image = UIImage.size(width: 375, height: 333).color(gradient: [UIColor.clear, UIColor(colorLiteralRed: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.9)], locations: [0.5, 1.0], from: CGPoint(x: 1, y: 0), to: CGPoint(x: 1, y: 1)).image
     }
     
     func viewModelChangedState(state: ActorDetailViewModel.State) {

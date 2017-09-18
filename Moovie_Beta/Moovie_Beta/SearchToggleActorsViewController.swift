@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -30,6 +30,7 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
         viewModel = ActorSearchViewModel()
         viewModel.delegate = self
         viewModel.reloadActors()
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,10 +46,10 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "actorResultCell", for: indexPath ) as? actorItemCell else {
 
             return UITableViewCell()
-        
         }
-        
+
         if let picture = viewModel.items[indexPath.row].picture {
+//            let placeholderPic = UIImage(named: "placeholder")!
             cell.actorPicture.af_setImage(withURL: picture)
         }
         cell.actorName.text = viewModel.items[indexPath.row].name
@@ -64,7 +65,9 @@ class SearchToggleActorsViewController: UIViewController,UITableViewDelegate, UI
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         viewModel.searchInput = searchBar.text ?? ""
         viewModel.reloadActors()
+        searchBar.resignFirstResponder()
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: nil)

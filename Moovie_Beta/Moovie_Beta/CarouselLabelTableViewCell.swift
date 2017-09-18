@@ -11,9 +11,9 @@ import UIKit
 class CarouselLabelTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var button: UIButton!
-    @IBAction func showAll(_ sender: UIButton) {
-    }
+//    @IBOutlet weak var button: UIButton!
+//    @IBAction func showAll(_ sender: UIButton) {
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

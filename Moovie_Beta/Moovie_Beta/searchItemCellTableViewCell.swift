@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class searchItemCellTableViewCell: UITableViewCell {
-
 
     @IBOutlet weak var imageMovieCell: UIImageView!
     @IBOutlet weak var nameMovieCell: UILabel!

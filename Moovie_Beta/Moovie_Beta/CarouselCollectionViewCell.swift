@@ -11,7 +11,6 @@ import AlamofireImage
 
 class CarouselCollectionViewCell: UICollectionViewCell {
     
-
     @IBOutlet weak var carouselCellPicture: UIImageView!
     
     var movie: MovieFullItem? {

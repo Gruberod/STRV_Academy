@@ -116,7 +116,6 @@ class ActorDetailViewModel {
                     popularKnownFor: value.filterMoviesKnownFor(),
                     acting: value.acting
                 )
-                print(value)
                 self.state = .ready
                 self.delegate?.viewModelItemsUpdated()
                 

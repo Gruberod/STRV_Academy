@@ -45,7 +45,6 @@ class ActorSearchViewModel {
     func reloadActors() {
         
         self.actorSource.searchActor(string: searchInput) { result in
-            print(result)
             if let value = result.value {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none

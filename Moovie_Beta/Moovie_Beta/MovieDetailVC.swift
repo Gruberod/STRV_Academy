@@ -70,6 +70,7 @@ class MovieDetailVC: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
     }
+
 }
 
 extension MovieDetailVC: UITableViewDataSource {
@@ -110,7 +111,7 @@ extension MovieDetailVC: UITableViewDataSource {
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselHeaderOneliner") as! carouselHeaderOnelinerTableViewCell
-            cell.title.text = "Trailers"
+            cell.title.text = "Trailer"
             cell.showAll.setTitle("", for: .normal)
             return cell
         case 5:
@@ -167,7 +168,7 @@ extension MovieDetailVC: MovieDetailViewModelDelegate {
             return
         }
         headerImage.af_setImage(withURL: posterUrl)
-        gradient.image = UIImage.size(width: 375, height: 333).color(gradient: [UIColor.clear, UIColor(colorLiteralRed: 19/255.0, green: 20/255.0, blue: 23/255.0, alpha: 0.9)], locations: [0.5, 1.0], from: CGPoint(x: 1, y: 0), to: CGPoint(x: 1, y: 1)).image
+        gradient.image = UIImage.size(width: 375, height: 333).color(gradient: [UIColor.clear, UIColor(colorLiteralRed: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.9)], locations: [0.5, 1.0], from: CGPoint(x: 1, y: 0), to: CGPoint(x: 1, y: 1)).image
         headerTitle.text = currentMovie.title
         if let scoreValue = currentMovie.score {
             score = "\(Int(scoreValue*10)) %"

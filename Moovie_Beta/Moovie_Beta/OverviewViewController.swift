@@ -68,19 +68,21 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         switch(indexPath.row) {
             
         case 0:
+            // I know this is not nice ¯\_(ツ)_/¯
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainPicture") as! OverviewMainPictureTableViewCell
             guard viewModel.popularItems.count >= 3, let mainPosterUrl = viewModel.popularItems[2].poster else {
                 return cell
             }
-            
             cell.mainPicture.af_setImage(withURL: mainPosterUrl)
             cell.mainMovieLabel.text = viewModel.popularItems[2].title
+
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Most popular"
-            cell.button.setTitle("", for: .normal)
+//          cell.button.setTitle("", for: .normal)
+            cell.selectionStyle = .none
             return cell
             
         case 2:
@@ -92,7 +94,8 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Now playing"
-            cell.button.setTitle("", for: .normal)
+//          cell.button.setTitle("", for: .normal)
+            cell.selectionStyle = .none
             return cell
             
         case 4:
@@ -112,18 +115,14 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             
         case 0:
             return 250
-        case 1:
-            return 70
-        case 2:
-            return 200
-        case 3:
-            return 70
-        case 4:
-            return 200
-            
         default:
             return UITableViewAutomaticDimension
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

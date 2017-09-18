@@ -132,8 +132,8 @@ class MovieDetailViewModel {
                 } else {
                     self.error = result.error
                     self.state = .error
-                }
-            
             }
+            
         }
     }
+}

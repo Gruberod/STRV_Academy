@@ -36,7 +36,6 @@ class ActorPopularViewModel {
     
     weak var delegate: ActorPopularViewModelDelegate?
     
-    
     init(actorSource: ActorSource = AlamofireActorSource()) {
         self.actorSource = actorSource
     }

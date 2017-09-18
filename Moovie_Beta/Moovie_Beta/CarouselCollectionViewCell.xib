@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="155" height="198"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01" translatesAutoresizingMaskIntoConstraints="NO" id="cnE-5B-gUh">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cnE-5B-gUh">
                         <rect key="frame" x="0.0" y="0.0" width="155" height="198"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -40,7 +40,4 @@
             <point key="canvasLocation" x="220" y="48"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="01" width="155" height="198"/>
-    </resources>
 </document>
