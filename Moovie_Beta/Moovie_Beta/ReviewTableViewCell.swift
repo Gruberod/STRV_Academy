@@ -10,7 +10,6 @@ import UIKit
 
 class ReviewTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var reviewRating: UIImageView!
     @IBOutlet weak var reviewAuthor: UILabel!
     @IBOutlet weak var reviewText: UILabel!
     

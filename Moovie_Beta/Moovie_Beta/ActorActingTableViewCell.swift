@@ -10,7 +10,6 @@ import UIKit
 
 class ActorActingTableViewCell: UITableViewCell {
 
-
     @IBOutlet weak var actorActingYear: UILabel!
     @IBOutlet weak var actorActingFilm: UILabel!
     @IBOutlet weak var actorActingRole: UILabel!

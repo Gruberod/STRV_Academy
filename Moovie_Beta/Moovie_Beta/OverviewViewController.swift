@@ -75,13 +75,13 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
             }
             cell.mainPicture.af_setImage(withURL: mainPosterUrl)
             cell.mainMovieLabel.text = viewModel.popularItems[2].title
-
+            cell.delegate = self as? MovieDelegate
+            self.movie = viewModel.popularItems[2]
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Most popular"
-//          cell.button.setTitle("", for: .normal)
             cell.selectionStyle = .none
             return cell
             
@@ -94,7 +94,6 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "carouselTitle") as! CarouselLabelTableViewCell
             cell.label.text = "Now playing"
-//          cell.button.setTitle("", for: .normal)
             cell.selectionStyle = .none
             return cell
             
@@ -121,8 +120,13 @@ extension OverviewViewController:  UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "showDetail", sender: nil)
+        }
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

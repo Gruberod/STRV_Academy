@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol MovieDelegate: class {
+    func didSelectMovie(movie: MovieFullItem)
+}
+
 class OverviewMainPictureTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mainPicture: UIImageView!
     @IBOutlet weak var mainMovieLabel: UILabel!
+    
+    weak var delegate: MovieDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

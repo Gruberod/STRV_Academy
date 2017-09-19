@@ -47,6 +47,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="iiW-ts-Or3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AKu-hE-Met"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Osy-Ye-Oxx" secondAttribute="trailing" id="OAi-Uh-vvi"/>

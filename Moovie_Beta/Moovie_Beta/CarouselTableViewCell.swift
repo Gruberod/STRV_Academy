@@ -88,6 +88,10 @@ extension CarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard !hasSubtitles else {
+            return
+        }
+        
         let movie = movies[indexPath.row]
         
         delegate?.didSelectMovie(movie: movie)
